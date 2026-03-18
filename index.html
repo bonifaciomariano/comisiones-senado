@@ -106,13 +106,15 @@ table.repr tr:hover td{background:#F8FAFF}
 .bloque-name-cell{display:flex;align-items:center;gap:6px}
 .blq-dot-table{width:11px;height:11px;border-radius:50%;flex-shrink:0}
 
-/* cross table mobile */
+/* cross table */
 .cross-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:24px}
-.cross-table{border-collapse:collapse;font-size:11px;min-width:900px}
-.cross-table th.blq-col{text-align:left;padding:7px 12px;background:var(--blue);color:#fff;font-size:11px;white-space:nowrap;position:sticky;left:0;z-index:2;min-width:160px}
-.cross-table th.com-col{background:var(--blue);color:#fff;font-size:9px;padding:6px 5px;white-space:nowrap;text-align:center;max-width:60px;word-break:break-word;line-height:1.2}
-.cross-table td.blq-name{padding:6px 12px;white-space:nowrap;font-size:11px;font-weight:500;border-bottom:1px solid var(--white);position:sticky;left:0;z-index:1}
-.cross-table td.val{text-align:center;padding:6px 5px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:12px;min-width:36px}
+.cross-table{border-collapse:collapse;font-size:11px}
+.cross-table thead tr{vertical-align:bottom}
+.cross-table th.blq-col{text-align:left;padding:8px 12px 8px 12px;background:var(--blue);color:#fff;font-size:11px;white-space:nowrap;position:sticky;left:0;z-index:3;min-width:140px;vertical-align:bottom}
+.cross-table th.com-col{background:var(--blue);color:#fff;padding:0 4px 8px 4px;width:34px;min-width:34px;max-width:34px;vertical-align:bottom;text-align:center}
+.cross-table th.com-col span{display:block;writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;font-weight:500;line-height:1;white-space:nowrap;max-height:110px;overflow:hidden}
+.cross-table td.blq-name{padding:5px 10px;white-space:nowrap;font-size:11px;font-weight:500;border-bottom:1px solid var(--border);position:sticky;left:0;z-index:1;border-right:1px solid var(--border)}
+.cross-table td.val{text-align:center;padding:5px 4px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:12px;width:34px;min-width:34px;max-width:34px}
 
 /* resumen table mobile cards */
 @media(max-width:600px){
@@ -125,10 +127,11 @@ table.repr tr:hover td{background:#F8FAFF}
   table.repr{font-size:11px;min-width:340px}
   table.repr th,table.repr td{padding:6px 8px}
   .repr-section-title{font-size:13px}
-  .cross-table th.com-col{font-size:8px;padding:4px 3px;max-width:42px}
-  .cross-table td.val{font-size:11px;padding:5px 3px;min-width:28px}
-  .cross-table td.blq-name{font-size:10px;padding:5px 8px;min-width:120px}
-  .cross-table th.blq-col{font-size:10px;padding:7px 8px;min-width:120px}
+  .cross-table th.blq-col{min-width:110px;font-size:10px;padding:8px 8px}
+  .cross-table td.blq-name{min-width:110px;font-size:10px;padding:5px 8px}
+  .cross-table th.com-col span{font-size:9px;max-height:90px}
+  .cross-table th.com-col{width:28px;min-width:28px;max-width:28px}
+  .cross-table td.val{width:28px;min-width:28px;max-width:28px;font-size:11px}
 }
 
 /* ── MODAL ── */
@@ -398,7 +401,8 @@ const DPP_DATES = {
   '6/26':'18/02/2026','7/26':'19/02/2026','8/26':'19/02/2026',
   '9/26':'19/02/2026','10/26':'19/02/2026','11/26':'19/02/2026',
   '16/26':'25/02/2026','18/26':'10/03/2026','19/26':'10/03/2026',
-  '20/26':'12/03/2026','21/26':'12/03/2026','23/26':'17/03/2026'
+  '20/26':'12/03/2026','21/26':'12/03/2026','23/26':'17/03/2026',
+  '24/26':'17/03/2026','25/26':'17/03/2026',
 };
 
 const RAW_CHANGES = [
@@ -921,6 +925,21 @@ const RAW_CHANGES = [
 {dpp:'23/26',comision:'De Coparticipación Federal de Impuestos',tipo:'replace',senador:'VISCHI, Eduardo Alejandro',reemplaza:'KRONEBERGER, Daniel Ricardo'},
 {dpp:'23/26',comision:'De Población y Desarrollo Humano',tipo:'replace',senador:'KRONEBERGER, Daniel Ricardo',reemplaza:'VISCHI, Eduardo Alejandro'},
 {dpp:'23/26',comision:'De Trabajo y Previsión Social',tipo:'replace',senador:'JURI, Mariana',reemplaza:'SUÁREZ, Rodolfo Alejandro'},
+{dpp:'24/26',comision:'De Industria y Comercio',tipo:'add',senador:'SALINO, Fernando Aldo'},
+{dpp:'24/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'add',senador:'GONZÁLEZ, María Teresa Margarita'},
+{dpp:'24/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'add',senador:'LEWANDOWSKI, Marcelo Néstor'},
+{dpp:'24/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'add',senador:'RECALDE, Mariano'},
+{dpp:'24/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'add',senador:'BENSUSÁN, Daniel Pablo'},
+{dpp:'24/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'add',senador:'NEDER, José Emilio'},
+{dpp:'24/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'add',senador:'ZAMORA, Gerardo'},
+{dpp:'24/26',comision:'De Turismo',tipo:'add',senador:'RECALDE, Mariano'},
+{dpp:'24/26',comision:'De Turismo',tipo:'add',senador:'LÓPEZ, Cándida Cristina'},
+{dpp:'24/26',comision:'De Turismo',tipo:'add',senador:'KIRCHNER, Alicia Margarita Antonia'},
+{dpp:'24/26',comision:'De Turismo',tipo:'add',senador:'MARKS, Ana Inés'},
+{dpp:'24/26',comision:'De Turismo',tipo:'add',senador:'DI TULLIO, Juliana'},
+{dpp:'24/26',comision:'De Turismo',tipo:'add',senador:'ZAMORA, Gerardo'},
+{dpp:'25/26',comision:'De Turismo',tipo:'replace',senador:'GUZMÁN CORAITA, Gonzalo',reemplaza:'OROZCO, María Emilia'},
+{dpp:'25/26',comision:'De Agricultura, Ganadería y Pesca',tipo:'replace',senador:'GUZMÁN CORAITA, Gonzalo',reemplaza:'OROZCO, María Emilia'},  
 // ══ AGREGAR NUEVOS DPP AQUÍ ══
 ];
 
@@ -1243,7 +1262,7 @@ function renderRepr(){
   let crossHtml=`<div class="cross-wrap"><table class="cross-table">
     <thead><tr>
       <th class="blq-col">Bloque</th>
-      ${ALL_COMISIONES.map(c=>`<th class="com-col">${shortName(c.nombre)}</th>`).join('')}
+      ${ALL_COMISIONES.map(c=>`<th class="com-col"><span>${shortName(c.nombre)}</span></th>`).join('')}
     </tr></thead><tbody>`;
 
   for(const b of bloques){
