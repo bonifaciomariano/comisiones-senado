@@ -13,14 +13,9 @@
   --border:#E2E8F0;
   --changed-bg:#FFF3CD; --changed-txt:#7A5200;
   --vacant-bg:#F8F9FA; --vacant-txt:#9CA3AF;
-  --over:#FEE2E2; --over-txt:#991B1B;
-  --under:#D1FAE5; --under-txt:#065F46;
-  --exact:#DBEAFE; --exact-txt:#1E40AF;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Poppins',Calibri,sans-serif;background:var(--gray-bg);color:var(--gray-text);min-height:100vh}
-
-/* ── STICKY HEADER ── */
 .sticky-header{position:sticky;top:0;z-index:100;background:var(--white);border-top:3px solid var(--blue);border-bottom:1px solid var(--blue-light);box-shadow:0 2px 8px rgba(27,94,162,.08)}
 .header-inner{display:flex;align-items:center;gap:12px;padding:0 20px;height:54px;max-width:1700px;margin:0 auto;flex-wrap:wrap}
 .header-brand{flex:1;min-width:200px}
@@ -39,20 +34,12 @@ select:focus{border-color:var(--blue)}
 .tab-btn{height:38px;padding:0 18px;font-family:inherit;font-size:12px;font-weight:500;color:var(--blue-mid);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;transition:color .15s,border-color .15s}
 .tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
 .tab-btn:hover:not(.active){color:var(--blue)}
-
-/* ── STATS ── */
 .stats-bar{display:flex;gap:10px;flex-wrap:wrap;padding:12px 20px;max-width:1700px;margin:0 auto}
 .stat-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:8px 16px}
 .stat-n{font-size:22px;font-weight:700;color:var(--blue);line-height:1}
 .stat-l{font-size:11px;color:#6B7280;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
-
-/* ── MAIN ── */
 main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
-
-/* ── GRID ── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-
-/* ── COMMISSION CARD ── */
 .com-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .15s}
 .com-card:hover{box-shadow:0 4px 16px rgba(27,94,162,.1)}
 .card-header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);padding:12px 14px 10px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
@@ -62,8 +49,6 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .card-count{font-size:11px;font-weight:700;color:rgba(255,255,255,.9);background:rgba(255,255,255,.2);border-radius:12px;padding:2px 8px;white-space:nowrap}
 .card-hist-btn{font-size:10px;color:rgba(255,255,255,.75);background:none;border:1px solid rgba(255,255,255,.35);border-radius:4px;padding:2px 7px;cursor:pointer;font-family:inherit;white-space:nowrap}
 .card-hist-btn:hover{background:rgba(255,255,255,.2);color:#fff}
-
-/* member rows */
 .member-list{padding:2px 0}
 .member-row{display:flex;align-items:center;padding:5px 12px;border-bottom:1px solid #F1F5F9;font-size:12px;gap:5px}
 .member-row:last-child{border-bottom:none}
@@ -81,8 +66,6 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .badge.changed{background:var(--changed-bg);color:var(--changed-txt);cursor:pointer}
 .badge.original{background:var(--blue-light);color:var(--blue);cursor:default}
 .badge.vacant-badge{background:#E5E7EB;color:#6B7280;cursor:default}
-
-/* ── SENATOR VIEW ── */
 #senadorView{display:none}
 .senator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
 .senator-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
@@ -92,8 +75,6 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .chip{font-size:11px;padding:3px 8px;border-radius:10px;background:var(--blue-light);color:var(--blue);cursor:pointer;font-weight:500;border:none;font-family:inherit}
 .chip:hover{background:var(--blue);color:#fff}
 .senator-count{font-size:11px;color:#9CA3AF;margin-top:5px}
-
-/* ── REPRESENTACIÓN VIEW ── */
 #reprView{display:none}
 .repr-section-title{font-size:14px;font-weight:600;color:var(--blue);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--blue-light);padding-bottom:6px}
 .repr-table-wrap{overflow-x:auto;margin-bottom:24px;-webkit-overflow-scrolling:touch}
@@ -105,18 +86,14 @@ table.repr td.num{text-align:center;font-weight:500}
 table.repr tr:hover td{background:#F8FAFF}
 .bloque-name-cell{display:flex;align-items:center;gap:6px}
 .blq-dot-table{width:11px;height:11px;border-radius:50%;flex-shrink:0}
-
-/* cross table */
 .cross-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:24px}
 .cross-table{border-collapse:collapse;font-size:11px}
 .cross-table thead tr{vertical-align:bottom}
-.cross-table th.blq-col{text-align:left;padding:8px 12px 8px 12px;background:var(--blue);color:#fff;font-size:11px;white-space:nowrap;position:sticky;left:0;z-index:3;min-width:140px;vertical-align:bottom}
+.cross-table th.blq-col{text-align:left;padding:8px 12px;background:var(--blue);color:#fff;font-size:11px;white-space:nowrap;position:sticky;left:0;z-index:3;min-width:140px;vertical-align:bottom}
 .cross-table th.com-col{background:var(--blue);color:#fff;padding:0 4px 8px 4px;width:34px;min-width:34px;max-width:34px;vertical-align:bottom;text-align:center}
 .cross-table th.com-col span{display:block;writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;font-weight:500;line-height:1;white-space:nowrap;max-height:110px;overflow:hidden}
 .cross-table td.blq-name{padding:5px 10px;white-space:nowrap;font-size:11px;font-weight:500;border-bottom:1px solid var(--border);position:sticky;left:0;z-index:1;border-right:1px solid var(--border)}
 .cross-table td.val{text-align:center;padding:5px 4px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:12px;width:34px;min-width:34px;max-width:34px}
-
-/* resumen table mobile cards */
 @media(max-width:600px){
   .header-inner{height:auto;padding:10px 14px;gap:8px}
   input[type="search"]{width:100%}
@@ -133,8 +110,6 @@ table.repr tr:hover td{background:#F8FAFF}
   .cross-table th.com-col{width:28px;min-width:28px;max-width:28px}
   .cross-table td.val{width:28px;min-width:28px;max-width:28px;font-size:11px}
 }
-
-/* ── MODAL ── */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(15,30,60,.4);backdrop-filter:blur(2px)}
 .modal-overlay.open{display:flex;align-items:center;justify-content:center;padding:20px}
 .modal-box{background:var(--white);border-radius:12px;border:1px solid var(--border);width:100%;max-width:540px;max-height:80vh;overflow-y:auto;padding:22px;box-shadow:0 20px 60px rgba(27,94,162,.15)}
@@ -152,8 +127,6 @@ table.repr tr:hover td{background:#F8FAFF}
 .hl-remove{background:#FEE2E2;color:#991B1B}
 .hl-rewrite{background:var(--blue-light);color:var(--blue)}
 .no-hist{font-size:13px;color:#9CA3AF;text-align:center;padding:14px 0}
-
-/* role modal */
 .role-select-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
 .role-btn{padding:11px 8px;border-radius:8px;border:2px solid var(--border);cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;text-align:center;transition:all .15s}
 .role-btn.pres{border-color:#3B82F6;background:#DBEAFE;color:#1E40AF}
@@ -161,12 +134,10 @@ table.repr tr:hover td{background:#F8FAFF}
 .role-btn.secr{border-color:#22C55E;background:#D1FAE5;color:#065F46}
 .role-btn.clear{border-color:#E5E7EB;background:#F9FAFB;color:#6B7280}
 .role-btn:hover{opacity:.8}
-
 .empty-state{text-align:center;padding:50px 20px;color:#9CA3AF;font-size:14px}
 </style>
 </head>
 <body>
-
 <div class="sticky-header">
   <div class="header-inner">
     <div class="header-brand">
@@ -197,15 +168,12 @@ table.repr tr:hover td{background:#F8FAFF}
     </div>
   </div>
 </div>
-
 <div class="stats-bar" id="statsBar"></div>
-
 <main>
   <div id="comisionView"><div class="grid" id="grid"></div></div>
   <div id="senadorView" style="display:none"><div class="senator-grid" id="senatorGrid"></div></div>
   <div id="reprView" style="display:none"></div>
 </main>
-
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal-box" id="modalBox">
     <div class="modal-header">
@@ -215,11 +183,7 @@ table.repr tr:hover td{background:#F8FAFF}
     <div id="modalContent"></div>
   </div>
 </div>
-
 <script>
-// ════════════════════════════════════════════
-//  BLOQUE COLORS
-// ════════════════════════════════════════════
 const BLOQUE_COLORS = {
   'LA LIBERTAD AVANZA':                      {dot:'#7030A0', bg:'#F3E8FA', badge:'#4A1870'},
   'JUSTICIALISTA':                           {dot:'#1F4E9C', bg:'#E6EDF8', badge:'#0D2A5E'},
@@ -254,9 +218,6 @@ const BLOQUE_TOTALS = {
 };
 const TOTAL_SENATORS = 72;
 
-// ════════════════════════════════════════════
-//  SENATOR → BLOQUE  (FIX 2: solo versión con tilde)
-// ════════════════════════════════════════════
 const SENATOR_BLOQUES = {
   "ABAD, Maximiliano":"UCR - UNIÓN CÍVICA RADICAL",
   "ABDALA, Bartolomé Esteban":"LA LIBERTAD AVANZA",
@@ -333,21 +294,12 @@ const SENATOR_BLOQUES = {
   "ZAMORA, Gerardo":"FRENTE CÍVICO POR SANTIAGO",
 };
 
-// FIX 2: normalize names — unify sin-tilde variants to con-tilde
-function normalizeName(s) {
-  if (!s) return s;
-  return s
-    .replace(/^AVILA,/, 'ÁVILA,')
-    .replace(/^ESPINOLA,/, 'ESPÍNOLA,');
+function normalizeName(s){
+  if(!s) return s;
+  return s.replace(/^AVILA,/,'ÁVILA,').replace(/^ESPINOLA,/,'ESPÍNOLA,');
 }
+function getSenatorBloque(name){return SENATOR_BLOQUES[name]||'DESCONOCIDO';}
 
-function getSenatorBloque(name) {
-  return SENATOR_BLOQUES[name] || 'DESCONOCIDO';
-}
-
-// ════════════════════════════════════════════
-//  COMISIONES
-// ════════════════════════════════════════════
 const ALL_COMISIONES = [
   {nombre:'De Acuerdos', cupo:17},
   {nombre:'De Agricultura, Ganadería y Pesca', cupo:19},
@@ -377,23 +329,13 @@ const ALL_COMISIONES = [
   {nombre:'De Turismo', cupo:17},
 ];
 
-// ════════════════════════════════════════════
-//  ROLES  (localStorage)
-// ════════════════════════════════════════════
 let ROLES = {};
-try { ROLES = JSON.parse(localStorage.getItem('com_roles_2026') || '{}'); } catch(e){}
+try{ROLES=JSON.parse(localStorage.getItem('com_roles_2026')||'{}');}catch(e){}
 function saveRoles(){try{localStorage.setItem('com_roles_2026',JSON.stringify(ROLES));}catch(e){}}
 function getRoleKey(com,senator){return `${com}||${senator}`;}
 function getRole(com,senator){return ROLES[getRoleKey(com,senator)]||null;}
-function setRole(com,senator,role){
-  const k=getRoleKey(com,senator);
-  if(!role) delete ROLES[k]; else ROLES[k]=role;
-  saveRoles();
-}
+function setRole(com,senator,role){const k=getRoleKey(com,senator);if(!role)delete ROLES[k];else ROLES[k]=role;saveRoles();}
 
-// ════════════════════════════════════════════
-//  DPP DATA
-// ════════════════════════════════════════════
 const DPP_DATES = {
   '104/25':'16/12/2025','105/25':'16/12/2025','107/25':'17/12/2025',
   '108/25':'17/12/2025','109/25':'18/12/2025','110/25':'18/12/2025',
@@ -838,6 +780,7 @@ const RAW_CHANGES = [
 {dpp:'20/26',comision:'De Deporte',tipo:'remove',senador:'ESPÍNOLA, Carlos Mauricio'},
 {dpp:'20/26',comision:'De Relaciones Exteriores y Culto',tipo:'remove',senador:'CERVI, Mario Pablo'},
 {dpp:'20/26',comision:'De Asuntos Administrativos y Municipales',tipo:'remove',senador:'CORROZA, Julieta'},
+// ── DPP 21: rewrites aplicados inline en orden cronológico ──
 {dpp:'21/26',comision:'De Relaciones Exteriores y Culto',tipo:'rewrite',senador:'PAOLTRONI, Francisco Manuel'},
 {dpp:'21/26',comision:'De Relaciones Exteriores y Culto',tipo:'rewrite',senador:'JUEZ, Luis Alfredo'},
 {dpp:'21/26',comision:'De Relaciones Exteriores y Culto',tipo:'rewrite',senador:'ARRASCAETA, Ivanna Marcela'},
@@ -948,37 +891,71 @@ const RAW_CHANGES = [
 {dpp:'27/26',comision:'De Sistemas, Medios de Comunicación y Libertad de Expresión',tipo:'add',senador:'MAYANS, José Miguel Ángel'},
 {dpp:'27/26',comision:'De Sistemas, Medios de Comunicación y Libertad de Expresión',tipo:'add',senador:'SORIA, Martín'},
 {dpp:'27/26',comision:'De Sistemas, Medios de Comunicación y Libertad de Expresión',tipo:'add',senador:'SALINO, Fernando Aldo'},
-{dpp:'27/26',comision:'De Sistemas, Medios de Comunicación y Libertad de Expresión',tipo:'add',senador:'MORENO, Elia Esther del Carmen'},  
+{dpp:'27/26',comision:'De Sistemas, Medios de Comunicación y Libertad de Expresión',tipo:'add',senador:'MORENO, Elia Esther del Carmen'},
 // ══ AGREGAR NUEVOS DPP AQUÍ ══
 ];
 
 // ════════════════════════════════════════════
-//  BUILD STATE  (FIX 2: normalize on ingest)
+//  BUILD STATE — rewrites aplicados en orden cronológico
+//  Clave del fix: cuando se encuentra un rewrite, se aplica
+//  INMEDIATAMENTE reemplazando el estado actual de esa comisión,
+//  no al final. Así los replace/add posteriores funcionan sobre
+//  el estado correcto.
 // ════════════════════════════════════════════
 const STATE = {};
 (function buildState(){
-  const rewrites = {};
+  // Agrupar entradas por comisión y DPP para aplicar rewrites inline
+  // Identificar qué comisiones tienen rewrite y en qué DPP
+  const rewriteDpps = {}; // comision -> Set de dpps que tienen rewrite
   for(const c of RAW_CHANGES){
-    // normalize names before processing
-    if(c.senador)   c.senador   = normalizeName(c.senador);
-    if(c.reemplaza) c.reemplaza = normalizeName(c.reemplaza);
-    if(!STATE[c.comision]) STATE[c.comision]=[];
-    const com = STATE[c.comision];
-    if(c.tipo==='add'){
-      if(!com.find(m=>m.name===c.senador)) com.push({name:c.senador,dpp:c.dpp,changed:true});
-    } else if(c.tipo==='replace'){
-      const idx=com.findIndex(m=>m.name===c.reemplaza);
-      if(idx>=0) com.splice(idx,1);
-      if(!com.find(m=>m.name===c.senador)) com.push({name:c.senador,dpp:c.dpp,changed:true});
-    } else if(c.tipo==='remove'){
-      const idx=com.findIndex(m=>m.name===c.senador);
-      if(idx>=0) com.splice(idx,1);
-    } else if(c.tipo==='rewrite'){
-      if(!rewrites[c.comision]) rewrites[c.comision]=[];
-      rewrites[c.comision].push({name:c.senador,dpp:c.dpp,changed:true});
+    if(c.tipo==='rewrite'){
+      if(!rewriteDpps[c.comision]) rewriteDpps[c.comision] = new Set();
+      rewriteDpps[c.comision].add(c.dpp);
     }
   }
-  for(const [com,members] of Object.entries(rewrites)) STATE[com]=members;
+
+  // Procesar en orden, aplicando rewrites cuando cambia el DPP dentro de esa comisión
+  const pendingRewrites = {}; // comision -> {dpp, members[]}
+
+  for(const c of RAW_CHANGES){
+    if(c.senador)   c.senador   = normalizeName(c.senador);
+    if(c.reemplaza) c.reemplaza = normalizeName(c.reemplaza);
+    if(!STATE[c.comision]) STATE[c.comision] = [];
+
+    if(c.tipo === 'rewrite'){
+      // Acumular miembros del rewrite actual
+      if(!pendingRewrites[c.comision]) pendingRewrites[c.comision] = {dpp:c.dpp, members:[]};
+      // Si cambia el DPP de rewrite para esta comisión, aplicar el anterior primero
+      if(pendingRewrites[c.comision].dpp !== c.dpp){
+        STATE[c.comision] = pendingRewrites[c.comision].members;
+        pendingRewrites[c.comision] = {dpp:c.dpp, members:[]};
+      }
+      pendingRewrites[c.comision].members.push({name:c.senador, dpp:c.dpp, changed:true});
+    } else {
+      // Antes de procesar este cambio, verificar si hay un rewrite pendiente
+      // de un DPP anterior que deba aplicarse ya
+      if(pendingRewrites[c.comision]){
+        // Aplicar el rewrite pendiente al estado
+        STATE[c.comision] = [...pendingRewrites[c.comision].members];
+        delete pendingRewrites[c.comision];
+      }
+      const com = STATE[c.comision];
+      if(c.tipo==='add'){
+        if(!com.find(m=>m.name===c.senador)) com.push({name:c.senador,dpp:c.dpp,changed:true});
+      } else if(c.tipo==='replace'){
+        const idx=com.findIndex(m=>m.name===c.reemplaza);
+        if(idx>=0) com.splice(idx,1);
+        if(!com.find(m=>m.name===c.senador)) com.push({name:c.senador,dpp:c.dpp,changed:true});
+      } else if(c.tipo==='remove'){
+        const idx=com.findIndex(m=>m.name===c.senador);
+        if(idx>=0) com.splice(idx,1);
+      }
+    }
+  }
+  // Aplicar rewrites pendientes al final (los que no tuvieron cambios posteriores)
+  for(const [com,rw] of Object.entries(pendingRewrites)){
+    STATE[com] = rw.members;
+  }
 })();
 
 function sortMembersByBloque(members){
@@ -998,7 +975,6 @@ function sortMembersByBloque(members){
   bottom.sort((a,b)=>cmp(a,b,98));
   return [...top,...bottom];
 }
-
 function getMembers(comision){return sortMembersByBloque(STATE[comision]||[]);}
 function getVacantes(nombre){
   const c=ALL_COMISIONES.find(x=>x.nombre===nombre);
@@ -1006,33 +982,22 @@ function getVacantes(nombre){
   return Math.max(0,c.cupo-(STATE[nombre]||[]).length);
 }
 
-// ════════════════════════════════════════════
-//  POPULATE BLOQUE FILTER
-// ════════════════════════════════════════════
 (function(){
   const sel=document.getElementById('filterBloque');
   Object.keys(BLOQUE_TOTALS).sort((a,b)=>BLOQUE_TOTALS[b]-BLOQUE_TOTALS[a]).forEach(b=>{
     const o=document.createElement('option');
-    o.value=b; o.textContent=b; sel.appendChild(o);
+    o.value=b;o.textContent=b;sel.appendChild(o);
   });
 })();
 
-// ════════════════════════════════════════════
-//  FIX 1: ROLE MODAL — index-based, no inline names
-// ════════════════════════════════════════════
-const _roleMap = {};
-let _roleIdx = 0;
-function _regRole(com, senator){
-  const k = _roleIdx++;
-  _roleMap[k] = {com, senator};
-  return k;
-}
-let _roleCtx = {com:'', senator:''};
+const _roleMap={};
+let _roleIdx=0;
+function _regRole(com,senator){const k=_roleIdx++;_roleMap[k]={com,senator};return k;}
+let _roleCtx={com:'',senator:''};
 function openRoleModal(idx){
-  const ctx = _roleMap[idx];
-  if(!ctx) return;
-  _roleCtx = ctx;
-  const current = getRole(ctx.com, ctx.senator);
+  const ctx=_roleMap[idx];if(!ctx)return;
+  _roleCtx=ctx;
+  const current=getRole(ctx.com,ctx.senator);
   showModal(`Asignar rol — ${ctx.senator}`,`
     <p style="font-size:12px;color:#6B7280;margin-bottom:4px">Comisión: <strong>${ctx.com}</strong></p>
     ${current?`<p style="font-size:11px;color:#6B7280;margin-bottom:12px">Rol actual: <strong>${current}</strong></p>`:'<p style="font-size:11px;color:#9CA3AF;margin-bottom:12px">Sin rol asignado</p>'}
@@ -1041,29 +1006,18 @@ function openRoleModal(idx){
       <button class="role-btn vice" onclick="assignRole('Vicepresidente')">Vicepresidente/a</button>
       <button class="role-btn secr" onclick="assignRole('Secretario/a')">Secretario/a</button>
       <button class="role-btn clear" onclick="assignRole(null)" style="grid-column:1/-1">Quitar rol</button>
-    </div>
-  `);
+    </div>`);
 }
-function assignRole(role){
-  setRole(_roleCtx.com, _roleCtx.senator, role);
-  document.getElementById('modalOverlay').classList.remove('open');
-  renderAll();
-}
+function assignRole(role){setRole(_roleCtx.com,_roleCtx.senator,role);document.getElementById('modalOverlay').classList.remove('open');renderAll();}
 
-// ════════════════════════════════════════════
-//  HELPERS
-// ════════════════════════════════════════════
-function getHistory(comision,senator){return RAW_CHANGES.filter(c=>c.comision===comision&&(c.senador===senator||c.reemplaza===senator))}
-function getComisionHistory(comision){return RAW_CHANGES.filter(c=>c.comision===comision)}
+function getHistory(comision,senator){return RAW_CHANGES.filter(c=>c.comision===comision&&(c.senador===senator||c.reemplaza===senator));}
+function getComisionHistory(comision){return RAW_CHANGES.filter(c=>c.comision===comision);}
 function labelHtml(tipo){
   const m={'add':'hl-add','replace':'hl-replace','remove':'hl-remove','rewrite':'hl-rewrite'};
   const txt={'add':'Incorporado','replace':'Reemplazo','remove':'Baja','rewrite':'Recomposición'};
   return `<span class="hist-label ${m[tipo]||''}">${txt[tipo]||tipo}</span>`;
 }
 
-// ════════════════════════════════════════════
-//  RENDER
-// ════════════════════════════════════════════
 let currentView='comisiones';
 function setView(v,btn){
   currentView=v;
@@ -1079,44 +1033,33 @@ function renderAll(){
   const search=document.getElementById('searchBox').value.toLowerCase().trim();
   const bloqueFilter=document.getElementById('filterBloque').value;
   const changeFilter=document.getElementById('filterChanges').value;
-
   let totalVac=0;
   ALL_COMISIONES.forEach(c=>{totalVac+=getVacantes(c.nombre);});
   document.getElementById('statsBar').innerHTML=`
     <div class="stat-card"><div class="stat-n">${ALL_COMISIONES.length}</div><div class="stat-l">comisiones unicamerales</div></div>
     <div class="stat-card"><div class="stat-n">${totalVac}</div><div class="stat-l">vacantes totales</div></div>
-    <div class="stat-card"><div class="stat-n">${ALL_COMISIONES.filter(c=>getVacantes(c.nombre)>0).length}</div><div class="stat-l">comisiones con vacantes</div></div>
-  `;
-
+    <div class="stat-card"><div class="stat-n">${ALL_COMISIONES.filter(c=>getVacantes(c.nombre)>0).length}</div><div class="stat-l">comisiones con vacantes</div></div>`;
   if(currentView==='comisiones') renderComisiones(search,bloqueFilter,changeFilter);
   else if(currentView==='senadores') renderSenadores(search,bloqueFilter);
   else renderRepr();
 }
 
 function renderComisiones(search,bloqueFilter,changeFilter){
-  // FIX 1: reset role index each render
-  _roleIdx = 0;
-  Object.keys(_roleMap).forEach(k=>delete _roleMap[k]);
-
+  _roleIdx=0;Object.keys(_roleMap).forEach(k=>delete _roleMap[k]);
   let list=ALL_COMISIONES.filter(c=>{
     const members=getMembers(c.nombre);
     if(changeFilter==='changed'&&!members.some(m=>m.changed)) return false;
     if(changeFilter==='vacant'&&getVacantes(c.nombre)===0) return false;
     if(bloqueFilter!=='all'&&!members.some(m=>getSenatorBloque(m.name)===bloqueFilter)) return false;
-    if(search){
-      if(!c.nombre.toLowerCase().includes(search)&&!members.some(m=>m.name.toLowerCase().includes(search))) return false;
-    }
+    if(search&&!c.nombre.toLowerCase().includes(search)&&!members.some(m=>m.name.toLowerCase().includes(search))) return false;
     return true;
   });
-
   const grid=document.getElementById('grid');
   if(!list.length){grid.innerHTML='<div class="empty-state">No se encontraron comisiones con esos criterios.</div>';return;}
-
   grid.innerHTML=list.map(c=>{
     const members=getMembers(c.nombre);
     const vacantes=getVacantes(c.nombre);
     const countLabel=`${members.length}/${c.cupo}${vacantes>0?` · ${vacantes} vac.`:''}`;
-
     const memberRows=members.map(m=>{
       const bc=blqColor(getSenatorBloque(m.name));
       const role=getRole(c.nombre,m.name);
@@ -1127,34 +1070,22 @@ function renderComisiones(search,bloqueFilter,changeFilter){
       const badgeHtml=m.changed
         ?`<button class="badge changed" onclick="showMemberHistory(${idx})">DPP-${m.dpp}</button>`
         :`<span class="badge original">original</span>`;
-      return `<div class="member-row">
-        <span class="bloque-dot" style="background:${bc.dot}" title="${getSenatorBloque(m.name)}"></span>
-        <span class="member-name">${m.name}</span>
-        ${roleHtml}${badgeHtml}
-      </div>`;
+      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${getSenatorBloque(m.name)}"></span><span class="member-name">${m.name}</span>${roleHtml}${badgeHtml}</div>`;
     }).join('');
-
     const vacantRows=Array.from({length:vacantes},(_,i)=>
-      `<div class="member-row vacant"><span class="bloque-dot" style="background:#E5E7EB"></span><span class="member-name">Vacante ${i+1}</span><span class="badge vacant-badge">sin designar</span></div>`
-    ).join('');
-
+      `<div class="member-row vacant"><span class="bloque-dot" style="background:#E5E7EB"></span><span class="member-name">Vacante ${i+1}</span><span class="badge vacant-badge">sin designar</span></div>`).join('');
     return `<div class="com-card">
       <div class="card-header" onclick="showComisionHistory('${c.nombre.replace(/'/g,"\\'")}')">
         <div><div class="card-tipo">Unicameral permanente · ${c.cupo} miembros</div><div class="card-name">${c.nombre}</div></div>
-        <div class="card-header-right">
-          <div class="card-count">${countLabel}</div>
-          <button class="card-hist-btn" onclick="event.stopPropagation();showComisionHistory('${c.nombre.replace(/'/g,"\\'")}')">Historial ↗</button>
-        </div>
+        <div class="card-header-right"><div class="card-count">${countLabel}</div>
+        <button class="card-hist-btn" onclick="event.stopPropagation();showComisionHistory('${c.nombre.replace(/'/g,"\\'")}')">Historial ↗</button></div>
       </div>
-      <div class="member-list">${memberRows}${vacantRows}</div>
-    </div>`;
+      <div class="member-list">${memberRows}${vacantRows}</div></div>`;
   }).join('');
 }
 
-// Note: showMemberHistory now takes an idx from _roleMap
 function showMemberHistory(idx){
-  const ctx=_roleMap[idx];
-  if(!ctx){return;}
+  const ctx=_roleMap[idx];if(!ctx)return;
   const hist=getHistory(ctx.com,ctx.senator);
   const content=hist.length
     ?hist.map(c=>`<div class="hist-entry"><div class="hist-dpp">DPP-${c.dpp}<span class="hist-date">${DPP_DATES[c.dpp]||''}</span></div><div class="hist-change">${labelHtml(c.tipo)}${c.tipo==='replace'?` en reemplazo de ${c.reemplaza}`:''}${c.tipo==='add'?' designado/a':''}${c.tipo==='remove'?' dado/a de baja':''}${c.tipo==='rewrite'?' confirmado/a en recomposición':''}</div></div>`).join('')
@@ -1171,36 +1102,22 @@ function renderSenadores(search,bloqueFilter){
       allSenators[m.name].comisiones.push({com:comNombre,dpp:m.dpp});
     }
   }
-  // For senator chips we use comision name directly (safe, no special chars in onclick)
   let names=Object.keys(allSenators).sort((a,b)=>a.localeCompare(b,'es'));
   if(search) names=names.filter(n=>n.toLowerCase().includes(search)||allSenators[n].bloque.toLowerCase().includes(search));
   if(bloqueFilter!=='all') names=names.filter(n=>allSenators[n].bloque===bloqueFilter);
-
   const grid=document.getElementById('senatorGrid');
   if(!names.length){grid.innerHTML='<div class="empty-state">No se encontraron senadores/as.</div>';return;}
-
-  // Register in a separate senator->hist map
   const senHist={};
   grid.innerHTML=names.map(name=>{
     const d=allSenators[name];
     const bc=blqColor(d.bloque);
-    const chips=d.comisiones.map(c=>{
-      const k=Object.keys(senHist).length;
-      senHist[k]={com:c.com,senator:name};
-      return `<button class="chip" onclick="showSenHist(${k})">${c.com}</button>`;
-    }).join('');
-    return `<div class="senator-card">
-      <div class="senator-name">${name}</div>
-      <span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span>
-      <div class="senator-chips">${chips}</div>
-      <div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div>
-    </div>`;
+    const chips=d.comisiones.map(c=>{const k=Object.keys(senHist).length;senHist[k]={com:c.com,senator:name};return `<button class="chip" onclick="showSenHist(${k})">${c.com}</button>`;}).join('');
+    return `<div class="senator-card"><div class="senator-name">${name}</div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
   window._senHist=senHist;
 }
 function showSenHist(k){
-  const ctx=window._senHist[k];
-  if(!ctx) return;
+  const ctx=window._senHist[k];if(!ctx)return;
   const hist=getHistory(ctx.com,ctx.senator);
   const content=hist.length
     ?hist.map(c=>`<div class="hist-entry"><div class="hist-dpp">DPP-${c.dpp}<span class="hist-date">${DPP_DATES[c.dpp]||''}</span></div><div class="hist-change">${labelHtml(c.tipo)}${c.tipo==='replace'?` en reemplazo de ${c.reemplaza}`:''}${c.tipo==='add'?' designado/a':''}${c.tipo==='remove'?' dado/a de baja':''}${c.tipo==='rewrite'?' confirmado/a en recomposición':''}</div></div>`).join('')
@@ -1208,22 +1125,13 @@ function showSenHist(k){
   showModal(`${ctx.senator} — ${ctx.com}`,content);
 }
 
-// ════════════════════════════════════════════
-//  REPRESENTACIÓN  (FIX 4: mobile-optimized)
-// ════════════════════════════════════════════
 function renderRepr(){
   const div=document.getElementById('reprView');
   const bloques=Object.keys(BLOQUE_TOTALS).sort((a,b)=>BLOQUE_TOTALS[b]-BLOQUE_TOTALS[a]);
-
-  // ── Resumen global ──
-  let globalHtml=`<div class="repr-table-wrap"><table class="repr">
-    <thead><tr>
-      <th>Bloque</th>
-      <th class="num">Senadores</th>
-      <th class="num">% cámara</th>
-      <th class="num">Com. de 17</th>
-      <th class="num">Com. de 19</th>
-    </tr></thead><tbody>`;
+  let globalHtml=`<div class="repr-table-wrap"><table class="repr"><thead><tr>
+    <th>Bloque</th><th class="num">Senadores</th><th class="num">% cámara</th>
+    <th class="num">Com. de 17</th><th class="num">Com. de 19</th>
+  </tr></thead><tbody>`;
   for(const b of bloques){
     const total=BLOQUE_TOTALS[b];
     const pct=(total/TOTAL_SENATORS*100).toFixed(2);
@@ -1232,16 +1140,13 @@ function renderRepr(){
     const bc=blqColor(b);
     globalHtml+=`<tr>
       <td><div class="bloque-name-cell"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}</div></td>
-      <td class="num">${total}</td>
-      <td class="num">${pct}%</td>
+      <td class="num">${total}</td><td class="num">${pct}%</td>
       <td class="num" style="background:#F0F7FF;color:#1A4A70">${exp17}</td>
       <td class="num" style="background:#F0FDF4;color:#2E5018">${exp19}</td>
     </tr>`;
   }
   globalHtml+=`</tbody></table></div>`;
-
-  // ── Tabla de doble entrada (FIX 4: proper mobile classes) ──
-  const shortName = n => n
+  const shortName=n=>n
     .replace(/^De las? /i,'').replace(/^De los? /i,'').replace(/^De /i,'')
     .replace('Economías Regionales, Economía Social, Micro, Pequeña y Mediana Empresa','Ec. Regionales')
     .replace('Sistemas, Medios de Comunicación y Libertad de Expresión','Sistemas y Medios')
@@ -1258,28 +1163,16 @@ function renderRepr(){
     .replace('Ambiente y Desarrollo Sustentable','Ambiente')
     .replace('Economía Nacional e Inversión','Ec. Nacional')
     .replace('Derechos y Garantías','Der. y Garantías')
-    .replace('Defensa Nacional','Defensa')
-    .replace('Educación y Cultura','Educación')
-    .replace('Industria y Comercio','Industria')
-    .replace('Legislación General','Legislación')
-    .replace('Ciencia y Tecnología','Ciencia')
-    .replace('Acuerdos','Acuerdos')
-    .replace('Turismo','Turismo')
-    .replace('Salud','Salud')
-    .replace('Deporte','Deporte');
-
-  let crossHtml=`<div class="cross-wrap"><table class="cross-table">
-    <thead><tr>
-      <th class="blq-col">Bloque</th>
-      ${ALL_COMISIONES.map(c=>`<th class="com-col"><span>${shortName(c.nombre)}</span></th>`).join('')}
-    </tr></thead><tbody>`;
-
+    .replace('Defensa Nacional','Defensa').replace('Educación y Cultura','Educación')
+    .replace('Industria y Comercio','Industria').replace('Legislación General','Legislación')
+    .replace('Ciencia y Tecnología','Ciencia');
+  let crossHtml=`<div class="cross-wrap"><table class="cross-table"><thead><tr>
+    <th class="blq-col">Bloque</th>
+    ${ALL_COMISIONES.map(c=>`<th class="com-col"><span>${shortName(c.nombre)}</span></th>`).join('')}
+  </tr></thead><tbody>`;
   for(const b of bloques){
     const bc=blqColor(b);
-    crossHtml+=`<tr>
-      <td class="blq-name" style="background:${bc.bg}">
-        <div class="bloque-name-cell"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}</div>
-      </td>`;
+    crossHtml+=`<tr><td class="blq-name" style="background:${bc.bg}"><div class="bloque-name-cell"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}</div></td>`;
     for(const c of ALL_COMISIONES){
       const act=(STATE[c.nombre]||[]).filter(m=>getSenatorBloque(m.name)===b).length;
       crossHtml+=`<td class="val" style="font-weight:${act>0?'600':'400'};color:${act>0?'var(--gray-text)':'#D1D5DB'}">${act>0?act:'—'}</td>`;
@@ -1287,7 +1180,6 @@ function renderRepr(){
     crossHtml+=`</tr>`;
   }
   crossHtml+=`</tbody></table></div>`;
-
   div.innerHTML=`
     <div style="font-size:12px;color:#6B7280;margin-bottom:14px;margin-top:4px">
       <strong>Com. de 17</strong> y <strong>Com. de 19</strong>: bancas proporcionales según peso de cada bloque en la cámara (senadores / 72 × cupo).
@@ -1296,13 +1188,9 @@ function renderRepr(){
     ${globalHtml}
     <div class="repr-section-title" style="margin-top:24px">Integrantes por bloque y comisión</div>
     <p style="font-size:12px;color:#6B7280;margin-bottom:10px">Desplazá horizontalmente para ver todas las comisiones.</p>
-    ${crossHtml}
-  `;
+    ${crossHtml}`;
 }
 
-// ════════════════════════════════════════════
-//  MODAL
-// ════════════════════════════════════════════
 function showModal(title,contentHtml){
   document.getElementById('modalTitle').textContent=title;
   document.getElementById('modalContent').innerHTML=contentHtml;
@@ -1320,12 +1208,7 @@ function showComisionHistory(comision){
   showModal(`Historial — ${comision}`,content);
 }
 
-// ════════════════════════════════════════════
-//  FIX 3: init on DOMContentLoaded (blank-on-load fix)
-// ════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function(){
-  renderAll();
-});
+document.addEventListener('DOMContentLoaded',function(){renderAll();});
 </script>
 </body>
 </html>
