@@ -1319,6 +1319,7 @@ function pdfGetSelected(){
 }
 
 function generatePdf(){
+  console.log('ROLES en localStorage:', JSON.stringify(ROLES));
   var jsPDFLib=window.jspdf;
   if(!jsPDFLib){alert('Error: jsPDF no cargó correctamente.');return;}
   var jsPDF=jsPDFLib.jsPDF;
