@@ -57,11 +57,6 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .bloque-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .member-name{flex:1;color:var(--gray-text)}
 .member-role{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;cursor:pointer;flex-shrink:0;border:none;font-family:inherit}
-.role-pres{background:#DBEAFE;color:#1E40AF}
-.role-vice{background:#F3E8FF;color:#7C3AED}
-.role-secr{background:#D1FAE5;color:#065F46}
-.role-empty{font-size:9px;color:#D1D5DB;cursor:pointer;flex-shrink:0;background:none;border:none;font-family:inherit;padding:2px 4px}
-.role-empty:hover{color:#9CA3AF}
 .badge{font-size:10px;padding:2px 7px;border-radius:10px;cursor:pointer;white-space:nowrap;font-weight:500;border:none;font-family:inherit;flex-shrink:0}
 .badge:hover{opacity:.8}
 .badge.changed{background:var(--changed-bg);color:var(--changed-txt);cursor:pointer}
@@ -128,13 +123,6 @@ table.repr tr:hover td{background:#F8FAFF}
 .hl-remove{background:#FEE2E2;color:#991B1B}
 .hl-rewrite{background:var(--blue-light);color:var(--blue)}
 .no-hist{font-size:13px;color:#9CA3AF;text-align:center;padding:14px 0}
-.role-select-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
-.role-btn{padding:11px 8px;border-radius:8px;border:2px solid var(--border);cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;text-align:center;transition:all .15s}
-.role-btn.pres{border-color:#3B82F6;background:#DBEAFE;color:#1E40AF}
-.role-btn.vice{border-color:#A855F7;background:#F3E8FF;color:#7C3AED}
-.role-btn.secr{border-color:#22C55E;background:#D1FAE5;color:#065F46}
-.role-btn.clear{border-color:#E5E7EB;background:#F9FAFB;color:#6B7280}
-.role-btn:hover{opacity:.8}
 .empty-state{text-align:center;padding:50px 20px;color:#9CA3AF;font-size:14px}
 
 /* ── PDF EXPORT ── */
@@ -365,12 +353,6 @@ const ALL_COMISIONES = [
   {nombre:'De Turismo', cupo:17},
 ];
 
-let ROLES = {};
-try{ROLES=JSON.parse(localStorage.getItem('com_roles_2026')||'{}');}catch(e){}
-function saveRoles(){try{localStorage.setItem('com_roles_2026',JSON.stringify(ROLES));}catch(e){}}
-function getRoleKey(com,senator){return `${com}||${senator}`;}
-function getRole(com,senator){return ROLES[getRoleKey(com,senator)]||null;}
-function setRole(com,senator,role){const k=getRoleKey(com,senator);if(!role)delete ROLES[k];else ROLES[k]=role;saveRoles();}
 
 const DPP_DATES = {
   '104/25':'16/12/2025','105/25':'16/12/2025','107/25':'17/12/2025',
@@ -965,6 +947,46 @@ const RAW_CHANGES = [
 // ══ AGREGAR NUEVOS DPP AQUÍ ══
 ];
 
+// ── AUTORIDADES_START ──
+const AUTORIDADES = {
+  'De Acuerdos': {pres:'PAGOTTO, Juan Carlos', vice:'', secr:''},
+  'De Agricultura, Ganadería y Pesca': {pres:'BENEGAS LYNCH, Joaquín Alberto', vice:'KRONEBERGER, Daniel Ricardo', secr:''},
+  'De Ambiente y Desarrollo Sustentable': {pres:'TERENZI, Edith Elizabeth', vice:'', secr:''},
+  'De Asuntos Administrativos y Municipales': {pres:'KRONEBERGER, Daniel Ricardo', vice:'MARKS, Ana Inés', secr:''},
+  'De Asuntos Constitucionales': {pres:'COTO, Agustín Pedro', vice:'', secr:''},
+  'De Ciencia y Tecnología': {pres:'', vice:'', secr:''},
+  'De Coparticipación Federal de Impuestos': {pres:'', vice:'', secr:''},
+  'De Defensa Nacional': {pres:'JUEZ, Luis Alfredo', vice:'LINARES, Carlos Alberto', secr:''},
+  'De Deporte': {pres:'', vice:'', secr:''},
+  'De Derechos y Garantías': {pres:'', vice:'', secr:''},
+  'De Economía Nacional e Inversión': {pres:'', vice:'', secr:''},
+  'De Economías Regionales, Economía Social, Micro, Pequeña y Mediana Empresa': {pres:'', vice:'', secr:''},
+  'De Educación y Cultura': {pres:'', vice:'', secr:''},
+  'De Industria y Comercio': {pres:'', vice:'', secr:''},
+  'De Infraestructura, Vivienda y Transporte': {pres:'', vice:'', secr:''},
+  'De Justicia y Asuntos Penales': {pres:'GUZMÁN CORAITA, Gonzalo', vice:'', secr:''},
+  'De Legislación General': {pres:'MÁRQUEZ, Nadia Judith', vice:'BENSUSÁN, Daniel Pablo', secr:''},
+  'De Minería, Energía y Combustibles': {pres:'FAMA, Flavio Sergio', vice:'', secr:''},
+  'De Población y Desarrollo Humano': {pres:'', vice:'', secr:''},
+  'De Presupuesto y Hacienda': {pres:'MONTEVERDE, Agustín Aníbal', vice:'', secr:''},
+  'De Relaciones Exteriores y Culto': {pres:'PAOLTRONI, Francisco Manuel', vice:'', secr:''},
+  'De Salud': {pres:'', vice:'', secr:''},
+  'De Seguridad Interior y Narcotráfico': {pres:'LOSADA, Carolina', vice:'', secr:''},
+  'De Sistemas, Medios de Comunicación y Libertad de Expresión': {pres:'MOISÉS, María Carolina', vice:'', secr:''},
+  'De Trabajo y Previsión Social': {pres:'ALVAREZ RIVERO, Carmen', vice:'', secr:''},
+  'De Turismo': {pres:'JURI, Mariana', vice:'', secr:''},
+};
+// ── AUTORIDADES_END ──
+
+function getRole(com,senator){
+  var a=AUTORIDADES[com];
+  if(!a) return null;
+  if(a.pres&&a.pres===senator) return 'Presidente';
+  if(a.vice&&a.vice===senator) return 'Vicepresidente';
+  if(a.secr&&a.secr===senator) return 'Secretario/a';
+  return null;
+}
+
 // ════════════════════════════════════════════
 //  BUILD STATE — rewrites aplicados en orden cronológico
 //  Clave del fix: cuando se encuentra un rewrite, se aplica
@@ -1064,21 +1086,6 @@ const _roleMap={};
 let _roleIdx=0;
 function _regRole(com,senator){const k=_roleIdx++;_roleMap[k]={com,senator};return k;}
 let _roleCtx={com:'',senator:''};
-function openRoleModal(idx){
-  const ctx=_roleMap[idx];if(!ctx)return;
-  _roleCtx=ctx;
-  const current=getRole(ctx.com,ctx.senator);
-  showModal(`Asignar rol — ${ctx.senator}`,`
-    <p style="font-size:12px;color:#6B7280;margin-bottom:4px">Comisión: <strong>${ctx.com}</strong></p>
-    ${current?`<p style="font-size:11px;color:#6B7280;margin-bottom:12px">Rol actual: <strong>${current}</strong></p>`:'<p style="font-size:11px;color:#9CA3AF;margin-bottom:12px">Sin rol asignado</p>'}
-    <div class="role-select-grid">
-      <button class="role-btn pres" onclick="assignRole('Presidente')">Presidente/a</button>
-      <button class="role-btn vice" onclick="assignRole('Vicepresidente')">Vicepresidente/a</button>
-      <button class="role-btn secr" onclick="assignRole('Secretario/a')">Secretario/a</button>
-      <button class="role-btn clear" onclick="assignRole(null)" style="grid-column:1/-1">Quitar rol</button>
-    </div>`);
-}
-function assignRole(role){setRole(_roleCtx.com,_roleCtx.senator,role);document.getElementById('modalOverlay').classList.remove('open');renderAll();}
 
 function getHistory(comision,senator){return RAW_CHANGES.filter(c=>c.comision===comision&&(c.senador===senator||c.reemplaza===senator));}
 function getComisionHistory(comision){return RAW_CHANGES.filter(c=>c.comision===comision);}
@@ -1136,7 +1143,7 @@ function renderComisiones(search,bloqueFilter,changeFilter){
       const idx=_regRole(c.nombre,m.name);
       const roleHtml=role
         ?`<button class="member-role role-${role==='Presidente'?'pres':role==='Vicepresidente'?'vice':'secr'}" onclick="openRoleModal(${idx})">${role==='Presidente'?'Pres.':role==='Vicepresidente'?'Vpto.':'Secr.'}</button>`
-        :`<button class="role-empty" onclick="openRoleModal(${idx})" title="Asignar rol">+ rol</button>`;
+        :'';
       const badgeHtml=m.changed
         ?`<button class="badge changed" onclick="showMemberHistory(${idx})">DPP-${m.dpp}</button>`
         :`<span class="badge original">original</span>`;
