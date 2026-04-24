@@ -1,0 +1,110 @@
+{
+  "actualizado": "2026-04-24",
+  "comisiones": [
+    {
+      "nombre": "Administradora del Edificio del Molino (Ley 27.009)",
+      "tipo": "especial",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Ciudad de Buenos Aires (Ley 24.588)",
+      "tipo": "especial",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral de Monitoreo e Implementación del Código Procesal Penal Federal (Ley 27.063 y sus modificatorias)",
+      "tipo": "especial",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral para la Reforma Tributaria (Ley 27.260)",
+      "tipo": "especial",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Asesora de la Federación Argentina de Municipios (Ley 24.807)",
+      "tipo": "especial",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral de Control de los Fondos de la Seguridad Social (Ley 26.425)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral de Reforma del Estado y del Seguimiento de las Privatizaciones (Ley 23.696)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Fiscalización de los Organismos y Actividades de Inteligencia (Ley 25.520)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Fiscalización de los Órganos y Actividades de Seguridad Interior (Ley 24.059 y sus modificatorias)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de la Defensoría del Pueblo",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Promoción y Seguimiento de la Comunicación Audiovisual, las Tecnologías de las Telecomunicaciones y la Digitalización (Ley 26.522 y sus modificatorias)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Seguimiento de Contratos de Participación Público-Privada (Ley 27.328)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Seguimiento y Control de la Gestión de Contratación y de Pago de la Deuda Exterior de la Nación (Ley 27.249)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Seguimiento y Control del Ministerio Público de la Nación (Ley 24.946 y sus modificatorias)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente de Trámite Legislativo (Ley 26.122)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente del Defensor de los Derechos de Niñas, Niños y Adolescentes (Ley 26.061)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente del Digesto Jurídico Argentino (Ley 26.939)",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente Interparlamentaria Argentino-Mexicana",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente Parlamentaria Conjunta Argentino-Chilena",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "Bicameral Permanente Parlamentaria Mixta Revisora de Cuentas",
+      "tipo": "permanente",
+      "integrantes": []
+    },
+    {
+      "nombre": "De Integración Bilateral y Cooperación entre la República Argentina y la República Federativa de Brasil",
+      "tipo": "permanente",
+      "integrantes": []
+    }
+  ]
+}
