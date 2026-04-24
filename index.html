@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comisiones del Senado de la Nación Argentina — 2026</title>
+<title>Comisiones Legislativas — Prosecretaría Parlamentaria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -155,17 +155,85 @@ table.repr tr:hover td{background:#F8FAFF}
 .pdf-btn-download:hover{background:var(--blue-mid)}
 .pdf-btn-download:disabled{background:#9CA3AF;cursor:not-allowed}
 .pdf-btn-download svg{width:13px;height:13px}
+
+/* ── LEVEL-1 SECTION NAV ── */
+.section-nav-row{background:var(--blue);border-bottom:none}
+.section-nav-inner{display:flex;align-items:stretch;padding:0 20px;max-width:1700px;margin:0 auto;gap:2px}
+.sec-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 20px;background:rgba(255,255,255,.12);border:none;cursor:pointer;font-family:inherit;color:rgba(255,255,255,.8);border-bottom:3px solid transparent;transition:background .15s,color .15s,border-color .15s;min-width:120px;gap:2px}
+.sec-btn:hover:not(.active){background:rgba(255,255,255,.2);color:#fff}
+.sec-btn.active{background:rgba(255,255,255,.22);color:#fff;border-bottom-color:#fff}
+.sec-icon{font-size:16px;line-height:1}
+.sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.sec-sub{font-size:9px;opacity:.7;white-space:nowrap}
+
+/* ── DIPUTADOS SECTION ── */
+#section-diputados,.dip-no-data{display:none}
+.dip-no-data-msg{text-align:center;padding:60px 20px;color:#9CA3AF}
+.dip-no-data-msg svg{width:48px;height:48px;margin:0 auto 12px;display:block;color:#D1D5DB}
+.dip-no-data-msg p{font-size:14px;margin-top:8px}
+
+/* ── BICAMERALES SECTION ── */
+#section-bicamerales{display:none}
+.under-construction{text-align:center;padding:80px 20px;color:#6B7280}
+.under-construction svg{width:64px;height:64px;margin:0 auto 16px;display:block;color:#D1D5DB}
+.under-construction h2{font-size:18px;font-weight:600;color:var(--blue);margin-bottom:8px}
+.under-construction p{font-size:14px;max-width:400px;margin:0 auto}
+
+/* ── PROYECCIÓN SECTION ── */
+#section-proyeccion{display:none}
+.proy-controls{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.proy-control-group{display:flex;flex-direction:column;gap:4px}
+.proy-control-group label{font-size:11px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px}
+.proy-select{height:36px;padding:0 12px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px;color:var(--gray-text);background:var(--gray-bg);cursor:pointer;outline:none;min-width:180px}
+.proy-select:focus{border-color:var(--blue)}
+.proy-input{height:36px;padding:0 12px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px;color:var(--gray-text);background:var(--gray-bg);outline:none;min-width:260px}
+.proy-input:focus{border-color:var(--blue)}
+.btn-reset-proy{height:36px;padding:0 14px;background:#F3F4F6;color:var(--gray-text);border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;transition:background .15s}
+.btn-reset-proy:hover{background:#E5E7EB}
+.dictamen-banner{border-radius:10px;padding:14px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-width:2px;border-style:solid}
+.dictamen-banner.no-dictamen{background:#FEE2E2;border-color:#FCA5A5}
+.dictamen-banner.hay-dictamen{background:#D1FAE5;border-color:#6EE7B7}
+.dictamen-status{font-size:22px;font-weight:800;letter-spacing:1px}
+.dictamen-banner.no-dictamen .dictamen-status{color:#991B1B}
+.dictamen-banner.hay-dictamen .dictamen-status{color:#065F46}
+.dictamen-counter{font-size:13px;font-weight:500;color:#4B5563}
+.dictamen-counter span{font-weight:700}
+.proy-table-wrap{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.proy-table{width:100%;border-collapse:collapse;font-size:13px}
+.proy-table th{background:var(--blue);color:#fff;padding:9px 14px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+.proy-table td{padding:8px 14px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
+.proy-table tr:last-child td{border-bottom:none}
+.proy-table tr:hover td{background:#F8FAFF}
+.proy-vote-btns{display:flex;gap:4px}
+.vote-btn{padding:4px 10px;border:1px solid;border-radius:5px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:background .12s,color .12s}
+.vote-btn.favor{border-color:#059669;color:#059669;background:#fff}
+.vote-btn.favor.active{background:#D1FAE5;border-color:#059669;color:#065F46}
+.vote-btn.contra{border-color:#DC2626;color:#DC2626;background:#fff}
+.vote-btn.contra.active{background:#FEE2E2;border-color:#DC2626;color:#991B1B}
+.vote-btn.sin{border-color:#9CA3AF;color:#6B7280;background:#fff}
+.vote-btn.sin.active{background:#F3F4F6;border-color:#6B7280;color:#374151}
+.proy-empty{text-align:center;padding:40px;color:#9CA3AF;font-size:14px}
+.proy-actions{display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
+.proy-mayoría-label{font-size:12px;color:#6B7280;margin-left:auto}
+
+@media(max-width:600px){
+  .section-nav-inner{padding:0 8px;gap:0;overflow-x:auto}
+  .sec-btn{min-width:80px;padding:6px 10px}
+  .sec-label{font-size:10px;letter-spacing:.3px}
+  .proy-controls{padding:12px}
+  .proy-input{min-width:100%}
+}
 </style>
 </head>
 <body>
 <div class="sticky-header">
   <div class="header-inner">
     <div class="header-brand">
-      <span class="sup">Senado de la Nación Argentina</span>
+      <span class="sup">Comisiones Legislativas</span>
       <span class="title" style="display:block">Prosecretaría Parlamentaria</span>
-      <span class="sub">Integración de Comisiones · Período 2026</span>
+      <span class="sub">Senado de la Nación Argentina · Período 2026</span>
     </div>
-    <div class="controls">
+    <div class="controls" id="senado-controls">
       <div class="search-wrap">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/></svg>
         <input type="search" id="searchBox" placeholder="Buscar comisión o senador..." oninput="renderAll()">
@@ -183,20 +251,129 @@ table.repr tr:hover td{background:#F8FAFF}
         Exportar PDF
       </button>
     </div>
+    <div class="controls" id="diputados-controls" style="display:none">
+      <div class="search-wrap">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/></svg>
+        <input type="search" id="dipSearchBox" placeholder="Buscar comisión o diputado..." oninput="renderDipAll()">
+      </div>
+      <select id="dipFilterBloque" onchange="renderDipAll()">
+        <option value="all">Todos los bloques</option>
+      </select>
+      <button class="btn-pdf" onclick="openDipPdfModal()">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a2 2 0 012-2h7.586A2 2 0 0114 1.586l3.414 3.414A2 2 0 0118 6.414V17a2 2 0 01-2 2H5a2 2 0 01-2-2V3zm2 0v14h10V7h-4a1 1 0 01-1-1V3H5zm7 0v2.586L14.414 7H12z"/></svg>
+        Exportar PDF
+      </button>
+    </div>
   </div>
-  <div class="tabs-row">
+  <div class="section-nav-row">
+    <div class="section-nav-inner">
+      <button class="sec-btn active" id="sec-senado" onclick="setSection('senado',this)">
+        <span class="sec-label">Senado</span>
+        <span class="sec-sub">72 senadores · 26 comisiones</span>
+      </button>
+      <button class="sec-btn" id="sec-diputados" onclick="setSection('diputados',this)">
+        <span class="sec-label">Diputados</span>
+        <span class="sec-sub">257 diputados · comisiones permanentes</span>
+      </button>
+      <button class="sec-btn" id="sec-bicamerales" onclick="setSection('bicamerales',this)">
+        <span class="sec-label">Bicamerales</span>
+        <span class="sec-sub">En desarrollo</span>
+      </button>
+      <button class="sec-btn" id="sec-proyeccion" onclick="setSection('proyeccion',this)">
+        <span class="sec-label">Proyección</span>
+        <span class="sec-sub">Simulación de votaciones</span>
+      </button>
+    </div>
+  </div>
+  <div class="tabs-row" id="senado-tabs-row">
     <div class="tabs-inner">
       <button class="tab-btn active" onclick="setView('comisiones',this)">Por comisión</button>
       <button class="tab-btn" onclick="setView('senadores',this)">Por senador/a</button>
       <button class="tab-btn" onclick="setView('repr',this)">Representación por bloques</button>
     </div>
   </div>
+  <div class="tabs-row" id="diputados-tabs-row" style="display:none">
+    <div class="tabs-inner">
+      <button class="tab-btn active" onclick="setDipView('comisiones',this)">Por comisión</button>
+      <button class="tab-btn" onclick="setDipView('diputados',this)">Por diputado/a</button>
+      <button class="tab-btn" onclick="setDipView('repr',this)">Representación por bloques</button>
+    </div>
+  </div>
 </div>
 <div class="stats-bar" id="statsBar"></div>
 <main>
-  <div id="comisionView"><div class="grid" id="grid"></div></div>
-  <div id="senadorView" style="display:none"><div class="senator-grid" id="senatorGrid"></div></div>
-  <div id="reprView" style="display:none"></div>
+  <!-- SECCIÓN SENADO -->
+  <div id="section-senado">
+    <div id="comisionView"><div class="grid" id="grid"></div></div>
+    <div id="senadorView" style="display:none"><div class="senator-grid" id="senatorGrid"></div></div>
+    <div id="reprView" style="display:none"></div>
+  </div>
+
+  <!-- SECCIÓN DIPUTADOS -->
+  <div id="section-diputados" style="display:none">
+    <div id="dipComisionView"><div class="grid" id="dipGrid"></div></div>
+    <div id="dipDiputadoView" style="display:none"><div class="senator-grid" id="dipDiputadoGrid"></div></div>
+    <div id="dipReprView" style="display:none"></div>
+  </div>
+
+  <!-- SECCIÓN BICAMERALES -->
+  <div id="section-bicamerales" style="display:none">
+    <div class="under-construction">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+      <h2>Sección en construcción</h2>
+      <p>Esta sección está en desarrollo y estará disponible próximamente.</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN PROYECCIÓN -->
+  <div id="section-proyeccion" style="display:none">
+    <div class="proy-controls">
+      <div class="proy-control-group">
+        <label>Cámara</label>
+        <select class="proy-select" id="proyCamara" onchange="onProyCamaraChange()">
+          <option value="senado">Senado</option>
+          <option value="diputados">Diputados</option>
+          <option value="bicamerales">Bicamerales</option>
+        </select>
+      </div>
+      <div class="proy-control-group">
+        <label>Comisión</label>
+        <select class="proy-select" id="proyComision" onchange="renderProyeccion()">
+          <option value="">— Seleccioná una comisión —</option>
+        </select>
+      </div>
+      <div class="proy-control-group" style="flex:1">
+        <label>Tema en tratamiento</label>
+        <input type="text" class="proy-input" id="proyTema" placeholder="Ingresá el tema a proyectar..." oninput="updateDictamenBanner()">
+      </div>
+    </div>
+    <div class="dictamen-banner no-dictamen" id="dictamenBanner">
+      <span class="dictamen-status" id="dictamenStatus">NO HAY DICTAMEN</span>
+      <span class="dictamen-counter" id="dictamenCounter">0 a favor · 0 en contra · 0 sin definir · 0 total</span>
+    </div>
+    <div class="proy-actions">
+      <button class="btn-reset-proy" onclick="resetProyVotos()">Resetear posicionamientos</button>
+      <button class="btn-pdf" onclick="exportProyPdf()">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a2 2 0 012-2h7.586A2 2 0 0114 1.586l3.414 3.414A2 2 0 0118 6.414V17a2 2 0 01-2 2H5a2 2 0 01-2-2V3zm2 0v14h10V7h-4a1 1 0 01-1-1V3H5zm7 0v2.586L14.414 7H12z"/></svg>
+        Exportar PDF
+      </button>
+      <span class="proy-mayoría-label" id="proyMayoriaLabel"></span>
+    </div>
+    <div class="proy-table-wrap">
+      <table class="proy-table">
+        <thead><tr>
+          <th style="width:12px"></th>
+          <th>Nombre</th>
+          <th>Bloque</th>
+          <th>Cargo</th>
+          <th>Posicionamiento</th>
+        </tr></thead>
+        <tbody id="proyTableBody">
+          <tr><td colspan="5" class="proy-empty">Seleccioná una comisión para comenzar.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </main>
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal-box" id="modalBox">
@@ -225,6 +402,28 @@ const BLOQUE_COLORS = {
   'PRIMERO LOS SALTEÑOS':                    {dot:'#92D050', bg:'#F0FAE6', badge:'#3A6010'},
 };
 function blqColor(b){return BLOQUE_COLORS[b]||{dot:'#9CA3AF',bg:'#F9FAFB',badge:'#374151'}}
+
+const BLOQUE_COLORS_DIPUTADOS = {
+  'LA LIBERTAD AVANZA':        {dot:'#7030A0', bg:'#F3E8FA', badge:'#4A1870'},
+  'UNION POR LA PATRIA':       {dot:'#1F4E9C', bg:'#E6EDF8', badge:'#0D2A5E'},
+  'UNION CIVICA RADICAL':      {dot:'#FF0000', bg:'#FFE8E8', badge:'#8B0000'},
+  'PRO':                       {dot:'#FFD700', bg:'#FFFBE6', badge:'#6B5600'},
+  'HACEMOS COALICION FEDERAL': {dot:'#5B9BD5', bg:'#EBF3FB', badge:'#1A4A70'},
+  'INNOVACION FEDERAL':        {dot:'#ED7D31', bg:'#FDF0E7', badge:'#7A3800'},
+  'ENCUENTRO FEDERAL':         {dot:'#70AD47', bg:'#EDF5E7', badge:'#2E5018'},
+  'SOMOS FEDERALES':           {dot:'#70AD47', bg:'#EDF5E7', badge:'#2E5018'},
+  'FRENTE CIVICO DE CORDOBA':  {dot:'#548235', bg:'#EAF2E3', badge:'#2D4A1A'},
+  'PROVINCIAS UNIDAS':         {dot:'#ED7D31', bg:'#FDF0E7', badge:'#7A3800'},
+};
+
+function normalizeBloqueName(b){
+  if(!b) return '';
+  return b.normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().trim();
+}
+function blqColorDip(b){
+  const norm=normalizeBloqueName(b);
+  return BLOQUE_COLORS_DIPUTADOS[norm]||{dot:'#9CA3AF',bg:'#F9FAFB',badge:'#374151'};
+}
 
 const BOTTOM_BLOQUES = ['JUSTICIALISTA','JUSTICIA SOCIAL FEDERAL'];
 const BLOQUE_ORDER = [
@@ -1122,10 +1321,316 @@ function labelHtml(tipo){
   return `<span class="hist-label ${m[tipo]||''}">${txt[tipo]||tipo}</span>`;
 }
 
+// ── SECTION MANAGEMENT ──
+let currentSection='senado';
+let dipData=null; // loaded from data/diputados_comisiones.json
+let dipDataLoaded=false;
+let dipDataError=false;
+let currentDipView='comisiones';
+
+function setSection(sec,btn){
+  currentSection=sec;
+  document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  ['senado','diputados','bicamerales','proyeccion'].forEach(s=>{
+    document.getElementById('section-'+s).style.display=s===sec?'block':'none';
+  });
+  document.getElementById('senado-controls').style.display=sec==='senado'?'flex':'none';
+  document.getElementById('diputados-controls').style.display=sec==='diputados'?'flex':'none';
+  document.getElementById('senado-tabs-row').style.display=sec==='senado'?'block':'none';
+  document.getElementById('diputados-tabs-row').style.display=sec==='diputados'?'block':'none';
+
+  if(sec==='senado'){
+    renderAll();
+  } else if(sec==='diputados'){
+    loadDipData();
+  } else if(sec==='proyeccion'){
+    document.getElementById('statsBar').innerHTML='';
+    onProyCamaraChange();
+  } else {
+    document.getElementById('statsBar').innerHTML='';
+  }
+}
+
+// ── DIPUTADOS DATA LOADING ──
+function loadDipData(){
+  if(dipDataLoaded){renderDipAll();return;}
+  fetch('data/diputados_comisiones.json')
+    .then(r=>{if(!r.ok)throw new Error('404');return r.json();})
+    .then(d=>{dipData=d;dipDataLoaded=true;populateDipBloqueFilter();renderDipAll();})
+    .catch(()=>{dipDataError=true;dipDataLoaded=true;renderDipNoData();});
+}
+
+function renderDipNoData(){
+  document.getElementById('statsBar').innerHTML='';
+  const msg='<div class="dip-no-data-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg><p>Los datos de Diputados aún no están disponibles.</p><p style="margin-top:4px;font-size:12px">El scraping se ejecuta automáticamente cada lunes.</p></div>';
+  ['dipComisionView','dipDiputadoView','dipReprView'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerHTML=msg;
+  });
+  document.getElementById('dipComisionView').style.display='block';
+  document.getElementById('dipDiputadoView').style.display='none';
+  document.getElementById('dipReprView').style.display='none';
+}
+
+function populateDipBloqueFilter(){
+  if(!dipData) return;
+  const bloques=new Set();
+  dipData.comisiones.forEach(c=>c.integrantes.forEach(m=>bloques.add(m.bloque)));
+  const sel=document.getElementById('dipFilterBloque');
+  sel.innerHTML='<option value="all">Todos los bloques</option>';
+  [...bloques].sort().forEach(b=>{
+    const o=document.createElement('option');
+    o.value=b;o.textContent=b;sel.appendChild(o);
+  });
+}
+
+function renderDipAll(){
+  if(!dipDataLoaded){loadDipData();return;}
+  if(dipDataError){renderDipNoData();return;}
+  const search=document.getElementById('dipSearchBox').value.toLowerCase().trim();
+  const bloqueFilter=document.getElementById('dipFilterBloque').value;
+  const total=dipData.comisiones.length;
+  const act=dipData.actualizado?new Date(dipData.actualizado).toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
+  document.getElementById('statsBar').innerHTML=`
+    <div class="stat-card"><div class="stat-n">${total}</div><div class="stat-l">comisiones permanentes</div></div>
+    <div class="stat-card"><div class="stat-n">${dipData.comisiones.reduce((s,c)=>s+c.integrantes.length,0)}</div><div class="stat-l">designaciones totales</div></div>
+    ${act?`<div class="stat-card"><div class="stat-n" style="font-size:14px">${act}</div><div class="stat-l">última actualización</div></div>`:''}`;
+  if(currentDipView==='comisiones') renderDipComisiones(search,bloqueFilter);
+  else if(currentDipView==='diputados') renderDipDiputados(search,bloqueFilter);
+  else renderDipRepr();
+}
+
+function setDipView(v,btn){
+  currentDipView=v;
+  document.querySelectorAll('#diputados-tabs-row .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('dipComisionView').style.display=v==='comisiones'?'block':'none';
+  document.getElementById('dipDiputadoView').style.display=v==='diputados'?'block':'none';
+  document.getElementById('dipReprView').style.display=v==='repr'?'block':'none';
+  renderDipAll();
+}
+
+function renderDipComisiones(search,bloqueFilter){
+  if(!dipData) return;
+  let list=dipData.comisiones.filter(c=>{
+    if(bloqueFilter!=='all'&&!c.integrantes.some(m=>m.bloque===bloqueFilter)) return false;
+    if(search&&!c.nombre.toLowerCase().includes(search)&&!c.integrantes.some(m=>m.nombre.toLowerCase().includes(search))) return false;
+    return true;
+  });
+  const grid=document.getElementById('dipGrid');
+  if(!list.length){grid.innerHTML='<div class="empty-state">No se encontraron comisiones con esos criterios.</div>';return;}
+  grid.innerHTML=list.map(c=>{
+    const sorted=[...c.integrantes].sort((a,b)=>{
+      const cargo=['presidente','vicepresidente1','vicepresidente2','secretario','vocal'];
+      return (cargo.indexOf(a.cargo)||99)-(cargo.indexOf(b.cargo)||99)||a.nombre.localeCompare(b.nombre,'es');
+    });
+    const rows=sorted.map(m=>{
+      const bc=blqColorDip(m.bloque);
+      const roleLabel={presidente:'Pres.',vicepresidente1:'Vpto. 1°',vicepresidente2:'Vpto. 2°',secretario:'Secr.'}[m.cargo]||'';
+      const roleHtml=roleLabel?`<span class="badge original" style="background:${bc.bg};color:${bc.badge}">${roleLabel}</span>`:'';
+      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span><span class="member-name">${m.nombre}</span>${roleHtml}</div>`;
+    }).join('');
+    return `<div class="com-card">
+      <div class="card-header">
+        <div><div class="card-tipo">Cámara de Diputados · comisión permanente</div><div class="card-name">${c.nombre}</div></div>
+        <div class="card-header-right"><div class="card-count">${c.integrantes.length} integrantes</div></div>
+      </div>
+      <div class="member-list">${rows||'<div class="member-row" style="color:#9CA3AF;font-style:italic">Sin integrantes registrados</div>'}</div></div>`;
+  }).join('');
+}
+
+function renderDipDiputados(search,bloqueFilter){
+  if(!dipData) return;
+  const all={};
+  dipData.comisiones.forEach(c=>{
+    c.integrantes.forEach(m=>{
+      const key=m.nombre;
+      if(!all[key]) all[key]={comisiones:[],bloque:m.bloque};
+      all[key].comisiones.push({com:c.nombre,cargo:m.cargo});
+    });
+  });
+  let names=Object.keys(all).sort((a,b)=>a.localeCompare(b,'es'));
+  if(search) names=names.filter(n=>n.toLowerCase().includes(search)||all[n].bloque.toLowerCase().includes(search));
+  if(bloqueFilter!=='all') names=names.filter(n=>all[n].bloque===bloqueFilter);
+  const grid=document.getElementById('dipDiputadoGrid');
+  if(!names.length){grid.innerHTML='<div class="empty-state">No se encontraron diputados/as.</div>';return;}
+  grid.innerHTML=names.map(name=>{
+    const d=all[name];
+    const bc=blqColorDip(d.bloque);
+    const chips=d.comisiones.map(c=>`<span class="chip" style="background:${bc.bg};color:${bc.badge}">${c.com}</span>`).join('');
+    return `<div class="senator-card"><div class="senator-name">${name}</div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+  }).join('');
+}
+
+function renderDipRepr(){
+  if(!dipData) return;
+  const div=document.getElementById('dipReprView');
+  const bloqueCounts={};
+  dipData.comisiones.forEach(c=>{
+    c.integrantes.forEach(m=>{
+      const b=m.bloque;
+      if(!bloqueCounts[b]) bloqueCounts[b]=0;
+      bloqueCounts[b]++;
+    });
+  });
+  const bloques=Object.keys(bloqueCounts).sort((a,b)=>bloqueCounts[b]-bloqueCounts[a]);
+  let html=`<div class="repr-table-wrap"><table class="repr"><thead><tr>
+    <th>Bloque</th><th class="num">Designaciones</th><th class="num">Comisiones con presencia</th>
+  </tr></thead><tbody>`;
+  for(const b of bloques){
+    const bc=blqColorDip(b);
+    const coms=new Set();
+    dipData.comisiones.forEach(c=>{if(c.integrantes.some(m=>m.bloque===b))coms.add(c.nombre);});
+    html+=`<tr>
+      <td><div class="bloque-name-cell"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}</div></td>
+      <td class="num">${bloqueCounts[b]}</td><td class="num">${coms.size}</td>
+    </tr>`;
+  }
+  html+=`</tbody></table></div>`;
+  const total=dipData.comisiones.length;
+  if(total>0){
+    let crossHtml=`<div class="cross-wrap"><table class="cross-table"><thead><tr>
+      <th class="blq-col">Bloque</th>
+      ${dipData.comisiones.map(c=>`<th class="com-col"><span>${c.nombre.replace(/^(Comisión|De|de) /i,'').substring(0,30)}</span></th>`).join('')}
+    </tr></thead><tbody>`;
+    for(const b of bloques){
+      const bc=blqColorDip(b);
+      crossHtml+=`<tr><td class="blq-name" style="background:${bc.bg}"><div class="bloque-name-cell"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}</div></td>`;
+      for(const c of dipData.comisiones){
+        const act=c.integrantes.filter(m=>m.bloque===b).length;
+        crossHtml+=`<td class="val" style="font-weight:${act>0?'600':'400'};color:${act>0?'var(--gray-text)':'#D1D5DB'}">${act>0?act:'—'}</td>`;
+      }
+      crossHtml+=`</tr>`;
+    }
+    crossHtml+=`</tbody></table></div>`;
+    html+=`<div class="repr-section-title" style="margin-top:24px">Integrantes por bloque y comisión</div>
+    <p style="font-size:12px;color:#6B7280;margin-bottom:10px">Desplazá horizontalmente para ver todas las comisiones.</p>
+    ${crossHtml}`;
+  }
+  div.innerHTML=`<div class="repr-section-title" style="margin-top:0">Representación por bloque — Diputados</div>${html}`;
+}
+
+// ── PROYECCIÓN DE COMISIONES ──
+const PROY_VOTOS={};
+
+function onProyCamaraChange(){
+  const cam=document.getElementById('proyCamara').value;
+  const sel=document.getElementById('proyComision');
+  sel.innerHTML='<option value="">— Seleccioná una comisión —</option>';
+  Object.keys(PROY_VOTOS).forEach(k=>delete PROY_VOTOS[k]);
+  document.getElementById('proyTableBody').innerHTML='<tr><td colspan="5" class="proy-empty">Seleccioná una comisión para comenzar.</td></tr>';
+  updateDictamenBanner();
+
+  if(cam==='senado'){
+    ALL_COMISIONES.forEach(c=>{
+      const o=document.createElement('option');o.value=c.nombre;o.textContent=c.nombre;sel.appendChild(o);
+    });
+  } else if(cam==='diputados'){
+    if(!dipDataLoaded){
+      loadDipData();
+      const o=document.createElement('option');o.value='__loading__';o.textContent='Cargando datos...';sel.appendChild(o);
+      setTimeout(onProyCamaraChange,1500);
+    } else if(dipDataError||!dipData){
+      const o=document.createElement('option');o.value='';o.textContent='Datos no disponibles aún';sel.appendChild(o);
+    } else {
+      dipData.comisiones.forEach(c=>{
+        const op=document.createElement('option');op.value=c.nombre;op.textContent=c.nombre;sel.appendChild(op);
+      });
+    }
+  } else {
+    const o=document.createElement('option');o.value='';o.textContent='En construcción';sel.appendChild(o);
+  }
+}
+
+function renderProyeccion(){
+  const cam=document.getElementById('proyCamara').value;
+  const comNombre=document.getElementById('proyComision').value;
+  const tbody=document.getElementById('proyTableBody');
+  Object.keys(PROY_VOTOS).forEach(k=>delete PROY_VOTOS[k]);
+  if(!comNombre||comNombre==='__loading__'){
+    tbody.innerHTML='<tr><td colspan="5" class="proy-empty">Seleccioná una comisión para comenzar.</td></tr>';
+    updateDictamenBanner();return;
+  }
+
+  let integrantes=[];
+  if(cam==='senado'){
+    integrantes=getMembers(comNombre).map(m=>({nombre:m.name,bloque:getSenatorBloque(m.name),cargo:getRole(comNombre,m.name)||'Vocal'}));
+  } else if(cam==='diputados'&&dipData){
+    const com=dipData.comisiones.find(c=>c.nombre===comNombre);
+    if(com) integrantes=com.integrantes.map(m=>({nombre:m.nombre,bloque:m.bloque,cargo:m.cargo||'vocal'}));
+  }
+
+  if(!integrantes.length){
+    tbody.innerHTML='<tr><td colspan="5" class="proy-empty">No hay integrantes registrados para esta comisión.</td></tr>';
+    updateDictamenBanner();return;
+  }
+
+  const cargoLabel={presidente:'Presidente/a',vicepresidente1:'Vicepresidente/a 1°',vicepresidente2:'Vicepresidente/a 2°',secretario:'Secretario/a',Vocal:'',vocal:''};
+  tbody.innerHTML=integrantes.map((m,i)=>{
+    PROY_VOTOS[i]='sin';
+    const bc=cam==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
+    const cLabel=cargoLabel[m.cargo]||m.cargo||'';
+    return `<tr id="proy-row-${i}">
+      <td><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span></td>
+      <td style="font-weight:500">${m.nombre}</td>
+      <td><span style="font-size:11px;padding:2px 7px;border-radius:10px;background:${bc.bg};color:${bc.badge}">${m.bloque}</span></td>
+      <td style="font-size:11px;color:#6B7280">${cLabel}</td>
+      <td><div class="proy-vote-btns">
+        <button class="vote-btn favor" onclick="setVoto(${i},'favor')">A favor</button>
+        <button class="vote-btn contra" onclick="setVoto(${i},'contra')">En contra</button>
+        <button class="vote-btn sin active" onclick="setVoto(${i},'sin')">Sin definir</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  updateDictamenBanner();
+}
+
+function setVoto(idx,voto){
+  PROY_VOTOS[idx]=voto;
+  const row=document.getElementById('proy-row-'+idx);
+  if(!row) return;
+  row.querySelectorAll('.vote-btn').forEach(b=>{
+    b.classList.remove('active');
+    if(b.classList.contains(voto)) b.classList.add('active');
+  });
+  updateDictamenBanner();
+}
+
+function resetProyVotos(){
+  Object.keys(PROY_VOTOS).forEach(k=>{
+    PROY_VOTOS[k]='sin';
+    const row=document.getElementById('proy-row-'+k);
+    if(row){
+      row.querySelectorAll('.vote-btn').forEach(b=>{
+        b.classList.remove('active');
+        if(b.classList.contains('sin')) b.classList.add('active');
+      });
+    }
+  });
+  updateDictamenBanner();
+}
+
+function updateDictamenBanner(){
+  const vals=Object.values(PROY_VOTOS);
+  const total=vals.length;
+  const favor=vals.filter(v=>v==='favor').length;
+  const contra=vals.filter(v=>v==='contra').length;
+  const sin=vals.filter(v=>v==='sin').length;
+  const mayoria=total>0?Math.floor(total/2)+1:1;
+  const hayDictamen=favor>=mayoria&&total>0;
+  const banner=document.getElementById('dictamenBanner');
+  banner.className='dictamen-banner '+(hayDictamen?'hay-dictamen':'no-dictamen');
+  document.getElementById('dictamenStatus').textContent=hayDictamen?'HAY DICTAMEN':'NO HAY DICTAMEN';
+  document.getElementById('dictamenCounter').innerHTML=
+    `<span style="color:#059669">${favor} a favor</span> · <span style="color:#DC2626">${contra} en contra</span> · ${sin} sin definir · ${total} total`;
+  document.getElementById('proyMayoriaLabel').textContent=total>0?`Mayoría absoluta: ${mayoria} votos`:'';
+}
+
 let currentView='comisiones';
 function setView(v,btn){
   currentView=v;
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('#senado-tabs-row .tab-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('comisionView').style.display=v==='comisiones'?'block':'none';
   document.getElementById('senadorView').style.display=v==='senadores'?'block':'none';
@@ -1188,6 +1693,7 @@ function renderComisiones(search,bloqueFilter,changeFilter){
   }).join('');
 }
 
+function openRoleModal(idx){showMemberHistory(idx);}
 function showMemberHistory(idx){
   const ctx=_roleMap[idx];if(!ctx)return;
   const hist=getHistory(ctx.com,ctx.senator);
@@ -1312,7 +1818,7 @@ function showComisionHistory(comision){
   showModal(`Historial — ${comision}`,content);
 }
 
-document.addEventListener('DOMContentLoaded',function(){renderAll();});
+document.addEventListener('DOMContentLoaded',function(){renderAll();onProyCamaraChange();});
 </script>
 
 <script>
@@ -1332,7 +1838,32 @@ function loadPoppins(doc) {
   doc.addFont('Poppins-Italic.ttf', 'Poppins', 'italic');
 }
 </script>
-<!-- PDF selection modal -->
+<!-- Diputados PDF selection modal -->
+<div class="pdf-modal-overlay" id="dipPdfModalOverlay" onclick="closeDipPdfModal(event)">
+  <div class="pdf-modal-box">
+    <div class="pdf-modal-head">
+      <h2>Exportar integración de comisiones — Diputados</h2>
+      <p>Seleccioná una o más comisiones para incluir en el PDF</p>
+      <div class="pdf-modal-actions-top">
+        <button class="pdf-sel-btn" onclick="dipPdfSelectAll()">Seleccionar todas</button>
+        <button class="pdf-sel-btn" onclick="dipPdfSelectNone()">Deseleccionar todas</button>
+      </div>
+    </div>
+    <div class="pdf-modal-list" id="dipPdfComList"></div>
+    <div class="pdf-modal-foot">
+      <span class="pdf-selected-count" id="dipPdfSelCount"><strong>0</strong> comisiones seleccionadas</span>
+      <div style="display:flex;gap:8px">
+        <button class="pdf-btn-cancel" onclick="closeDipPdfModal()">Cancelar</button>
+        <button class="pdf-btn-download" id="dipPdfDownBtn" onclick="generateDipPdf()" disabled>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+          Descargar PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Senado PDF selection modal -->
 <div class="pdf-modal-overlay" id="pdfModalOverlay" onclick="closePdfModal(event)">
   <div class="pdf-modal-box">
     <div class="pdf-modal-head">
@@ -1358,6 +1889,211 @@ function loadPoppins(doc) {
 </div>
 
 <script>
+// ── DIPUTADOS PDF MODAL ──
+function openDipPdfModal(){
+  if(!dipData||dipDataError){alert('Los datos de Diputados no están disponibles aún.');return;}
+  var list=document.getElementById('dipPdfComList');
+  list.innerHTML=dipData.comisiones.map(function(c){
+    var safeId='dipchk_'+c.nombre.replace(/[^a-zA-Z]/g,'');
+    return '<div class="pdf-com-item" onclick="dipPdfToggle(\''+safeId+'\')">'+
+      '<input type="checkbox" id="'+safeId+'" onchange="dipPdfUpdateCount()" onclick="event.stopPropagation()">'+
+      '<span class="pdf-com-label">'+c.nombre+'</span>'+
+      '<span class="pdf-com-count">'+c.integrantes.length+' integrantes</span>'+
+      '</div>';
+  }).join('');
+  dipPdfUpdateCount();
+  document.getElementById('dipPdfModalOverlay').classList.add('open');
+}
+function closeDipPdfModal(e){
+  if(!e||e.target===document.getElementById('dipPdfModalOverlay'))
+    document.getElementById('dipPdfModalOverlay').classList.remove('open');
+}
+function dipPdfToggle(id){var c=document.getElementById(id);if(c){c.checked=!c.checked;dipPdfUpdateCount();}}
+function dipPdfSelectAll(){document.querySelectorAll('#dipPdfComList input[type="checkbox"]').forEach(function(c){c.checked=true;});dipPdfUpdateCount();}
+function dipPdfSelectNone(){document.querySelectorAll('#dipPdfComList input[type="checkbox"]').forEach(function(c){c.checked=false;});dipPdfUpdateCount();}
+function dipPdfUpdateCount(){
+  var n=document.querySelectorAll('#dipPdfComList input[type="checkbox"]:checked').length;
+  document.getElementById('dipPdfSelCount').innerHTML='<strong>'+n+'</strong> comisión'+(n!==1?'es':'')+' seleccionada'+(n!==1?'s':'');
+  document.getElementById('dipPdfDownBtn').disabled=(n===0);
+}
+function dipPdfGetSelected(){
+  return dipData.comisiones.filter(function(c){
+    var safeId='dipchk_'+c.nombre.replace(/[^a-zA-Z]/g,'');
+    var chk=document.getElementById(safeId);
+    return chk&&chk.checked;
+  });
+}
+
+function generateDipPdf(){
+  var jsPDFLib=window.jspdf;
+  if(!jsPDFLib){alert('Error: jsPDF no cargó correctamente.');return;}
+  var jsPDF=jsPDFLib.jsPDF;
+  var selected=dipPdfGetSelected();
+  if(!selected.length) return;
+  closeDipPdfModal();
+
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  loadPoppins(doc);
+  var W=210,H=297,ML=15,MR=15;
+  var BLUE=[27,94,162];var BLUE_LT=[214,228,240];var WHITE=[255,255,255];
+  var d=new Date();
+  var months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var TODAY=d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear();
+  var pageNum=1;var y=22;var BOTTOM=H-14;
+
+  function drawHeader(){
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(0,0,W,18,'F');
+    doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.setFont('Poppins','normal');doc.setFontSize(7);
+    doc.text('CÁMARA DE DIPUTADOS DE LA NACIÓN ARGENTINA',ML,6.5);
+    doc.setFont('Poppins','bold');doc.setFontSize(9.5);
+    doc.text('PROSECRETARÍA PARLAMENTARIA',ML,13);
+    doc.setFont('Poppins','normal');doc.setFontSize(7);
+    doc.text('INTEGRACIÓN DE COMISIONES',W-MR,6.5,{align:'right'});
+    doc.text(TODAY,W-MR,13,{align:'right'});
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(0,18,W,0.8,'F');
+  }
+  function drawFooter(n){
+    doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.setLineWidth(0.3);doc.line(ML,H-9,W-MR,H-9);
+    doc.setFont('Poppins','normal');doc.setFontSize(7);doc.setTextColor(150,150,150);
+    doc.text('Prosecretaría Parlamentaria · Cámara de Diputados',ML,H-5);
+    doc.text('Página '+n,W/2,H-5,{align:'center'});
+    doc.text('Documento generado automáticamente',W-MR,H-5,{align:'right'});
+  }
+  function checkPage(needed){
+    if(y+needed>BOTTOM){drawFooter(pageNum);doc.addPage();pageNum++;drawHeader();y=26;}
+  }
+
+  drawHeader();
+  selected.forEach(function(com,ci){
+    if(ci>0){checkPage(30);}
+    checkPage(22);
+    doc.setFont('Poppins','bold');doc.setFontSize(11);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+    var lines=doc.splitTextToSize(com.nombre,180);
+    lines.forEach(function(l){checkPage(6);doc.text(l,ML,y);y+=5.5;});
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(ML,y,W-ML-MR,0.5,'F');y+=4;
+    var sorted=[].concat(com.integrantes).sort(function(a,b){
+      var order=['presidente','vicepresidente1','vicepresidente2','secretario','vocal'];
+      return (order.indexOf(a.cargo)||99)-(order.indexOf(b.cargo)||99)||a.nombre.localeCompare(b.nombre,'es');
+    });
+    sorted.forEach(function(m){
+      checkPage(6);
+      var cargoMap={presidente:'Presidente/a',vicepresidente1:'Vicepresidente/a 1°',vicepresidente2:'Vicepresidente/a 2°',secretario:'Secretario/a'};
+      var cargoLabel=cargoMap[m.cargo]||'';
+      doc.setFont('Poppins','normal');doc.setFontSize(8.5);doc.setTextColor(74,74,74);
+      doc.text(m.nombre,ML+3,y);
+      if(cargoLabel){doc.setFont('Poppins','bold');doc.setFontSize(7);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);doc.text(cargoLabel,W-MR,y,{align:'right'});}
+      y+=4.5;
+      doc.setFont('Poppins','normal');doc.setFontSize(7.5);doc.setTextColor(107,114,128);
+      doc.text(m.bloque||'',ML+3,y);y+=5.5;
+    });
+    y+=4;
+  });
+  drawFooter(pageNum);
+  doc.save('comisiones-diputados-'+TODAY.replace(/ /g,'-')+'.pdf');
+}
+
+// ── PROYECCIÓN PDF ──
+function exportProyPdf(){
+  var jsPDFLib=window.jspdf;
+  if(!jsPDFLib){alert('Error: jsPDF no cargó correctamente.');return;}
+  var jsPDF=jsPDFLib.jsPDF;
+  var comNombre=document.getElementById('proyComision').value;
+  var camara=document.getElementById('proyCamara').value;
+  var tema=document.getElementById('proyTema').value||'Sin especificar';
+  if(!comNombre){alert('Seleccioná una comisión primero.');return;}
+  var rows=document.querySelectorAll('#proyTableBody tr[id^="proy-row-"]');
+  if(!rows.length){alert('No hay integrantes para exportar.');return;}
+
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  loadPoppins(doc);
+  var W=210,H=297,ML=15,MR=15;
+  var BLUE=[27,94,162];var BLUE_LT=[214,228,240];var WHITE=[255,255,255];
+  var d=new Date();
+  var months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var TODAY=d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear();
+  var camLabel={'senado':'Senado de la Nación','diputados':'Cámara de Diputados','bicamerales':'Comisión Bicameral'}[camara]||camara;
+
+  doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(0,0,W,18,'F');
+  doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+  doc.setFont('Poppins','normal');doc.setFontSize(7);
+  doc.text(camLabel.toUpperCase(),ML,6.5);
+  doc.setFont('Poppins','bold');doc.setFontSize(9.5);
+  doc.text('PROSECRETARÍA PARLAMENTARIA',ML,13);
+  doc.setFont('Poppins','normal');doc.setFontSize(7);
+  doc.text('PROYECCIÓN DE COMISIONES',W-MR,6.5,{align:'right'});
+  doc.text(TODAY,W-MR,13,{align:'right'});
+  doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(0,18,W,0.8,'F');
+
+  var y=26;
+  doc.setFont('Poppins','bold');doc.setFontSize(12);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+  var titleLines=doc.splitTextToSize(comNombre,180);
+  titleLines.forEach(function(l){doc.text(l,ML,y);y+=6;});
+  y+=2;
+  doc.setFont('Poppins','normal');doc.setFontSize(9);doc.setTextColor(74,74,74);
+  doc.text('Tema: '+tema,ML,y);y+=5;
+
+  var vals=Object.values(PROY_VOTOS);
+  var total=vals.length;
+  var favor=vals.filter(function(v){return v==='favor';}).length;
+  var contra=vals.filter(function(v){return v==='contra';}).length;
+  var sin=vals.filter(function(v){return v==='sin';}).length;
+  var mayoria=Math.floor(total/2)+1;
+  var hayDictamen=favor>=mayoria&&total>0;
+
+  y+=3;
+  var dictColor=hayDictamen?[6,95,70]:[153,27,27];
+  var dictBg=hayDictamen?[209,250,229]:[254,226,226];
+  doc.setFillColor(dictBg[0],dictBg[1],dictBg[2]);doc.rect(ML,y-5,W-ML-MR,10,'F');
+  doc.setFont('Poppins','bold');doc.setFontSize(13);doc.setTextColor(dictColor[0],dictColor[1],dictColor[2]);
+  doc.text(hayDictamen?'HAY DICTAMEN':'NO HAY DICTAMEN',W/2,y+1,{align:'center'});
+  y+=9;
+  doc.setFont('Poppins','normal');doc.setFontSize(9);doc.setTextColor(74,74,74);
+  doc.text(favor+' a favor · '+contra+' en contra · '+sin+' sin definir · '+total+' total',W/2,y,{align:'center'});
+  y+=8;
+
+  doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,W-ML-MR,6,'F');
+  doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);doc.setFont('Poppins','bold');doc.setFontSize(7.5);
+  doc.text('NOMBRE',ML+2,y+4);doc.text('BLOQUE',ML+75,y+4);doc.text('CARGO',ML+130,y+4);doc.text('POSICIÓN',W-MR-2,y+4,{align:'right'});
+  y+=8;
+
+  var idx=0;
+  while(true){
+    var row=document.getElementById('proy-row-'+idx);
+    if(!row) break;
+    if(y>H-20){
+      doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.setLineWidth(0.3);doc.line(ML,H-9,W-MR,H-9);
+      doc.setFont('Poppins','normal');doc.setFontSize(7);doc.setTextColor(150,150,150);
+      doc.text('Prosecretaría Parlamentaria',ML,H-5);doc.text(TODAY,W-MR,H-5,{align:'right'});
+      doc.addPage();
+      doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y=22,W-ML-MR,6,'F');
+      doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);doc.setFont('Poppins','bold');doc.setFontSize(7.5);
+      doc.text('NOMBRE',ML+2,y+4);doc.text('BLOQUE',ML+75,y+4);doc.text('CARGO',ML+130,y+4);doc.text('POSICIÓN',W-MR-2,y+4,{align:'right'});
+      y+=8;
+    }
+    if(idx%2===0){doc.setFillColor(248,250,255);doc.rect(ML,y-3,W-ML-MR,6,'F');}
+    var voto=PROY_VOTOS[idx]||'sin';
+    var votoLabel=voto==='favor'?'A favor':voto==='contra'?'En contra':'Sin definir';
+    var votoColor=voto==='favor'?[5,150,105]:voto==='contra'?[220,38,38]:[156,163,175];
+    var cells=row.querySelectorAll('td');
+    var nombre=cells[1]?cells[1].textContent.trim():'';
+    var bloque=cells[2]?cells[2].textContent.trim():'';
+    var cargo=cells[3]?cells[3].textContent.trim():'';
+    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(74,74,74);
+    doc.text(nombre.substring(0,40),ML+2,y+1);
+    doc.text(bloque.substring(0,28),ML+75,y+1);
+    doc.text(cargo.substring(0,20),ML+130,y+1);
+    doc.setTextColor(votoColor[0],votoColor[1],votoColor[2]);doc.setFont('Poppins','bold');
+    doc.text(votoLabel,W-MR-2,y+1,{align:'right'});
+    y+=6;idx++;
+  }
+
+  doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.setLineWidth(0.3);doc.line(ML,H-9,W-MR,H-9);
+  doc.setFont('Poppins','normal');doc.setFontSize(7);doc.setTextColor(150,150,150);
+  doc.text('Prosecretaría Parlamentaria',ML,H-5);doc.text(TODAY,W-MR,H-5,{align:'right'});
+  doc.save('proyeccion-'+comNombre.replace(/[^a-zA-Z0-9]/g,'-').substring(0,30)+'.pdf');
+}
+
 function openPdfModal(){
   var list=document.getElementById('pdfComList');
   list.innerHTML=ALL_COMISIONES.map(function(c){

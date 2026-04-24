@@ -1,0 +1,39 @@
+name: Scraper Diputados
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Lunes 09:00 UTC (06:00 Argentina)
+  workflow_dispatch:      # Permite ejecución manual
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run scraper
+        run: python scripts/scraper_diputados.py
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/diputados_comisiones.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: actualizar datos de comisiones de Diputados [skip ci]"
+            git push
+          fi
