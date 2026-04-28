@@ -404,16 +404,29 @@ const BLOQUE_COLORS = {
 function blqColor(b){return BLOQUE_COLORS[b]||{dot:'#9CA3AF',bg:'#F9FAFB',badge:'#374151'}}
 
 const BLOQUE_COLORS_DIPUTADOS = {
-  'LA LIBERTAD AVANZA':        {dot:'#7030A0', bg:'#F3E8FA', badge:'#4A1870'},
-  'UNION POR LA PATRIA':       {dot:'#1F4E9C', bg:'#E6EDF8', badge:'#0D2A5E'},
-  'UNION CIVICA RADICAL':      {dot:'#FF0000', bg:'#FFE8E8', badge:'#8B0000'},
-  'PRO':                       {dot:'#FFD700', bg:'#FFFBE6', badge:'#6B5600'},
-  'HACEMOS COALICION FEDERAL': {dot:'#5B9BD5', bg:'#EBF3FB', badge:'#1A4A70'},
-  'INNOVACION FEDERAL':        {dot:'#ED7D31', bg:'#FDF0E7', badge:'#7A3800'},
-  'ENCUENTRO FEDERAL':         {dot:'#70AD47', bg:'#EDF5E7', badge:'#2E5018'},
-  'SOMOS FEDERALES':           {dot:'#70AD47', bg:'#EDF5E7', badge:'#2E5018'},
-  'FRENTE CIVICO DE CORDOBA':  {dot:'#548235', bg:'#EAF2E3', badge:'#2D4A1A'},
-  'PROVINCIAS UNIDAS':         {dot:'#ED7D31', bg:'#FDF0E7', badge:'#7A3800'},
+  'LA LIBERTAD AVANZA':                                              {dot:'#7030A0', bg:'#F3E8FA', badge:'#4A1870'},
+  'UNION POR LA PATRIA':                                             {dot:'#1F4E9C', bg:'#E6EDF8', badge:'#0D2A5E'},
+  'UNION CIVICA RADICAL':                                            {dot:'#FF0000', bg:'#FFE8E8', badge:'#8B0000'},
+  'UCR - UNION CIVICA RADICAL':                                      {dot:'#FF0000', bg:'#FFE8E8', badge:'#8B0000'},
+  'PRO':                                                             {dot:'#FFD700', bg:'#FFFBE6', badge:'#6B5600'},
+  'HACEMOS COALICION FEDERAL':                                       {dot:'#5B9BD5', bg:'#EBF3FB', badge:'#1A4A70'},
+  'INNOVACION FEDERAL':                                              {dot:'#ED7D31', bg:'#FDF0E7', badge:'#7A3800'},
+  'PROVINCIAS UNIDAS':                                               {dot:'#ED7D31', bg:'#FDF0E7', badge:'#7A3800'},
+  'ENCUENTRO FEDERAL':                                               {dot:'#70AD47', bg:'#EDF5E7', badge:'#2E5018'},
+  'COALICION CIVICA':                                                {dot:'#5B9BD5', bg:'#EBF3FB', badge:'#1A4A70'},
+  'PTS-FRENTE DE IZQUIERDA Y DE TRABAJADORES UNIDAD':                {dot:'#CC0000', bg:'#FFE8E8', badge:'#7A0000'},
+  'PARTIDO OBRERO EN EL FTE DE IZQUIERDA Y DE TRABAJADORES-UNIDAD':  {dot:'#CC0000', bg:'#FFE8E8', badge:'#7A0000'},
+  'ADELANTE BUENOS AIRES':                                           {dot:'#4472C4', bg:'#EAF0FA', badge:'#1B3A7A'},
+  'ELIJO CATAMARCA':                                                 {dot:'#548235', bg:'#EAF2E3', badge:'#2D4A1A'},
+  'POR SANTA CRUZ':                                                  {dot:'#00B050', bg:'#E6F5ED', badge:'#005A28'},
+  'MID':                                                             {dot:'#9CA3AF', bg:'#F9FAFB', badge:'#374151'},
+  'MID - MOVIMIENTO DE INTEGRACION Y DESARROLLO':                    {dot:'#9CA3AF', bg:'#F9FAFB', badge:'#374151'},
+  'LA NEUQUINIDAD':                                                  {dot:'#FF69B4', bg:'#FDE8F3', badge:'#8B0050'},
+  'INDEPENDENCIA':                                                   {dot:'#4472C4', bg:'#EAF0FA', badge:'#1B3A7A'},
+  'PRODUCCION Y TRABAJO':                                            {dot:'#70AD47', bg:'#EDF5E7', badge:'#2E5018'},
+  'COHERENCIA':                                                      {dot:'#6366F1', bg:'#EEF2FF', badge:'#3730A3'},
+  'DEFENDAMOS CORDOBA':                                              {dot:'#059669', bg:'#D1FAE5', badge:'#065F46'},
+  'PRIMERO SAN LUIS':                                                {dot:'#D97706', bg:'#FEF3C7', badge:'#92400E'},
 };
 
 function normalizeBloqueName(b){
@@ -1363,7 +1376,7 @@ function loadDipData(){
 
 function renderDipNoData(){
   document.getElementById('statsBar').innerHTML='';
-  const msg='<div class="dip-no-data-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg><p>Los datos de Diputados aún no están disponibles.</p><p style="margin-top:4px;font-size:12px">El scraping se ejecuta automáticamente cada lunes.</p></div>';
+  const msg='<div class="dip-no-data-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg><p>No se pudieron cargar los datos de Diputados.</p><p style="margin-top:4px;font-size:12px">Verificá que el archivo data/diputados_comisiones.json esté disponible.</p></div>';
   ['dipComisionView','dipDiputadoView','dipReprView'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.innerHTML=msg;
@@ -1422,12 +1435,12 @@ function renderDipComisiones(search,bloqueFilter){
   if(!list.length){grid.innerHTML='<div class="empty-state">No se encontraron comisiones con esos criterios.</div>';return;}
   grid.innerHTML=list.map(c=>{
     const sorted=[...c.integrantes].sort((a,b)=>{
-      const cargo=['presidente','vicepresidente1','vicepresidente2','secretario','vocal'];
+      const cargo=['presidente','vicepresidente_1','vicepresidente_2','secretario','vocal'];
       return (cargo.indexOf(a.cargo)||99)-(cargo.indexOf(b.cargo)||99)||a.nombre.localeCompare(b.nombre,'es');
     });
     const rows=sorted.map(m=>{
       const bc=blqColorDip(m.bloque);
-      const roleLabel={presidente:'Pres.',vicepresidente1:'Vpto. 1°',vicepresidente2:'Vpto. 2°',secretario:'Secr.'}[m.cargo]||'';
+      const roleLabel={presidente:'Pres.',vicepresidente_1:'Vpto. 1°',vicepresidente_2:'Vpto. 2°',secretario:'Secr.'}[m.cargo]||'';
       const roleHtml=roleLabel?`<span class="badge original" style="background:${bc.bg};color:${bc.badge}">${roleLabel}</span>`:'';
       return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span><span class="member-name">${m.nombre}</span>${roleHtml}</div>`;
     }).join('');
@@ -1566,7 +1579,7 @@ function renderProyeccion(){
     updateDictamenBanner();return;
   }
 
-  const cargoLabel={presidente:'Presidente/a',vicepresidente1:'Vicepresidente/a 1°',vicepresidente2:'Vicepresidente/a 2°',secretario:'Secretario/a',Vocal:'',vocal:''};
+  const cargoLabel={presidente:'Presidente/a',vicepresidente_1:'Vicepresidente/a 1°',vicepresidente_2:'Vicepresidente/a 2°',secretario:'Secretario/a',Vocal:'',vocal:''};
   tbody.innerHTML=integrantes.map((m,i)=>{
     PROY_VOTOS[i]='sin';
     const bc=cam==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
@@ -1973,12 +1986,12 @@ function generateDipPdf(){
     lines.forEach(function(l){checkPage(6);doc.text(l,ML,y);y+=5.5;});
     doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(ML,y,W-ML-MR,0.5,'F');y+=4;
     var sorted=[].concat(com.integrantes).sort(function(a,b){
-      var order=['presidente','vicepresidente1','vicepresidente2','secretario','vocal'];
+      var order=['presidente','vicepresidente_1','vicepresidente_2','secretario','vocal'];
       return (order.indexOf(a.cargo)||99)-(order.indexOf(b.cargo)||99)||a.nombre.localeCompare(b.nombre,'es');
     });
     sorted.forEach(function(m){
       checkPage(6);
-      var cargoMap={presidente:'Presidente/a',vicepresidente1:'Vicepresidente/a 1°',vicepresidente2:'Vicepresidente/a 2°',secretario:'Secretario/a'};
+      var cargoMap={presidente:'Presidente/a',vicepresidente_1:'Vicepresidente/a 1°',vicepresidente_2:'Vicepresidente/a 2°',secretario:'Secretario/a'};
       var cargoLabel=cargoMap[m.cargo]||'';
       doc.setFont('Poppins','normal');doc.setFontSize(8.5);doc.setTextColor(74,74,74);
       doc.text(m.nombre,ML+3,y);
