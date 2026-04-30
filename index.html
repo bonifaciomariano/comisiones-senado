@@ -276,19 +276,15 @@ table.repr tr:hover td{background:#F8FAFF}
     <div class="section-nav-inner">
       <button class="sec-btn active" id="sec-senado" onclick="setSection('senado',this)">
         <span class="sec-label">Senado</span>
-        <span class="sec-sub">72 senadores · 26 comisiones</span>
       </button>
       <button class="sec-btn" id="sec-diputados" onclick="setSection('diputados',this)">
         <span class="sec-label">Diputados</span>
-        <span class="sec-sub">257 diputados · comisiones permanentes</span>
       </button>
       <button class="sec-btn" id="sec-bicamerales" onclick="setSection('bicamerales',this)">
         <span class="sec-label">Bicamerales</span>
-        <span class="sec-sub">En desarrollo</span>
       </button>
       <button class="sec-btn" id="sec-proyeccion" onclick="setSection('proyeccion',this)">
         <span class="sec-label">Proyección</span>
-        <span class="sec-sub">Simulación de votaciones</span>
       </button>
     </div>
   </div>
@@ -1430,12 +1426,20 @@ function setSection(sec,btn){
   }
 }
 
-// ── DIPUTADOS DATA LOADING ──
+/// ── DIPUTADOS DATA LOADING ──
 function loadDipData(){
   if(dipDataLoaded){renderDipAll();return;}
   fetch('data/diputados_comisiones.json')
     .then(r=>{if(!r.ok)throw new Error('404');return r.json();})
-    .then(d=>{dipData=d;dipDataLoaded=true;populateDipBloqueFilter();renderDipAll();})
+    .then(d=>{
+      // Esta es la línea que ordena las comisiones de la A a la Z
+      d.comisiones.sort((a, b) => a.nombre.localeCompare(b.nombre));
+      
+      dipData=d;
+      dipDataLoaded=true;
+      populateDipBloqueFilter();
+      renderDipAll();
+    })
     .catch(()=>{dipDataError=true;dipDataLoaded=true;renderDipNoData();});
 }
 
