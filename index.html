@@ -536,7 +536,6 @@ const SENATOR_BLOQUES = {
   "VISCHI, Eduardo Alejandro":"UCR - UNIÓN CÍVICA RADICAL",
   "ZAMORA, Gerardo":"FRENTE CÍVICO POR SANTIAGO",
 };
-};
 
 const SENATOR_PROVINCIAS = {
   "ABAD, Maximiliano": "BUENOS AIRES",
@@ -616,7 +615,6 @@ const SENATOR_PROVINCIAS = {
 
 function getSenatorProvincia(name){ return SENATOR_PROVINCIAS[name] || ''; }
 
-function normalizeName(s){
 function normalizeName(s){
   if(!s) return s;
   return s.replace(/^AVILA,/,'ÁVILA,').replace(/^ESPINOLA,/,'ESPÍNOLA,');
