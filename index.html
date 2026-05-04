@@ -58,6 +58,30 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .leg-tooltip{position:relative;cursor:default;display:inline}
 .leg-tooltip .leg-tip{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1e293b;color:#f1f5f9;font-size:11px;line-height:1.5;padding:5px 10px;border-radius:6px;white-space:nowrap;z-index:9999;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .leg-tooltip:hover .leg-tip{display:block} 
+.leg-tooltip {
+  position: relative;
+  cursor: default;
+}
+.leg-tooltip .leg-tooltip-box {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #f1f5f9;
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  z-index: 999;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.leg-tooltip:hover .leg-tooltip-box {
+  display: block;
+} 
 .member-name{flex:1;color:var(--gray-text)}
 .member-role{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;cursor:pointer;flex-shrink:0;border:none;font-family:inherit}
 .badge{font-size:10px;padding:2px 7px;border-radius:10px;cursor:pointer;white-space:nowrap;font-weight:500;border:none;font-family:inherit;flex-shrink:0}
