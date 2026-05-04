@@ -57,31 +57,7 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .bloque-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .leg-tooltip{position:relative;cursor:default;display:inline}
 .leg-tooltip .leg-tip{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1e293b;color:#f1f5f9;font-size:11px;line-height:1.5;padding:5px 10px;border-radius:6px;white-space:nowrap;z-index:9999;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.leg-tooltip:hover .leg-tip{display:block} 
-.leg-tooltip {
-  position: relative;
-  cursor: default;
-}
-.leg-tooltip .leg-tooltip-box {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1e293b;
-  color: #f1f5f9;
-  font-size: 11px;
-  line-height: 1.4;
-  padding: 6px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  z-index: 999;
-  pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-.leg-tooltip:hover .leg-tooltip-box {
-  display: block;
-} 
+.leg-tooltip:hover .leg-tip{display:block}
 .member-name{flex:1;color:var(--gray-text)}
 .member-role{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;cursor:pointer;flex-shrink:0;border:none;font-family:inherit}
 .badge{font-size:10px;padding:2px 7px;border-radius:10px;cursor:pointer;white-space:nowrap;font-weight:500;border:none;font-family:inherit;flex-shrink:0}
@@ -1646,7 +1622,7 @@ function renderDipDiputados(search,bloqueFilter){
     const d=all[name];
     const bc=blqColorDip(d.bloque);
     const chips=d.comisiones.map(c=>`<span class="chip" style="background:${bc.bg};color:${bc.badge}">${c.com}</span>`).join('');
-    return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}</span></span>${roleHtml}</div>`; style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+    return `<div class="senator-card"><div class="senator-name leg-tooltip">${name}<span class="leg-tip">${d.bloque}</span></div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
 }
 
@@ -1949,7 +1925,7 @@ function renderSenadores(search,bloqueFilter){
     const bc=blqColor(d.bloque);
     const chips=d.comisiones.map(c=>{const k=Object.keys(senHist).length;senHist[k]={com:c.com,senator:name};return `<button class="chip" onclick="showSenHist(${k})">${c.com}</button>`;}).join('');
     const _prv=getSenatorProvincia(name);
-return `<div class="senator-card"><div class="senator-name leg-tooltip">${name}<span class="leg-tip">${d.bloque}${_prv?'<br>'+_prv:''}</span></div><span class="senator-bloque-tag";
+    return `<div class="senator-card"><div class="senator-name leg-tooltip">${name}<span class="leg-tip">${d.bloque}${_prv?'<br>'+_prv:''}</span></div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
   window._senHist=senHist;
 }
