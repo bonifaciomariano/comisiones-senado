@@ -1,110 +1,928 @@
 {
-  "actualizado": "2026-04-24",
+  "actualizado": "2026-04-27",
+  "fuente": "Sistema Comisiones Cámara de Senadores — datos (2).xlsx",
   "comisiones": [
     {
-      "nombre": "Administradora del Edificio del Molino (Ley 27.009)",
-      "tipo": "especial",
-      "integrantes": []
+      "id": 100,
+      "nombre": "BICAMERAL PERMANENTE PARLAMENTARIA MIXTA REVISORA DE CUENTAS",
+      "integrantes": [
+        {
+          "nombre": "ATAUCHE, Ezequiel",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "JUJUY",
+          "vacante": false
+        },
+        {
+          "nombre": "OLIVERA LUCERO, Bruno Antonio",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "SAN JUAN",
+          "vacante": false
+        },
+        {
+          "nombre": "FAMA, Flavio Sergio",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "CATAMARCA",
+          "vacante": false
+        },
+        {
+          "nombre": "ANDRADA, Guillermo Eduardo",
+          "camara": "senado",
+          "bloque": "CONVICCIÓN FEDERAL",
+          "provincia": "CATAMARCA",
+          "vacante": false
+        },
+        {
+          "nombre": "MAYANS, José Miguel Ángel",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "FORMOSA",
+          "vacante": false
+        },
+        {
+          "nombre": "RECALDE, Mariano",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral Ciudad de Buenos Aires (Ley 24.588)",
-      "tipo": "especial",
-      "integrantes": []
+      "id": 103,
+      "nombre": "BICAMERAL PERMANENTE DE LA DEFENSORÍA DEL PUEBLO",
+      "integrantes": [
+        {
+          "nombre": "KRONEBERGER, Daniel Ricardo",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "FULLONE, Enzo Paolo",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "RÍO NEGRO",
+          "vacante": false
+        },
+        {
+          "nombre": "ALMEIDA, Romina María",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "ENTRE RÍOS",
+          "vacante": false
+        },
+        {
+          "nombre": "HUALA, María Victoria",
+          "camara": "senado",
+          "bloque": "FRENTE PRO",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "ÁVILA, Beatriz Luisa",
+          "camara": "senado",
+          "bloque": "INDEPENDENCIA",
+          "provincia": "TUCUMÁN",
+          "vacante": false
+        },
+        {
+          "nombre": "MARKS, Ana Inés",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "RÍO NEGRO",
+          "vacante": false
+        },
+        {
+          "nombre": "KIRCHNER, Alicia Margarita Antonia",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "SANTA CRUZ",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral de Monitoreo e Implementación del Código Procesal Penal Federal (Ley 27.063 y sus modificatorias)",
-      "tipo": "especial",
-      "integrantes": []
+      "id": 105,
+      "nombre": "BICAMERAL PERMANENTE DE TRÁMITE LEGISLATIVO (LEY 26.122)",
+      "integrantes": [
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "Petri, Luis",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral para la Reforma Tributaria (Ley 27.260)",
-      "tipo": "especial",
-      "integrantes": []
+      "id": 106,
+      "nombre": "BICAMERAL PERMANENTE DE PROMOCIÓN Y SEGUIMIENTO DE LA COMUNICACIÓN AUDIOVISUAL, LAS TECNOLOGÍAS DE LAS TELECOMUNICACIONES Y LA DIGITALIZACIÓN (LEY 26.522,Y SUS MODIFICATORIAS 27.078 Y DNU 267/15)",
+      "integrantes": [
+        {
+          "nombre": "GODOY, Juan Cruz",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "CHACO",
+          "vacante": false
+        },
+        {
+          "nombre": "ALMEIDA, Romina María",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "ENTRE RÍOS",
+          "vacante": false
+        },
+        {
+          "nombre": "HUALA, María Victoria",
+          "camara": "senado",
+          "bloque": "FRENTE PRO",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "ESPÍNOLA, Carlos Mauricio",
+          "camara": "senado",
+          "bloque": "PROVINCIAS UNIDAS",
+          "provincia": "CORRIENTES",
+          "vacante": false
+        },
+        {
+          "nombre": "ANDRADA, Guillermo Eduardo",
+          "camara": "senado",
+          "bloque": "CONVICCIÓN FEDERAL",
+          "provincia": "CATAMARCA",
+          "vacante": false
+        },
+        {
+          "nombre": "LEWANDOWSKI, Marcelo Néstor",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "SANTA FE",
+          "vacante": false
+        },
+        {
+          "nombre": "DI TULLIO, Juliana",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "BUENOS AIRES",
+          "vacante": false
+        },
+        {
+          "nombre": "SALINO, Fernando Aldo",
+          "camara": "senado",
+          "bloque": "JUSTICIA SOCIAL FEDERAL",
+          "provincia": "SAN LUIS",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "Giudici, Silvana",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral Asesora de la Federación Argentina de Municipios (Ley 24.807)",
-      "tipo": "especial",
-      "integrantes": []
+      "id": 107,
+      "nombre": "BICAMERAL PERMANENTE DE FISCALIZACIÓN DE LOS ÓRGANOS Y ACTIVIDADES DE SEGURIDAD INTERIOR (LEY 24.059 Y SUS MODIFICATORIAS LEYES 24.194 Y 25.520)",
+      "integrantes": [
+        {
+          "nombre": "OROZCO, María Emilia",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "SALTA",
+          "vacante": false
+        },
+        {
+          "nombre": "ABDALA, Bartolomé Esteban",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "SAN LUIS",
+          "vacante": false
+        },
+        {
+          "nombre": "LOSADA, Carolina",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "SANTA FE",
+          "vacante": false
+        },
+        {
+          "nombre": "GOERLING LARA, Enrique Martín",
+          "camara": "senado",
+          "bloque": "FRENTE PRO",
+          "provincia": "MISIONES",
+          "vacante": false
+        },
+        {
+          "nombre": "TERENZI, Edith Elizabeth",
+          "camara": "senado",
+          "bloque": "DESPIERTA CHUBUT",
+          "provincia": "CHUBUT",
+          "vacante": false
+        },
+        {
+          "nombre": "BENSUSÁN, Daniel Pablo",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "SAN JUAN",
+          "vacante": false
+        },
+        {
+          "nombre": "BAHL, Adán Humberto",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "ENTRE RÍOS",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral de Control de los Fondos de la Seguridad Social (Ley 26.425)",
-      "tipo": "permanente",
-      "integrantes": []
+      "id": 110,
+      "nombre": "BICAMERAL PERMANENTE DE SEGUIMIENTO Y CONTROL DEL MINISTERIO PÚBLICO DE LA NACIÓN (LEY 24.946 Y SUS MODIFICATORIAS LEY 27.148 Y 27.149)",
+      "integrantes": [
+        {
+          "nombre": "GODOY, Juan Cruz",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "CHACO",
+          "vacante": false
+        },
+        {
+          "nombre": "JUEZ, Luis Alfredo",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "CÓRDOBA",
+          "vacante": false
+        },
+        {
+          "nombre": "SUÁREZ, Rodolfo Alejandro",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "MENDOZA",
+          "vacante": false
+        },
+        {
+          "nombre": "MENDOZA, Sandra Mariela",
+          "camara": "senado",
+          "bloque": "CONVICCIÓN FEDERAL",
+          "provincia": "TUCUMÁN",
+          "vacante": false
+        },
+        {
+          "nombre": "CORROZA, Julieta",
+          "camara": "senado",
+          "bloque": "LA NEUQUINIDAD",
+          "provincia": "NEUQUÉN",
+          "vacante": false
+        },
+        {
+          "nombre": "LINARES, Carlos Alberto",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "CHUBUT",
+          "vacante": false
+        },
+        {
+          "nombre": "BAHL, Adán Humberto",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "ENTRE RÍOS",
+          "vacante": false
+        },
+        {
+          "nombre": "KIRCHNER, Alicia Margarita Antonia",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "SANTA CRUZ",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral de Reforma del Estado y del Seguimiento de las Privatizaciones (Ley 23.696)",
-      "tipo": "permanente",
-      "integrantes": []
+      "id": 115,
+      "nombre": "BICAMERAL PERMANENTE DEL DEFENSOR DE LOS DERECHOS DE NIÑAS, NIÑOS Y ADOLESCENTES (LEY 26.061)",
+      "integrantes": [
+        {
+          "nombre": "BEDIA, Vilma Facunda",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "JUJUY",
+          "vacante": false
+        },
+        {
+          "nombre": "ALVAREZ RIVERO, Carmen",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "CÓRDOBA",
+          "vacante": false
+        },
+        {
+          "nombre": "VALENZUELA, Mercedes Gabriela",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "CORRIENTES",
+          "vacante": false
+        },
+        {
+          "nombre": "HUALA, María Victoria",
+          "camara": "senado",
+          "bloque": "FRENTE PRO",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral Permanente de Fiscalización de los Organismos y Actividades de Inteligencia (Ley 25.520)",
-      "tipo": "permanente",
-      "integrantes": []
+      "id": 118,
+      "nombre": "BICAMERAL DE CONTROL DE LOS FONDOS DE LA SEGURIDAD SOCIAL (LEY 26.425)",
+      "integrantes": [
+        {
+          "nombre": "OLIVERA LUCERO, Bruno Antonio",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "SAN JUAN",
+          "vacante": false
+        },
+        {
+          "nombre": "CERVI, Mario Pablo",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "NEUQUÉN",
+          "vacante": false
+        },
+        {
+          "nombre": "GALARETTO, Eduardo Horacio",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "SANTA FE",
+          "vacante": false
+        },
+        {
+          "nombre": "HUALA, María Victoria",
+          "camara": "senado",
+          "bloque": "FRENTE PRO",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "BENSUSÁN, Daniel Pablo",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "LA PAMPA",
+          "vacante": false
+        },
+        {
+          "nombre": "SORIA, Martín",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "RÍO NEGRO",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     },
     {
-      "nombre": "Bicameral Permanente de Fiscalización de los Órganos y Actividades de Seguridad Interior (Ley 24.059 y sus modificatorias)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente de la Defensoría del Pueblo",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente de Promoción y Seguimiento de la Comunicación Audiovisual, las Tecnologías de las Telecomunicaciones y la Digitalización (Ley 26.522 y sus modificatorias)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente de Seguimiento de Contratos de Participación Público-Privada (Ley 27.328)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente de Seguimiento y Control de la Gestión de Contratación y de Pago de la Deuda Exterior de la Nación (Ley 27.249)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente de Seguimiento y Control del Ministerio Público de la Nación (Ley 24.946 y sus modificatorias)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente de Trámite Legislativo (Ley 26.122)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente del Defensor de los Derechos de Niñas, Niños y Adolescentes (Ley 26.061)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente del Digesto Jurídico Argentino (Ley 26.939)",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente Interparlamentaria Argentino-Mexicana",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente Parlamentaria Conjunta Argentino-Chilena",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "Bicameral Permanente Parlamentaria Mixta Revisora de Cuentas",
-      "tipo": "permanente",
-      "integrantes": []
-    },
-    {
-      "nombre": "De Integración Bilateral y Cooperación entre la República Argentina y la República Federativa de Brasil",
-      "tipo": "permanente",
-      "integrantes": []
+      "id": 315,
+      "nombre": "BICAMERAL DE REFORMA DEL ESTADO Y DEL SEGUIMIENTO DE LAS PRIVATIZACIONES (LEY 23.696)",
+      "integrantes": [
+        {
+          "nombre": "CERVI, Mario Pablo",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "NEUQUÉN",
+          "vacante": false
+        },
+        {
+          "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+          "camara": "senado",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "ENTRE RÍOS",
+          "vacante": false
+        },
+        {
+          "nombre": "VISCHI, Eduardo Alejandro",
+          "camara": "senado",
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "CORRIENTES",
+          "vacante": false
+        },
+        {
+          "nombre": "ESPÍNOLA, Carlos Mauricio",
+          "camara": "senado",
+          "bloque": "PROVINCIAS UNIDAS",
+          "provincia": "CORRIENTES",
+          "vacante": false
+        },
+        {
+          "nombre": "RECALDE, Mariano",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+          "vacante": false
+        },
+        {
+          "nombre": "BAHL, Adán Humberto",
+          "camara": "senado",
+          "bloque": "JUSTICIALISTA",
+          "provincia": "ENTRE RÍOS",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
     }
   ]
 }

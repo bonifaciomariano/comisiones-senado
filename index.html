@@ -184,10 +184,18 @@ table.repr tr:hover td{background:#F8FAFF}
 
 /* ── BICAMERALES SECTION ── */
 #section-bicamerales{display:none}
-.under-construction{text-align:center;padding:80px 20px;color:#6B7280}
-.under-construction svg{width:64px;height:64px;margin:0 auto 16px;display:block;color:#D1D5DB}
-.under-construction h2{font-size:18px;font-weight:600;color:var(--blue);margin-bottom:8px}
-.under-construction p{font-size:14px;max-width:400px;margin:0 auto}
+.bic-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.bic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.bic-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.bic-card-header{padding:10px 14px;background:var(--blue-light);border-bottom:1px solid var(--border)}
+.bic-card-name{font-size:12px;font-weight:700;color:var(--blue);line-height:1.35}
+.bic-card-count{font-size:10px;color:#6B7280;margin-top:2px}
+.bic-member-list{padding:6px 0}
+.bic-member-row{display:flex;align-items:center;gap:8px;padding:5px 14px;border-bottom:1px solid #F8FAFF}
+.bic-member-row:last-child{border-bottom:none}
+.camara-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;flex-shrink:0;letter-spacing:.3px}
+.camara-badge.senado{background:#EEF2FF;color:#3730A3}
+.camara-badge.diputados{background:#FFF7ED;color:#9A3412}
 
 /* ── PROYECCIÓN SECTION ── */
 #section-proyeccion{display:none}
@@ -216,10 +224,12 @@ table.repr tr:hover td{background:#F8FAFF}
 .proy-table tr:hover td{background:#F8FAFF}
 .proy-vote-btns{display:flex;gap:4px}
 .vote-btn{padding:4px 10px;border:1px solid;border-radius:5px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:background .12s,color .12s}
-.vote-btn.favor{border-color:#059669;color:#059669;background:#fff}
-.vote-btn.favor.active{background:#D1FAE5;border-color:#059669;color:#065F46}
-.vote-btn.contra{border-color:#DC2626;color:#DC2626;background:#fff}
-.vote-btn.contra.active{background:#FEE2E2;border-color:#DC2626;color:#991B1B}
+.vote-btn.mayoria{border-color:#059669;color:#059669;background:#fff}
+.vote-btn.mayoria.active{background:#D1FAE5;border-color:#059669;color:#065F46}
+.vote-btn.mayoria_dis{border-color:#D97706;color:#D97706;background:#fff}
+.vote-btn.mayoria_dis.active{background:#FEF3C7;border-color:#D97706;color:#92400E}
+.vote-btn.minoria{border-color:#DC2626;color:#DC2626;background:#fff}
+.vote-btn.minoria.active{background:#FEE2E2;border-color:#DC2626;color:#991B1B}
 .vote-btn.sin{border-color:#9CA3AF;color:#6B7280;background:#fff}
 .vote-btn.sin.active{background:#F3F4F6;border-color:#6B7280;color:#374151}
 .proy-empty{text-align:center;padding:40px;color:#9CA3AF;font-size:14px}
@@ -324,11 +334,8 @@ table.repr tr:hover td{background:#F8FAFF}
 
   <!-- SECCIÓN BICAMERALES -->
   <div id="section-bicamerales" style="display:none">
-    <div class="under-construction">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
-      <h2>Sección en construcción</h2>
-      <p>Esta sección está en desarrollo y estará disponible próximamente.</p>
-    </div>
+    <div id="bicStatsBar" class="bic-stats"></div>
+    <div id="bicGrid" class="bic-grid"><div class="empty-state">Cargando datos...</div></div>
   </div>
 
   <!-- SECCIÓN PROYECCIÓN -->
@@ -355,7 +362,7 @@ table.repr tr:hover td{background:#F8FAFF}
     </div>
     <div class="dictamen-banner no-dictamen" id="dictamenBanner">
       <span class="dictamen-status" id="dictamenStatus">NO HAY DICTAMEN</span>
-      <span class="dictamen-counter" id="dictamenCounter">0 a favor · 0 en contra · 0 sin definir · 0 total</span>
+      <span class="dictamen-counter" id="dictamenCounter">0 mayoría · 0 may. c/ disidencia · 0 minoría · 0 sin definir · 0 total</span>
     </div>
     <div class="proy-actions">
       <button class="btn-reset-proy" onclick="resetProyVotos()">Resetear posicionamientos</button>
@@ -1483,6 +1490,10 @@ let dipDataLoaded=false;
 let dipDataError=false;
 let currentDipView='comisiones';
 
+let bicData=null;
+let bicDataLoaded=false;
+let bicDataError=false;
+
 function setSection(sec,btn){
   currentSection=sec;
   document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
@@ -1499,12 +1510,68 @@ function setSection(sec,btn){
     renderAll();
   } else if(sec==='diputados'){
     loadDipData();
+  } else if(sec==='bicamerales'){
+    document.getElementById('statsBar').innerHTML='';
+    loadBicData();
   } else if(sec==='proyeccion'){
     document.getElementById('statsBar').innerHTML='';
     onProyCamaraChange();
   } else {
     document.getElementById('statsBar').innerHTML='';
   }
+}
+
+// ── BICAMERALES DATA LOADING ──
+function loadBicData(){
+  if(bicDataLoaded){renderBicamerales();return;}
+  fetch('data/bicamerales.json')
+    .then(r=>{if(!r.ok)throw new Error('404');return r.json();})
+    .then(d=>{
+      bicData=d;
+      bicDataLoaded=true;
+      renderBicamerales();
+    })
+    .catch(()=>{
+      bicDataError=true;bicDataLoaded=true;
+      document.getElementById('bicGrid').innerHTML='<div class="empty-state">No se pudieron cargar los datos de Bicamerales.</div>';
+    });
+}
+
+function renderBicamerales(){
+  if(!bicData){return;}
+  const coms=bicData.comisiones||[];
+  const statsBar=document.getElementById('bicStatsBar');
+  const grid=document.getElementById('bicGrid');
+  const totalMiembros=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante).length,0);
+  const totalSen=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante&&m.camara==='senado').length,0);
+  const totalDip=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante&&m.camara==='diputados').length,0);
+  statsBar.innerHTML=`
+    <div class="stat-card"><div class="stat-n">${coms.length}</div><div class="stat-l">comisiones bicamerales</div></div>
+    <div class="stat-card"><div class="stat-n">${totalSen}</div><div class="stat-l">senadores/as</div></div>
+    <div class="stat-card"><div class="stat-n">${totalDip}</div><div class="stat-l">diputados/as</div></div>`;
+  if(!coms.length){grid.innerHTML='<div class="empty-state">No hay comisiones bicamerales registradas.</div>';return;}
+  grid.innerHTML=coms.map(c=>{
+    const miembros=c.integrantes.filter(m=>!m.vacante);
+    const vacantes=c.integrantes.filter(m=>m.vacante);
+    const rows=miembros.map(m=>{
+      const bc=m.camara==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
+      const tipExtra=m.camara==='senado'?(m.provincia?'<br>'+m.provincia:''):'';
+      const camaraLabel=m.camara==='senado'?'SEN':'DIP';
+      return `<div class="bic-member-row">
+        <span class="bloque-dot" style="background:${bc.dot||'#9CA3AF'}"></span>
+        <span class="camara-badge ${m.camara}">${camaraLabel}</span>
+        <span class="member-name leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque||'Sin bloque'}${tipExtra}</span></span>
+      </div>`;
+    }).join('');
+    const vacRow=vacantes.length?`<div class="bic-member-row" style="color:#9CA3AF;font-style:italic"><span class="bloque-dot" style="background:#E5E7EB"></span><span style="font-size:11px">${vacantes.length} vacante${vacantes.length!==1?'s':''}</span></div>`:'';
+    return `<div class="bic-card">
+      <div class="bic-card-header">
+        <div class="bic-card-name">${c.nombre}</div>
+        <div class="bic-card-count">${miembros.length} integrantes · ${miembros.filter(m=>m.camara==='senado').length} senadores · ${miembros.filter(m=>m.camara==='diputados').length} diputados</div>
+      </div>
+      <div class="bic-member-list">${rows}${vacRow}</div>
+    </div>`;
+  }).join('');
 }
 
 /// ── DIPUTADOS DATA LOADING ──
@@ -1699,8 +1766,18 @@ function onProyCamaraChange(){
         const op=document.createElement('option');op.value=c.nombre;op.textContent=c.nombre;sel.appendChild(op);
       });
     }
-  } else {
-    const o=document.createElement('option');o.value='';o.textContent='En construcción';sel.appendChild(o);
+  } else if(cam==='bicamerales'){
+    if(!bicDataLoaded){
+      loadBicData();
+      const o=document.createElement('option');o.value='__loading__';o.textContent='Cargando datos...';sel.appendChild(o);
+      setTimeout(onProyCamaraChange,1500);
+    } else if(bicDataError||!bicData){
+      const o=document.createElement('option');o.value='';o.textContent='Datos no disponibles';sel.appendChild(o);
+    } else {
+      bicData.comisiones.forEach(c=>{
+        const op=document.createElement('option');op.value=c.nombre;op.textContent=c.nombre;sel.appendChild(op);
+      });
+    }
   }
 }
 
@@ -1719,10 +1796,13 @@ function renderProyeccion(){
 
   let integrantes=[];
   if(cam==='senado'){
-    integrantes=getMembersOrdered(comNombre).map(m=>({nombre:m.name,bloque:getSenatorBloque(m.name),cargo:getRole(comNombre,m.name)||'vocal'}));
+    integrantes=getMembersOrdered(comNombre).map(m=>({nombre:m.name,bloque:getSenatorBloque(m.name),cargo:getRole(comNombre,m.name)||'vocal',camara:'senado'}));
   } else if(cam==='diputados'&&dipData){
     const com=dipData.comisiones.find(c=>c.nombre===comNombre);
-    if(com) integrantes=sortDipMembers(com.integrantes).map(m=>({nombre:m.nombre,bloque:m.bloque,cargo:m.cargo||'vocal'}));
+    if(com) integrantes=sortDipMembers(com.integrantes).map(m=>({nombre:m.nombre,bloque:m.bloque,cargo:m.cargo||'vocal',camara:'diputados'}));
+  } else if(cam==='bicamerales'&&bicData){
+    const com=bicData.comisiones.find(c=>c.nombre===comNombre);
+    if(com) integrantes=com.integrantes.filter(m=>!m.vacante).map(m=>({nombre:m.nombre,bloque:m.bloque||'Sin bloque',cargo:'vocal',camara:m.camara,provincia:m.provincia||''}));
   }
 
   if(!integrantes.length){
@@ -1737,18 +1817,19 @@ function renderProyeccion(){
     _PROY_BLOQUE_IDX[m.bloque].push(i);
   });
 
-  // Build bloque panel (preserves order of first appearance = already sorted by bloque)
+  // Build bloque panel
   if(panel){
     const bloquesOrdenados=[...new Set(integrantes.map(m=>m.bloque))];
     panel.innerHTML=`<div class="proy-bloque-panel-title">Posicionamiento por bloque</div>`+
       bloquesOrdenados.map((b,bi)=>{
-        const bc=cam==='senado'?blqColor(b):blqColorDip(b);
+        const bc=cam==='diputados'?blqColorDip(b):blqColor(b);
         const cnt=_PROY_BLOQUE_IDX[b].length;
         return `<div class="proy-bloque-row">
           <div class="proy-bloque-name"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}<span style="font-size:10px;color:#9CA3AF;margin-left:4px">(${cnt})</span></div>
           <div class="proy-vote-btns">
-            <button class="vote-btn favor" onclick="setVotoBloque(${bi},'favor')">A favor</button>
-            <button class="vote-btn contra" onclick="setVotoBloque(${bi},'contra')">En contra</button>
+            <button class="vote-btn mayoria" onclick="setVotoBloque(${bi},'mayoria')">Mayoría</button>
+            <button class="vote-btn mayoria_dis" onclick="setVotoBloque(${bi},'mayoria_dis')">May. c/ disidencia</button>
+            <button class="vote-btn minoria" onclick="setVotoBloque(${bi},'minoria')">Minoría</button>
             <button class="vote-btn sin" onclick="setVotoBloque(${bi},'sin')">Sin definir</button>
           </div></div>`;
       }).join('');
@@ -1759,16 +1840,19 @@ function renderProyeccion(){
   const cargoLabel={presidente:'Presidente/a',vicepresidente_1:'Vicepresidente/a 1°',vicepresidente_2:'Vicepresidente/a 2°',secretario:'Secretario/a',vocal:'',Vocal:''};
   tbody.innerHTML=integrantes.map((m,i)=>{
     PROY_VOTOS[i]='sin';
-    const bc=cam==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
+    const bc=m.camara==='diputados'?blqColorDip(m.bloque):blqColor(m.bloque);
     const cLabel=cargoLabel[m.cargo]||'';
+    const tipProv=m.camara==='senado'?getSenatorProvincia(m.nombre):(m.provincia||'');
+    const camaraTag=cam==='bicamerales'?`<span class="camara-badge ${m.camara}" style="margin-right:4px">${m.camara==='senado'?'SEN':'DIP'}</span>`:'';
     return `<tr id="proy-row-${i}">
       <td><span class="bloque-dot" style="background:${bc.dot}"></span></td>
-      <td style="font-weight:500"><span class="leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}${cam==='senado'?'<br>'+getSenatorProvincia(m.nombre):''}</span></span></td>
+      <td style="font-weight:500">${camaraTag}<span class="leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}${tipProv?'<br>'+tipProv:''}</span></span></td>
       <td><span style="font-size:11px;padding:2px 7px;border-radius:10px;background:${bc.bg};color:${bc.badge}">${m.bloque}</span></td>
       <td style="font-size:11px;color:#6B7280">${cLabel}</td>
       <td><div class="proy-vote-btns">
-        <button class="vote-btn favor" onclick="setVoto(${i},'favor')">A favor</button>
-        <button class="vote-btn contra" onclick="setVoto(${i},'contra')">En contra</button>
+        <button class="vote-btn mayoria" onclick="setVoto(${i},'mayoria')">Mayoría</button>
+        <button class="vote-btn mayoria_dis" onclick="setVoto(${i},'mayoria_dis')">May. c/ disidencia</button>
+        <button class="vote-btn minoria" onclick="setVoto(${i},'minoria')">Minoría</button>
         <button class="vote-btn sin active" onclick="setVoto(${i},'sin')">Sin definir</button>
       </div></td>
     </tr>`;
@@ -1813,17 +1897,18 @@ function resetProyVotos(){
 function updateDictamenBanner(){
   const vals=Object.values(PROY_VOTOS);
   const total=vals.length;
-  const favor=vals.filter(v=>v==='favor').length;
-  const contra=vals.filter(v=>v==='contra').length;
+  const mayoria=vals.filter(v=>v==='mayoria').length;
+  const mayoriaDisidencia=vals.filter(v=>v==='mayoria_dis').length;
+  const minoria=vals.filter(v=>v==='minoria').length;
   const sin=vals.filter(v=>v==='sin').length;
-  const mayoria=total>0?Math.floor(total/2)+1:1;
-  const hayDictamen=favor>=mayoria&&total>0;
+  const mayoriaAbsoluta=total>0?Math.floor(total/2)+1:1;
+  const hayDictamen=(mayoria+mayoriaDisidencia)>=mayoriaAbsoluta&&total>0;
   const banner=document.getElementById('dictamenBanner');
   banner.className='dictamen-banner '+(hayDictamen?'hay-dictamen':'no-dictamen');
   document.getElementById('dictamenStatus').textContent=hayDictamen?'HAY DICTAMEN':'NO HAY DICTAMEN';
   document.getElementById('dictamenCounter').innerHTML=
-    `<span style="color:#059669">${favor} a favor</span> · <span style="color:#DC2626">${contra} en contra</span> · ${sin} sin definir · ${total} total`;
-  document.getElementById('proyMayoriaLabel').textContent=total>0?`Mayoría absoluta: ${mayoria} votos`:'';
+    `<span style="color:#059669">${mayoria} mayoría</span> · <span style="color:#D97706">${mayoriaDisidencia} may. c/ disidencia</span> · <span style="color:#DC2626">${minoria} minoría</span> · ${sin} sin definir · ${total} total`;
+  document.getElementById('proyMayoriaLabel').textContent=total>0?`Mayoría absoluta: ${mayoriaAbsoluta} votos`:'';
 }
 
 let currentView='comisiones';
@@ -2236,11 +2321,12 @@ function exportProyPdf(){
 
   var vals=Object.values(PROY_VOTOS);
   var total=vals.length;
-  var favor=vals.filter(function(v){return v==='favor';}).length;
-  var contra=vals.filter(function(v){return v==='contra';}).length;
-  var sin=vals.filter(function(v){return v==='sin';}).length;
-  var mayoria=Math.floor(total/2)+1;
-  var hayDictamen=favor>=mayoria&&total>0;
+  var nMayoria=vals.filter(function(v){return v==='mayoria';}).length;
+  var nMayoriaDis=vals.filter(function(v){return v==='mayoria_dis';}).length;
+  var nMinoria=vals.filter(function(v){return v==='minoria';}).length;
+  var nSin=vals.filter(function(v){return v==='sin';}).length;
+  var mayoriaAbsoluta=Math.floor(total/2)+1;
+  var hayDictamen=(nMayoria+nMayoriaDis)>=mayoriaAbsoluta&&total>0;
 
   y+=3;
   var dictColor=hayDictamen?[6,95,70]:[153,27,27];
@@ -2250,7 +2336,7 @@ function exportProyPdf(){
   doc.text(hayDictamen?'HAY DICTAMEN':'NO HAY DICTAMEN',W/2,y+1,{align:'center'});
   y+=9;
   doc.setFont('Poppins','normal');doc.setFontSize(9);doc.setTextColor(74,74,74);
-  doc.text(favor+' a favor · '+contra+' en contra · '+sin+' sin definir · '+total+' total',W/2,y,{align:'center'});
+  doc.text(nMayoria+' mayoría · '+nMayoriaDis+' may. c/ disidencia · '+nMinoria+' minoría · '+nSin+' sin definir · '+total+' total',W/2,y,{align:'center'});
   y+=8;
 
   doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,W-ML-MR,6,'F');
@@ -2274,8 +2360,8 @@ function exportProyPdf(){
     }
     if(idx%2===0){doc.setFillColor(248,250,255);doc.rect(ML,y-3,W-ML-MR,6,'F');}
     var voto=PROY_VOTOS[idx]||'sin';
-    var votoLabel=voto==='favor'?'A favor':voto==='contra'?'En contra':'Sin definir';
-    var votoColor=voto==='favor'?[5,150,105]:voto==='contra'?[220,38,38]:[156,163,175];
+    var votoLabel=voto==='mayoria'?'Mayoría':voto==='mayoria_dis'?'May. c/ disidencia':voto==='minoria'?'Minoría':'Sin definir';
+    var votoColor=voto==='mayoria'?[5,150,105]:voto==='mayoria_dis'?[217,119,6]:voto==='minoria'?[220,38,38]:[156,163,175];
     var cells=row.querySelectorAll('td');
     var nombre=cells[1]?cells[1].textContent.trim():'';
     var bloque=cells[2]?cells[2].textContent.trim():'';
