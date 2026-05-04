@@ -55,6 +55,9 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .member-row:last-child{border-bottom:none}
 .member-row.vacant{color:var(--vacant-txt);font-style:italic;background:var(--vacant-bg)}
 .bloque-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-tooltip{position:relative;cursor:default;display:inline}
+.leg-tooltip .leg-tip{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1e293b;color:#f1f5f9;font-size:11px;line-height:1.5;padding:5px 10px;border-radius:6px;white-space:nowrap;z-index:9999;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.leg-tooltip:hover .leg-tip{display:block} 
 .member-name{flex:1;color:var(--gray-text)}
 .member-role{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;cursor:pointer;flex-shrink:0;border:none;font-family:inherit}
 .badge{font-size:10px;padding:2px 7px;border-radius:10px;cursor:pointer;white-space:nowrap;font-weight:500;border:none;font-family:inherit;flex-shrink:0}
@@ -533,7 +536,87 @@ const SENATOR_BLOQUES = {
   "VISCHI, Eduardo Alejandro":"UCR - UNIÓN CÍVICA RADICAL",
   "ZAMORA, Gerardo":"FRENTE CÍVICO POR SANTIAGO",
 };
+};
 
+const SENATOR_PROVINCIAS = {
+  "ABAD, Maximiliano": "BUENOS AIRES",
+  "ABDALA, Bartolomé Esteban": "SAN LUIS",
+  "ALMEIDA, Romina María": "ENTRE RÍOS",
+  "ALVAREZ RIVERO, Carmen": "CÓRDOBA",
+  "ANDRADA, Guillermo Eduardo": "CATAMARCA",
+  "ARCE, Carlos Omar": "MISIONES",
+  "ARRASCAETA, Ivanna Marcela": "SAN LUIS",
+  "ATAUCHE, Ezequiel": "JUJUY",
+  "ÁVILA, Beatriz Luisa": "TUCUMÁN",
+  "BAHL, Adán Humberto": "ENTRE RÍOS",
+  "BEDIA, Vilma Facunda": "JUJUY",
+  "BENEGAS LYNCH, Joaquín Alberto": "ENTRE RÍOS",
+  "BENSUSÁN, Daniel Pablo": "LA PAMPA",
+  "BULLRICH, Patricia": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+  "CAPITANICH, Jorge Milton": "CHACO",
+  "CARAMBIA, José María": "SANTA CRUZ",
+  "CERVI, Mario Pablo": "NEUQUÉN",
+  "CORPACCI, Lucía Benigna": "CATAMARCA",
+  "CORROZA, Julieta": "NEUQUÉN",
+  "COTO, Agustín Pedro": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "CRISTINA, Andrea Marcela": "CHUBUT",
+  "DE PEDRO, Eduardo Enrique": "BUENOS AIRES",
+  "DI TULLIO, Juliana": "BUENOS AIRES",
+  "ESPÍNOLA, Carlos Mauricio": "CORRIENTES",
+  "FAMA, Flavio Sergio": "CATAMARCA",
+  "FERNÁNDEZ SAGASTI, Anabel": "MENDOZA",
+  "FULLONE, Enzo Paolo": "RÍO NEGRO",
+  "GADANO, Natalia Elena": "SANTA CRUZ",
+  "GALARETTO, Eduardo Horacio": "SANTA FE",
+  "GIMÉNEZ NAVARRO, María Celeste": "SAN JUAN",
+  "GODOY, Juan Cruz": "CHACO",
+  "GOERLING LARA, Enrique Martín": "MISIONES",
+  "GONZÁLEZ, María Teresa Margarita": "FORMOSA",
+  "GUZMÁN CORAITA, Gonzalo": "SALTA",
+  "HUALA, María Victoria": "LA PAMPA",
+  "JUEZ, Luis Alfredo": "CÓRDOBA",
+  "JURI, Mariana": "MENDOZA",
+  "KIRCHNER, Alicia Margarita Antonia": "SANTA CRUZ",
+  "KRONEBERGER, Daniel Ricardo": "LA PAMPA",
+  "LEWANDOWSKI, Marcelo Néstor": "SANTA FE",
+  "LINARES, Carlos Alberto": "CHUBUT",
+  "LÓPEZ, Cándida Cristina": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "LÓPEZ, María Florencia": "LA RIOJA",
+  "LOSADA, Carolina": "SANTA FE",
+  "MANZUR, Juan Luis": "TUCUMÁN",
+  "MARKS, Ana Inés": "RÍO NEGRO",
+  "MÁRQUEZ, Nadia Judith": "NEUQUÉN",
+  "MAYANS, José Miguel Ángel": "FORMOSA",
+  "MENDOZA, Sandra Mariela": "TUCUMÁN",
+  "MOISÉS, María Carolina": "JUJUY",
+  "MONTE DE OCA, María Belén": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "MONTE DE OCA, Belén": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "MONTEVERDE, Agustín Aníbal": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+  "MORENO, Elia Esther del Carmen": "SANTIAGO DEL ESTERO",
+  "NEDER, José Emilio": "SANTIAGO DEL ESTERO",
+  "OLIVERA LUCERO, Bruno Antonio": "SAN JUAN",
+  "OROZCO, María Emilia": "SALTA",
+  "PAGOTTO, Juan Carlos": "LA RIOJA",
+  "PAOLTRONI, Francisco Manuel": "FORMOSA",
+  "RECALDE, Mariano": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+  "REJAL, Fernando": "LA RIOJA",
+  "ROJAS DECUT, Sonia Elizabeth": "MISIONES",
+  "ROYÓN, Flavia Gabriela": "SALTA",
+  "SALINO, Fernando Aldo": "SAN LUIS",
+  "SCHNEIDER, Silvana Lorena": "CHACO",
+  "SORIA, Martín": "RÍO NEGRO",
+  "SUÁREZ, Rodolfo Alejandro": "MENDOZA",
+  "TERENZI, Edith Elizabeth": "CHUBUT",
+  "UÑAC, Sergio Mauricio": "SAN JUAN",
+  "VALENZUELA, Mercedes Gabriela": "CORRIENTES",
+  "VIGO, Alejandra María": "CÓRDOBA",
+  "VISCHI, Eduardo Alejandro": "CORRIENTES",
+  "ZAMORA, Gerardo": "SANTIAGO DEL ESTERO"
+};
+
+function getSenatorProvincia(name){ return SENATOR_PROVINCIAS[name] || ''; }
+
+function normalizeName(s){
 function normalizeName(s){
   if(!s) return s;
   return s.replace(/^AVILA,/,'ÁVILA,').replace(/^ESPINOLA,/,'ESPÍNOLA,');
@@ -1509,7 +1592,7 @@ function renderDipComisiones(search,bloqueFilter){
       const bc=blqColorDip(m.bloque);
       const roleLabel={presidente:'Pres.',vicepresidente_1:'Vpto. 1°',vicepresidente_2:'Vpto. 2°',secretario:'Secr.'}[m.cargo]||'';
       const roleHtml=roleLabel?`<span class="badge original" style="background:${bc.bg};color:${bc.badge}">${roleLabel}</span>`:'';
-      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span><span class="member-name">${m.nombre}</span>${roleHtml}</div>`;
+      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}</span></span>${roleHtml}</div>`;
     }).join('');
     return `<div class="com-card">
       <div class="card-header">
@@ -1539,7 +1622,7 @@ function renderDipDiputados(search,bloqueFilter){
     const d=all[name];
     const bc=blqColorDip(d.bloque);
     const chips=d.comisiones.map(c=>`<span class="chip" style="background:${bc.bg};color:${bc.badge}">${c.com}</span>`).join('');
-    return `<div class="senator-card"><div class="senator-name">${name}</div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+    return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}</span></span>${roleHtml}</div>`; style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
 }
 
@@ -1681,8 +1764,8 @@ function renderProyeccion(){
     const bc=cam==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
     const cLabel=cargoLabel[m.cargo]||'';
     return `<tr id="proy-row-${i}">
-      <td><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span></td>
-      <td style="font-weight:500">${m.nombre}</td>
+      <td><span class="bloque-dot" style="background:${bc.dot}"></span></td>
+      <td style="font-weight:500"><span class="leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}${cam==='senado'?'<br>'+getSenatorProvincia(m.nombre):''}</span></span></td>
       <td><span style="font-size:11px;padding:2px 7px;border-radius:10px;background:${bc.bg};color:${bc.badge}">${m.bloque}</span></td>
       <td style="font-size:11px;color:#6B7280">${cLabel}</td>
       <td><div class="proy-vote-btns">
@@ -1797,7 +1880,8 @@ function renderComisiones(search,bloqueFilter,changeFilter){
       const badgeHtml=m.changed
         ?`<button class="badge changed" onclick="showMemberHistory(${idx})">DPP-${m.dpp}</button>`
         :`<span class="badge original">original</span>`;
-      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${getSenatorBloque(m.name)}"></span><span class="member-name">${m.name}</span>${roleHtml}${badgeHtml}</div>`;
+      const _blq=getSenatorBloque(m.name);const _prv=getSenatorProvincia(m.name);
+return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${m.name}<span class="leg-tip">${_blq}${_prv?'<br>'+_prv:''}</span></span>${roleHtml}${badgeHtml}</div>`;
     }).join('');
     const vacantRows=Array.from({length:vacantes},(_,i)=>
       `<div class="member-row vacant"><span class="bloque-dot" style="background:#E5E7EB"></span><span class="member-name">Vacante ${i+1}</span><span class="badge vacant-badge">sin designar</span></div>`).join('');
@@ -1840,7 +1924,8 @@ function renderSenadores(search,bloqueFilter){
     const d=allSenators[name];
     const bc=blqColor(d.bloque);
     const chips=d.comisiones.map(c=>{const k=Object.keys(senHist).length;senHist[k]={com:c.com,senator:name};return `<button class="chip" onclick="showSenHist(${k})">${c.com}</button>`;}).join('');
-    return `<div class="senator-card"><div class="senator-name">${name}</div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+    const _prv=getSenatorProvincia(name);
+return `<div class="senator-card"><div class="senator-name leg-tooltip">${name}<span class="leg-tip">${d.bloque}${_prv?'<br>'+_prv:''}</span></div><span class="senator-bloque-tag";
   }).join('');
   window._senHist=senHist;
 }
