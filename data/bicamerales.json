@@ -49,32 +49,32 @@
           "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Benegas Lynch, Bertie",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Patiño Brizuela, Marcos",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Moreno Ovalle, Julio",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Peluc, José",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -146,32 +146,32 @@
           "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Patiño Brizuela, Marcos",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Lemoine, Lilia",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Santurio, Santiago",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Razzini, Verónica",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -197,36 +197,140 @@
       ]
     },
     {
+      "id": 104,
+      "nombre": "BICAMERAL PERMANENTE DE FISCALIZACIÓN DE LOS ORGANISMOS Y ACTIVIDADES DE INTELIGENCIA (LEY 25.520)",
+      "integrantes": [
+        {
+          "nombre": "Bornoroni, Gabriel",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Pareja, Sebastián",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Ritondo, Cristian A.",
+          "camara": "diputados",
+          "bloque": "PRO",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Treffinger, César",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
+    },
+    {
       "id": 105,
       "nombre": "BICAMERAL PERMANENTE DE TRÁMITE LEGISLATIVO (LEY 26.122)",
       "integrantes": [
         {
-          "nombre": "VACANTE",
+          "nombre": "Almirón, Lisandro",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Bornoroni, Gabriel",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Castelnuovo, Giselle",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Mayoraz, Nicolás",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "Petri, Luis",
@@ -375,25 +479,25 @@
           "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Ajmechet, Sabrina",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Bongiovanni, Alejandro",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Bornoroni, Gabriel",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "Giudici, Silvana",
@@ -403,11 +507,11 @@
           "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Macyszyn, Lorena",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -493,39 +597,39 @@
           "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Arabia, Damián",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Bornoroni, Gabriel",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Pauli, Santiago",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Rodríguez Machado, Laura Elena",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Zapata, Carlos Raúl",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -611,11 +715,101 @@
           "vacante": false
         },
         {
+          "nombre": "Benedit, Beltrán",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Bornoroni, Gabriel",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Emma, Nicolás",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Martínez, Álvaro",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Quintar, Manuel",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
           "nombre": "VACANTE",
           "camara": "diputados",
           "bloque": "",
           "provincia": "",
           "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "nombre": "BICAMERAL PERMANENTE DE SEGUIMIENTO Y CONTROL DE LA GESTIÓN DE CONTRATACIÓN Y DE PAGO DE LA DEUDA EXTERIOR DE LA NACIÓN (LEY 27.249)",
+      "integrantes": [
+        {
+          "nombre": "Correa Llano, Facundo",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Martínez, Álvaro",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Montenegro, Guillermo",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Sánchez Wrba, Javier",
+          "camara": "diputados",
+          "bloque": "PRO",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Treffinger, César",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -654,14 +848,70 @@
         },
         {
           "nombre": "VACANTE",
-          "camara": "diputados",
+          "camara": "senado",
           "bloque": "",
           "provincia": "",
           "vacante": true
         },
         {
           "nombre": "VACANTE",
-          "camara": "diputados",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
           "bloque": "",
           "provincia": "",
           "vacante": true
@@ -708,25 +958,25 @@
           "vacante": true
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Mayoraz, Nicolás",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Mondaca, Soledad",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Santurio, Santiago",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -791,32 +1041,32 @@
           "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Almirón, Lisandro",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Ansaloni, Pablo",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Huesen, Gerardo",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "Quintar, Manuel",
           "camara": "diputados",
-          "bloque": "",
+          "bloque": "LA LIBERTAD AVANZA",
           "provincia": "",
-          "vacante": true
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -881,11 +1131,80 @@
           "vacante": false
         },
         {
+          "nombre": "Bornoroni, Gabriel",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Correa Llano, Facundo",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Montenegro, Guillermo",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Pauli, Santiago",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
           "nombre": "VACANTE",
           "camara": "diputados",
           "bloque": "",
           "provincia": "",
           "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "diputados",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        }
+      ]
+    },
+    {
+      "id": 472,
+      "nombre": "ADMINISTRADORA DE LA BIBLIOTECA DEL CONGRESO DE LA NACIÓN",
+      "integrantes": [
+        {
+          "nombre": "Ansaloni, Pablo",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Bornoroni, Gabriel",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Huesen, Gerardo",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
+        },
+        {
+          "nombre": "Peluc, José",
+          "camara": "diputados",
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "",
+          "vacante": false
         },
         {
           "nombre": "VACANTE",
@@ -903,21 +1222,42 @@
         },
         {
           "nombre": "VACANTE",
-          "camara": "diputados",
+          "camara": "senado",
           "bloque": "",
           "provincia": "",
           "vacante": true
         },
         {
           "nombre": "VACANTE",
-          "camara": "diputados",
+          "camara": "senado",
           "bloque": "",
           "provincia": "",
           "vacante": true
         },
         {
           "nombre": "VACANTE",
-          "camara": "diputados",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
+          "bloque": "",
+          "provincia": "",
+          "vacante": true
+        },
+        {
+          "nombre": "VACANTE",
+          "camara": "senado",
           "bloque": "",
           "provincia": "",
           "vacante": true
