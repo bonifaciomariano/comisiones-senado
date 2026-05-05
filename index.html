@@ -55,6 +55,9 @@ main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
 .member-row:last-child{border-bottom:none}
 .member-row.vacant{color:var(--vacant-txt);font-style:italic;background:var(--vacant-bg)}
 .bloque-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-tooltip{position:relative;cursor:default;display:inline}
+.leg-tooltip .leg-tip{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1e293b;color:#f1f5f9;font-size:11px;line-height:1.5;padding:5px 10px;border-radius:6px;white-space:nowrap;z-index:9999;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.leg-tooltip:hover .leg-tip{display:block}
 .member-name{flex:1;color:var(--gray-text)}
 .member-role{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;cursor:pointer;flex-shrink:0;border:none;font-family:inherit}
 .badge{font-size:10px;padding:2px 7px;border-radius:10px;cursor:pointer;white-space:nowrap;font-weight:500;border:none;font-family:inherit;flex-shrink:0}
@@ -181,10 +184,19 @@ table.repr tr:hover td{background:#F8FAFF}
 
 /* ── BICAMERALES SECTION ── */
 #section-bicamerales{display:none}
-.under-construction{text-align:center;padding:80px 20px;color:#6B7280}
-.under-construction svg{width:64px;height:64px;margin:0 auto 16px;display:block;color:#D1D5DB}
-.under-construction h2{font-size:18px;font-weight:600;color:var(--blue);margin-bottom:8px}
-.under-construction p{font-size:14px;max-width:400px;margin:0 auto}
+.bic-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.bic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.bic-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .15s}
+.bic-card:hover{box-shadow:0 4px 16px rgba(27,94,162,.1)}
+.bic-card-header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);padding:12px 14px 10px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.bic-card-name{font-size:12px;font-weight:700;color:#fff;line-height:1.35}
+.bic-card-count{font-size:10px;color:rgba(255,255,255,.75);margin-top:2px}
+.bic-member-list{padding:2px 0}
+.bic-member-row{display:flex;align-items:center;gap:5px;padding:5px 12px;border-bottom:1px solid #F1F5F9;font-size:12px}
+.bic-member-row:last-child{border-bottom:none}
+.camara-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;flex-shrink:0;letter-spacing:.3px}
+.camara-badge.senado{background:#EEF2FF;color:#3730A3}
+.camara-badge.diputados{background:#FFF7ED;color:#9A3412}
 
 /* ── PROYECCIÓN SECTION ── */
 #section-proyeccion{display:none}
@@ -213,10 +225,12 @@ table.repr tr:hover td{background:#F8FAFF}
 .proy-table tr:hover td{background:#F8FAFF}
 .proy-vote-btns{display:flex;gap:4px}
 .vote-btn{padding:4px 10px;border:1px solid;border-radius:5px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:background .12s,color .12s}
-.vote-btn.favor{border-color:#059669;color:#059669;background:#fff}
-.vote-btn.favor.active{background:#D1FAE5;border-color:#059669;color:#065F46}
-.vote-btn.contra{border-color:#DC2626;color:#DC2626;background:#fff}
-.vote-btn.contra.active{background:#FEE2E2;border-color:#DC2626;color:#991B1B}
+.vote-btn.mayoria{border-color:#059669;color:#059669;background:#fff}
+.vote-btn.mayoria.active{background:#D1FAE5;border-color:#059669;color:#065F46}
+.vote-btn.mayoria_dis{border-color:#D97706;color:#D97706;background:#fff}
+.vote-btn.mayoria_dis.active{background:#FEF3C7;border-color:#D97706;color:#92400E}
+.vote-btn.minoria{border-color:#DC2626;color:#DC2626;background:#fff}
+.vote-btn.minoria.active{background:#FEE2E2;border-color:#DC2626;color:#991B1B}
 .vote-btn.sin{border-color:#9CA3AF;color:#6B7280;background:#fff}
 .vote-btn.sin.active{background:#F3F4F6;border-color:#6B7280;color:#374151}
 .proy-empty{text-align:center;padding:40px;color:#9CA3AF;font-size:14px}
@@ -321,11 +335,8 @@ table.repr tr:hover td{background:#F8FAFF}
 
   <!-- SECCIÓN BICAMERALES -->
   <div id="section-bicamerales" style="display:none">
-    <div class="under-construction">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
-      <h2>Sección en construcción</h2>
-      <p>Esta sección está en desarrollo y estará disponible próximamente.</p>
-    </div>
+    <div id="bicStatsBar" class="bic-stats"></div>
+    <div id="bicGrid" class="bic-grid"><div class="empty-state">Cargando datos...</div></div>
   </div>
 
   <!-- SECCIÓN PROYECCIÓN -->
@@ -352,7 +363,7 @@ table.repr tr:hover td{background:#F8FAFF}
     </div>
     <div class="dictamen-banner no-dictamen" id="dictamenBanner">
       <span class="dictamen-status" id="dictamenStatus">NO HAY DICTAMEN</span>
-      <span class="dictamen-counter" id="dictamenCounter">0 a favor · 0 en contra · 0 sin definir · 0 total</span>
+      <span class="dictamen-counter" id="dictamenCounter">0 mayoría · 0 may. c/ disidencia · 0 minoría · 0 sin definir · 0 total</span>
     </div>
     <div class="proy-actions">
       <button class="btn-reset-proy" onclick="resetProyVotos()">Resetear posicionamientos</button>
@@ -534,6 +545,345 @@ const SENATOR_BLOQUES = {
   "ZAMORA, Gerardo":"FRENTE CÍVICO POR SANTIAGO",
 };
 
+const SENATOR_PROVINCIAS = {
+  "ABAD, Maximiliano": "BUENOS AIRES",
+  "ABDALA, Bartolomé Esteban": "SAN LUIS",
+  "ALMEIDA, Romina María": "ENTRE RÍOS",
+  "ALVAREZ RIVERO, Carmen": "CÓRDOBA",
+  "ANDRADA, Guillermo Eduardo": "CATAMARCA",
+  "ARCE, Carlos Omar": "MISIONES",
+  "ARRASCAETA, Ivanna Marcela": "SAN LUIS",
+  "ATAUCHE, Ezequiel": "JUJUY",
+  "ÁVILA, Beatriz Luisa": "TUCUMÁN",
+  "BAHL, Adán Humberto": "ENTRE RÍOS",
+  "BEDIA, Vilma Facunda": "JUJUY",
+  "BENEGAS LYNCH, Joaquín Alberto": "ENTRE RÍOS",
+  "BENSUSÁN, Daniel Pablo": "LA PAMPA",
+  "BULLRICH, Patricia": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+  "CAPITANICH, Jorge Milton": "CHACO",
+  "CARAMBIA, José María": "SANTA CRUZ",
+  "CERVI, Mario Pablo": "NEUQUÉN",
+  "CORPACCI, Lucía Benigna": "CATAMARCA",
+  "CORROZA, Julieta": "NEUQUÉN",
+  "COTO, Agustín Pedro": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "CRISTINA, Andrea Marcela": "CHUBUT",
+  "DE PEDRO, Eduardo Enrique": "BUENOS AIRES",
+  "DI TULLIO, Juliana": "BUENOS AIRES",
+  "ESPÍNOLA, Carlos Mauricio": "CORRIENTES",
+  "FAMA, Flavio Sergio": "CATAMARCA",
+  "FERNÁNDEZ SAGASTI, Anabel": "MENDOZA",
+  "FULLONE, Enzo Paolo": "RÍO NEGRO",
+  "GADANO, Natalia Elena": "SANTA CRUZ",
+  "GALARETTO, Eduardo Horacio": "SANTA FE",
+  "GIMÉNEZ NAVARRO, María Celeste": "SAN JUAN",
+  "GODOY, Juan Cruz": "CHACO",
+  "GOERLING LARA, Enrique Martín": "MISIONES",
+  "GONZÁLEZ, María Teresa Margarita": "FORMOSA",
+  "GUZMÁN CORAITA, Gonzalo": "SALTA",
+  "HUALA, María Victoria": "LA PAMPA",
+  "JUEZ, Luis Alfredo": "CÓRDOBA",
+  "JURI, Mariana": "MENDOZA",
+  "KIRCHNER, Alicia Margarita Antonia": "SANTA CRUZ",
+  "KRONEBERGER, Daniel Ricardo": "LA PAMPA",
+  "LEWANDOWSKI, Marcelo Néstor": "SANTA FE",
+  "LINARES, Carlos Alberto": "CHUBUT",
+  "LÓPEZ, Cándida Cristina": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "LÓPEZ, María Florencia": "LA RIOJA",
+  "LOSADA, Carolina": "SANTA FE",
+  "MANZUR, Juan Luis": "TUCUMÁN",
+  "MARKS, Ana Inés": "RÍO NEGRO",
+  "MÁRQUEZ, Nadia Judith": "NEUQUÉN",
+  "MAYANS, José Miguel Ángel": "FORMOSA",
+  "MENDOZA, Sandra Mariela": "TUCUMÁN",
+  "MOISÉS, María Carolina": "JUJUY",
+  "MONTE DE OCA, María Belén": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "MONTE DE OCA, Belén": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+  "MONTEVERDE, Agustín Aníbal": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+  "MORENO, Elia Esther del Carmen": "SANTIAGO DEL ESTERO",
+  "NEDER, José Emilio": "SANTIAGO DEL ESTERO",
+  "OLIVERA LUCERO, Bruno Antonio": "SAN JUAN",
+  "OROZCO, María Emilia": "SALTA",
+  "PAGOTTO, Juan Carlos": "LA RIOJA",
+  "PAOLTRONI, Francisco Manuel": "FORMOSA",
+  "RECALDE, Mariano": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+  "REJAL, Fernando": "LA RIOJA",
+  "ROJAS DECUT, Sonia Elizabeth": "MISIONES",
+  "ROYÓN, Flavia Gabriela": "SALTA",
+  "SALINO, Fernando Aldo": "SAN LUIS",
+  "SCHNEIDER, Silvana Lorena": "CHACO",
+  "SORIA, Martín": "RÍO NEGRO",
+  "SUÁREZ, Rodolfo Alejandro": "MENDOZA",
+  "TERENZI, Edith Elizabeth": "CHUBUT",
+  "UÑAC, Sergio Mauricio": "SAN JUAN",
+  "VALENZUELA, Mercedes Gabriela": "CORRIENTES",
+  "VIGO, Alejandra María": "CÓRDOBA",
+  "VISCHI, Eduardo Alejandro": "CORRIENTES",
+  "ZAMORA, Gerardo": "SANTIAGO DEL ESTERO"
+};
+
+function getSenatorProvincia(name){ return SENATOR_PROVINCIAS[name] || ''; }
+
+const DIP_PROVINCIAS = {
+  "Aguirre, Hilda": "LA RIOJA",
+  "Agüero, Guillermo César": "CHACO",
+  "Ajmechet, Sabrina": "CIUDAD DE BUENOS AIRES",
+  "Almena, Carlos Alberto": "SAN LUIS",
+  "Almirón, Lisandro": "CORRIENTES",
+  "Alí, Ernesto Pipi": "SAN LUIS",
+  "Andino, Cristian": "SAN JUAN",
+  "Andrade, Javier": "CIUDAD DE BUENOS AIRES",
+  "Andreussi, Barbara": "JUJUY",
+  "Ansaloni, Pablo": "BUENOS AIRES",
+  "Arabia, Damián": "CIUDAD DE BUENOS AIRES",
+  "Araujo Hernández, Jorge Neri": "TIERRA DEL FUEGO",
+  "Ardohain, Martín": "LA PAMPA",
+  "Arrieta, Lourdes Micaela": "MENDOZA",
+  "Arrúa, Alberto": "MISIONES",
+  "Aveiro, Martín": "MENDOZA",
+  "Avico, Belén": "CORDOBA",
+  "Avila, Fernanda": "CATAMARCA",
+  "Avila, Jorge Antonio": "CHUBUT",
+  "Banfi, Karina": "BUENOS AIRES",
+  "Barbur, Marcelo": "SANTIAGO DEL ESTERO",
+  "Basterra, Luis Eugenio": "FORMOSA",
+  "Basualdo, Atilio": "FORMOSA",
+  "Basualdo, Carolina": "CORDOBA",
+  "Becerra, Mónica": "SAN LUIS",
+  "Benedit, Beltrán": "ENTRE RIOS",
+  "Benegas Lynch, Bertie": "BUENOS AIRES",
+  "Bianchetti, Emmanuel": "MISIONES",
+  "Biella, Bernardo": "SALTA",
+  "Bongiovanni, Alejandro": "SANTA FE",
+  "Bordet, Gustavo": "ENTRE RIOS",
+  "Borgatta, Alejandrina": "SANTA FE",
+  "Bornoroni, Gabriel": "CORDOBA",
+  "Bregman, Myriam": "CIUDAD DE BUENOS AIRES",
+  "Brizuela, Adrián": "CATAMARCA",
+  "Bruno, Eliana": "SALTA",
+  "Brügge, Juan Fernando": "CORDOBA",
+  "Cafiero, Santiago": "BUENOS AIRES",
+  "Campero, Mariano": "TUCUMAN",
+  "Campitelli, Celia": "SANTIAGO DEL ESTERO",
+  "Campo, Julieta Marisol": "CHACO",
+  "Capozzi, Sergio Eduardo": "RIO NEGRO",
+  "Carignano, Florencia": "SANTA FE",
+  "Carrancio, Alejandro": "BUENOS AIRES",
+  "Casas, Sergio Guillermo": "LA RIOJA",
+  "Castagneto, Carlos Daniel": "BUENOS AIRES",
+  "Castelnuovo, Giselle": "BUENOS AIRES",
+  "Chica, Jorge": "SAN JUAN",
+  "Chiconi, Abel": "SAN JUAN",
+  "Cipolini, Gerardo": "CHACO",
+  "Cisneros, Carlos": "TUCUMAN",
+  "Coletta, Mariela": "CIUDAD DE BUENOS AIRES",
+  "Correa Llano, Facundo": "MENDOZA",
+  "Cámpora, Lucía": "CIUDAD DE BUENOS AIRES",
+  "Daives, Ricardo": "SANTIAGO DEL ESTERO",
+  "De Sensi, María Florencia": "BUENOS AIRES",
+  "Del Plá, Romina": "BUENOS AIRES",
+  "Dolce, Sergio": "CHACO",
+  "Díaz, Fernanda": "BUENOS AIRES",
+  "Emma, Nicolás": "CIUDAD DE BUENOS AIRES",
+  "Estévez, Gabriela Beatriz": "CORDOBA",
+  "Falcone, Eduardo": "BUENOS AIRES",
+  "Fargosi, Alejandro": "CIUDAD DE BUENOS AIRES",
+  "Farías, Pablo": "SANTA FE",
+  "Fernández Molero, Daiana": "CIUDAD DE BUENOS AIRES",
+  "Fernández, Elia Marina": "TUCUMAN",
+  "Ferraro, Maximiliano": "CIUDAD DE BUENOS AIRES",
+  "Ferreyra, Alida": "CIUDAD DE BUENOS AIRES",
+  "Ferrán, Abelardo": "LA PAMPA",
+  "Figliuolo, Sergio": "BUENOS AIRES",
+  "Finocchiaro, Alejandro": "BUENOS AIRES",
+  "Flores, Maria Gabriela": "SALTA",
+  "Frade, Mónica": "BUENOS AIRES",
+  "Fregonese, Alicia": "ENTRE RIOS",
+  "Freites, Andrea": "TIERRA DEL FUEGO",
+  "Frias, Maira": "CHUBUT",
+  "Félix, Emir": "MENDOZA",
+  "Gallardo, María Virginia": "CORRIENTES",
+  "Galmarini, Sebastián": "BUENOS AIRES",
+  "García Aresca, Ignacio": "CORDOBA",
+  "García, Carlos": "CHACO",
+  "García, María Teresa": "BUENOS AIRES",
+  "García, Álvaro": "BUENOS AIRES",
+  "Garrido, José Luis": "SANTA CRUZ",
+  "Giampieri, Antonela": "CIUDAD DE BUENOS AIRES",
+  "Giudici, Silvana": "CIUDAD DE BUENOS AIRES",
+  "Giuliano, Diego A.": "SANTA FE",
+  "Glinski, José": "CHUBUT",
+  "Goitia, Rosario": "CHACO",
+  "Gomez, José": "SANTIAGO DEL ESTERO",
+  "Gonzales, Alfredo": "JUJUY",
+  "González Estevarena, María Luisa": "BUENOS AIRES",
+  "González, Diógenes Ignacio": "CORRIENTES",
+  "González, Gerardo Gustavo": "FORMOSA",
+  "González, Álvaro": "CIUDAD DE BUENOS AIRES",
+  "Grabois, Juan": "BUENOS AIRES",
+  "Gruber, Maura": "MISIONES",
+  "Gutiérrez, Carlos": "CORDOBA",
+  "Gutiérrez, Ramiro": "BUENOS AIRES",
+  "Guzmán, Jairo": "SANTA CRUZ",
+  "Hadad, Raúl": "CORRIENTES",
+  "Hagman, Itai": "CIUDAD DE BUENOS AIRES",
+  "Hartfield, Diego": "MISIONES",
+  "Herrera Ahuad, Oscar A.": "MISIONES",
+  "Holzman, Patricia": "CIUDAD DE BUENOS AIRES",
+  "Huesen, Gerardo": "TUCUMAN",
+  "Humenuk, Gladys": "BUENOS AIRES",
+  "Ianni, Ana María": "SANTA CRUZ",
+  "Ibañez, María Cecilia": "CORDOBA",
+  "Jaime Quiroga, Carlos Gustavo": "SAN JUAN",
+  "Juliano, Pablo": "BUENOS AIRES",
+  "Kirchner, Máximo Carlos": "BUENOS AIRES",
+  "Lanesan Sancho, Moira": "SANTA CRUZ",
+  "Laumann, Andrés Ariel": "ENTRE RIOS",
+  "Leiva, Aldo": "CHACO",
+  "Lemoine, Lilia": "BUENOS AIRES",
+  "Leone, Andrés": "CIUDAD DE BUENOS AIRES",
+  "Llano, Mercedes": "MENDOZA",
+  "Lluch, Enrique": "CORDOBA",
+  "Longo, Johanna Sabrina": "BUENOS AIRES",
+  "Lousteau, Martín": "CIUDAD DE BUENOS AIRES",
+  "Luque, Juan Pablo": "CHUBUT",
+  "López Pasquali, Cecilia": "SANTIAGO DEL ESTERO",
+  "López, Jimena": "BUENOS AIRES",
+  "Macyszyn, Lorena": "BUENOS AIRES",
+  "Mango, Marcelo": "RIO NEGRO",
+  "Manrique, Mario": "BUENOS AIRES",
+  "Marclay, Marianela": "ENTRE RIOS",
+  "Marino, Juan": "BUENOS AIRES",
+  "Martínez, Germán Pedro": "SANTA FE",
+  "Martínez, Álvaro": "MENDOZA",
+  "Marín, Varinia Lis": "LA PAMPA",
+  "Massot, Nicolás": "BUENOS AIRES",
+  "Maureira, Karina": "NEUQUEN",
+  "Mayoraz, Nicolás": "SANTA FE",
+  "Medina, Gladys": "TUCUMAN",
+  "Metral Asensio, Julieta": "MENDOZA",
+  "Michel, Guillermo": "ENTRE RIOS",
+  "Miño, Fernanda": "BUENOS AIRES",
+  "Molina, Juan Carlos": "SANTA CRUZ",
+  "Molinuevo, Soledad": "TUCUMAN",
+  "Molle, Matías": "BUENOS AIRES",
+  "Mondaca, Soledad": "NEUQUEN",
+  "Monguillot, Fernando": "CATAMARCA",
+  "Montenegro, Guillermo": "BUENOS AIRES",
+  "Montenegro, Juan Pablo": "SANTA FE",
+  "Monzón, Roxana": "BUENOS AIRES",
+  "Morchio, Francisco": "ENTRE RIOS",
+  "Moreau, Cecilia": "BUENOS AIRES",
+  "Moreno Ovalle, Julio": "SALTA",
+  "Moyano, Hugo Antonio": "BUENOS AIRES",
+  "Mukdise, Jorge": "SANTIAGO DEL ESTERO",
+  "Muñoz, Gabriela Luciana": "NEUQUEN",
+  "Neder, Estela Mary": "SANTIAGO DEL ESTERO",
+  "Nieri, Lisandro": "MENDOZA",
+  "Niveyro, Miriam": "BUENOS AIRES",
+  "Noguera, Javier": "TUCUMAN",
+  "Nuñez, José": "SANTA FE",
+  "Nóblega, Sebastián": "CATAMARCA",
+  "Ojeda, Joaquín": "BUENOS AIRES",
+  "Olmos, Kelly": "CIUDAD DE BUENOS AIRES",
+  "Osuna, Blanca Inés": "ENTRE RIOS",
+  "Outes, Pablo": "SALTA",
+  "Palazzo, Sergio Omar": "BUENOS AIRES",
+  "Palladino, Claudia María": "CATAMARCA",
+  "Pareja, Sebastián": "BUENOS AIRES",
+  "Parola, María Graciela": "FORMOSA",
+  "Patiño Brizuela, Marcos": "CORDOBA",
+  "Pauli, Santiago": "TIERRA DEL FUEGO",
+  "Paulón, Esteban": "SANTA FE",
+  "Pedrali, Gabriela": "LA RIOJA",
+  "Pellegrini, Agustín": "SANTA FE",
+  "Pelli, Federico Agustín": "TUCUMAN",
+  "Peluc, José": "SAN JUAN",
+  "Penacca, Paula Andrea": "CIUDAD DE BUENOS AIRES",
+  "Petri, Luis": "MENDOZA",
+  "Petrovich, María Lorena": "BUENOS AIRES",
+  "Picat, Luis Albino": "CORDOBA",
+  "Picón Martínez, Nancy Viviana": "SAN JUAN",
+  "Pietragalla Corti, Horacio": "BUENOS AIRES",
+  "Pitrola, Nestor": "BUENOS AIRES",
+  "Pokoik, Lorena": "CIUDAD DE BUENOS AIRES",
+  "Ponce, María Celeste": "CORDOBA",
+  "Potenza, Luciana": "BUENOS AIRES",
+  "Propato, Agustina Lucrecia": "BUENOS AIRES",
+  "Quintar, Manuel": "JUJUY",
+  "Rauschenberger, Ariel": "LA PAMPA",
+  "Ravera, Valentina": "SANTA FE",
+  "Ravier, Adrián": "LA PAMPA",
+  "Razzini, Verónica": "SANTA FE",
+  "Reichardt, Karen": "BUENOS AIRES",
+  "Riesco, Gastón": "NEUQUEN",
+  "Ritondo, Cristian A.": "BUENOS AIRES",
+  "Rizzotti, Jorge": "JUJUY",
+  "Roberto, Santiago Luis": "CIUDAD DE BUENOS AIRES",
+  "Roca, Gonzalo": "CORDOBA",
+  "Rodríguez Machado, Laura Elena": "CORDOBA",
+  "Rodríguez, Miguel": "TIERRA DEL FUEGO",
+  "Rossi, Agustín Oscar": "SANTA FE",
+  "Ruíz, Yamila": "MISIONES",
+  "Salzmann, Marina Dorotea": "BUENOS AIRES",
+  "Sand, Nancy": "CORRIENTES",
+  "Santillán Juárez Brahim, Juliana": "BUENOS AIRES",
+  "Santurio, Santiago": "BUENOS AIRES",
+  "Scaglia, Gisela": "SANTA FE",
+  "Schiaretti, Juan": "CORDOBA",
+  "Schneider, Darío": "ENTRE RIOS",
+  "Selva, Sabrina": "BUENOS AIRES",
+  "Serquis, Adriana Cristina": "RIO NEGRO",
+  "Siley, Vanesa Raquel": "BUENOS AIRES",
+  "Snopek, Guillermo": "JUJUY",
+  "Soldano, Laura": "CORDOBA",
+  "Strada, Julia": "BUENOS AIRES",
+  "Sánchez Wrba, Javier": "BUENOS AIRES",
+  "Taiana, Jorge": "BUENOS AIRES",
+  "Tailhade, Rodolfo": "BUENOS AIRES",
+  "Tepp, Caren": "SANTA FE",
+  "Tita, Paulo Agustín": "TIERRA DEL FUEGO",
+  "Todero, Pablo": "NEUQUEN",
+  "Tolosa Paz, Victoria": "BUENOS AIRES",
+  "Tomassoni, Yamile": "SANTA FE",
+  "Torres, Alejandra": "CORDOBA",
+  "Torres, Rubén Darío": "BUENOS AIRES",
+  "Tortoriello, Aníbal": "RIO NEGRO",
+  "Tournier, José Federico": "CORRIENTES",
+  "Treffinger, César": "CHUBUT",
+  "Trotta, Nicolás Alfredo": "BUENOS AIRES",
+  "Urien, Hernán": "BUENOS AIRES",
+  "Valdés, Eduardo Félix": "CIUDAD DE BUENOS AIRES",
+  "Vancsik, Daniel": "MISIONES",
+  "Vega, Yolanda": "SALTA",
+  "Velázquez, M. Elena": "BUENOS AIRES",
+  "Vera, Andrea Fernanda": "BUENOS AIRES",
+  "Verasay, Pamela Fernanda": "MENDOZA",
+  "Villaverde, Lorena": "RIO NEGRO",
+  "Visconti, Gino": "LA RIOJA",
+  "Volnovich, Luana": "BUENOS AIRES",
+  "Vásquez, Patricia": "BUENOS AIRES",
+  "Yasky, Hugo": "BUENOS AIRES",
+  "Yedlin, Pablo Raúl": "TUCUMAN",
+  "Yeza, Martín": "BUENOS AIRES",
+  "Zago, Oscar": "CIUDAD DE BUENOS AIRES",
+  "Zapata, Carlos Raúl": "SALTA",
+  "Zaracho, Natalia": "BUENOS AIRES",
+  "Zigarán, María Inés": "JUJUY",
+  "Zulli, Christian Alejandro": "CORRIENTES",
+  "de Andreis, Fernando": "CIUDAD DE BUENOS AIRES",
+  "de la Rosa, María Graciela": "FORMOSA",
+  "del Caño, Nicolás": "BUENOS AIRES",
+  "Álvarez, Claudio": "SAN LUIS"
+};
+function getDipProvincia(name){ return DIP_PROVINCIAS[name] || ''; }
+
+function formatDipNombre(nombre){
+  // "Giudici, Silvana" -> "GIUDICI, Silvana"
+  const comma=nombre.indexOf(',');
+  if(comma===-1) return nombre.toUpperCase();
+  return nombre.slice(0,comma).toUpperCase()+nombre.slice(comma);
+}
+
 function normalizeName(s){
   if(!s) return s;
   return s.replace(/^AVILA,/,'ÁVILA,').replace(/^ESPINOLA,/,'ESPÍNOLA,');
@@ -587,6 +937,7 @@ const DPP_DATES = {
   '38/26':'28/04/2026',
   '39/26':'29/04/2026',
   '40/26':'29/04/2026',
+  '41/26':'30/04/2026',
 };
 
 const RAW_CHANGES = [
@@ -1205,6 +1556,7 @@ const RAW_CHANGES = [
 {dpp:'39/26',comision:'De Economías Regionales, Economía Social, Micro, Pequeña y Mediana Empresa',tipo:'replace',senador:'ARCE, Carlos Omar',reemplaza:'ÁVILA, Beatriz Luisa'},
 {dpp:'40/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'replace',senador:'ABAD, Maximiliano',reemplaza:'GALARETTO, Eduardo Horacio'},
 {dpp:'40/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'replace',senador:'ESPÍNOLA, Carlos Mauricio',reemplaza:'VIGO, Alejandra María'},
+{dpp:'41/26',comision:'De Acuerdos',tipo:'replace',senador:'ALVAREZ RIVERO, Carmen',reemplaza:'MÁRQUEZ, Nadia Judith'},  
 // ══ AGREGAR NUEVOS DPP AQUÍ ══
 ];
 
@@ -1224,7 +1576,7 @@ const AUTORIDADES = {
   'De Economías Regionales, Economía Social, Micro, Pequeña y Mediana Empresa': {pres:'', vice:'', secr:''},
   'De Educación y Cultura': {pres:'', vice:'', secr:''},
   'De Industria y Comercio': {pres:'', vice:'', secr:''},
-  'De Infraestructura, Vivienda y Transporte': {pres:'', vice:'', secr:''},
+  'De Infraestructura, Vivienda y Transporte': {pres:'ÁVILA, Beatriz Luisa', vice:'FULLONE, Enzo Paolo', secr:''},
   'De Justicia y Asuntos Penales': {pres:'GUZMÁN CORAITA, Gonzalo', vice:'', secr:''},
   'De Legislación General': {pres:'MÁRQUEZ, Nadia Judith', vice:'BENSUSÁN, Daniel Pablo', secr:''},
   'De Minería, Energía y Combustibles': {pres:'FAMA, Flavio Sergio', vice:'', secr:''},
@@ -1402,6 +1754,10 @@ let dipDataLoaded=false;
 let dipDataError=false;
 let currentDipView='comisiones';
 
+let bicData=null;
+let bicDataLoaded=false;
+let bicDataError=false;
+
 function setSection(sec,btn){
   currentSection=sec;
   document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
@@ -1418,12 +1774,69 @@ function setSection(sec,btn){
     renderAll();
   } else if(sec==='diputados'){
     loadDipData();
+  } else if(sec==='bicamerales'){
+    document.getElementById('statsBar').innerHTML='';
+    loadBicData();
   } else if(sec==='proyeccion'){
     document.getElementById('statsBar').innerHTML='';
     onProyCamaraChange();
   } else {
     document.getElementById('statsBar').innerHTML='';
   }
+}
+
+// ── BICAMERALES DATA LOADING ──
+function loadBicData(){
+  if(bicDataLoaded){renderBicamerales();return;}
+  fetch('data/bicamerales.json')
+    .then(r=>{if(!r.ok)throw new Error('404');return r.json();})
+    .then(d=>{
+      bicData=d;
+      bicDataLoaded=true;
+      renderBicamerales();
+    })
+    .catch(()=>{
+      bicDataError=true;bicDataLoaded=true;
+      document.getElementById('bicGrid').innerHTML='<div class="empty-state">No se pudieron cargar los datos de Bicamerales.</div>';
+    });
+}
+
+function renderBicamerales(){
+  if(!bicData){return;}
+  const coms=bicData.comisiones||[];
+  const statsBar=document.getElementById('bicStatsBar');
+  const grid=document.getElementById('bicGrid');
+  const totalMiembros=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante).length,0);
+  const totalSen=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante&&m.camara==='senado').length,0);
+  const totalDip=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante&&m.camara==='diputados').length,0);
+  statsBar.innerHTML=`
+    <div class="stat-card"><div class="stat-n">${coms.length}</div><div class="stat-l">comisiones bicamerales</div></div>
+    <div class="stat-card"><div class="stat-n">${totalSen}</div><div class="stat-l">senadores/as</div></div>
+    <div class="stat-card"><div class="stat-n">${totalDip}</div><div class="stat-l">diputados/as</div></div>`;
+  if(!coms.length){grid.innerHTML='<div class="empty-state">No hay comisiones bicamerales registradas.</div>';return;}
+  grid.innerHTML=coms.map(c=>{
+    const miembros=c.integrantes.filter(m=>!m.vacante);
+    const vacantes=c.integrantes.filter(m=>m.vacante);
+    const rows=miembros.map(m=>{
+      const bc=m.camara==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
+      const tipExtra=m.camara==='senado'?(m.provincia?'<br>'+m.provincia:''):(getDipProvincia(m.nombre)?'<br>'+getDipProvincia(m.nombre):'');
+      const camaraLabel=m.camara==='senado'?'SEN':'DIP';
+      const _dispNombre=m.camara==='diputados'?formatDipNombre(m.nombre):m.nombre;
+      return `<div class="bic-member-row">
+        <span class="bloque-dot" style="background:${bc.dot||'#9CA3AF'}"></span>
+        <span class="camara-badge ${m.camara}">${camaraLabel}</span>
+        <span class="member-name leg-tooltip">${_dispNombre}<span class="leg-tip">${m.bloque||'Sin bloque'}${tipExtra}</span></span>
+      </div>`;
+    }).join('');
+    const vacRow=vacantes.length?`<div class="bic-member-row" style="color:#9CA3AF;font-style:italic"><span class="bloque-dot" style="background:#E5E7EB"></span><span style="font-size:11px">${vacantes.length} vacante${vacantes.length!==1?'s':''}</span></div>`:'';
+    return `<div class="bic-card">
+      <div class="bic-card-header">
+        <div class="bic-card-name">${c.nombre}</div>
+        <div class="bic-card-count">${miembros.length} integrantes · ${miembros.filter(m=>m.camara==='senado').length} senadores · ${miembros.filter(m=>m.camara==='diputados').length} diputados</div>
+      </div>
+      <div class="bic-member-list">${rows}${vacRow}</div>
+    </div>`;
+  }).join('');
 }
 
 /// ── DIPUTADOS DATA LOADING ──
@@ -1509,7 +1922,8 @@ function renderDipComisiones(search,bloqueFilter){
       const bc=blqColorDip(m.bloque);
       const roleLabel={presidente:'Pres.',vicepresidente_1:'Vpto. 1°',vicepresidente_2:'Vpto. 2°',secretario:'Secr.'}[m.cargo]||'';
       const roleHtml=roleLabel?`<span class="badge original" style="background:${bc.bg};color:${bc.badge}">${roleLabel}</span>`:'';
-      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span><span class="member-name">${m.nombre}</span>${roleHtml}</div>`;
+      const _dpv=getDipProvincia(m.nombre);
+      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${formatDipNombre(m.nombre)}<span class="leg-tip">${m.bloque}${_dpv?'<br>'+_dpv:''}</span></span>${roleHtml}</div>`;
     }).join('');
     return `<div class="com-card">
       <div class="card-header">
@@ -1539,7 +1953,8 @@ function renderDipDiputados(search,bloqueFilter){
     const d=all[name];
     const bc=blqColorDip(d.bloque);
     const chips=d.comisiones.map(c=>`<span class="chip" style="background:${bc.bg};color:${bc.badge}">${c.com}</span>`).join('');
-    return `<div class="senator-card"><div class="senator-name">${name}</div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+    const _dpv=getDipProvincia(name);
+    return `<div class="senator-card"><div class="senator-name leg-tooltip">${formatDipNombre(name)}<span class="leg-tip">${d.bloque}${_dpv?'<br>'+_dpv:''}</span></div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
 }
 
@@ -1618,8 +2033,18 @@ function onProyCamaraChange(){
         const op=document.createElement('option');op.value=c.nombre;op.textContent=c.nombre;sel.appendChild(op);
       });
     }
-  } else {
-    const o=document.createElement('option');o.value='';o.textContent='En construcción';sel.appendChild(o);
+  } else if(cam==='bicamerales'){
+    if(!bicDataLoaded){
+      loadBicData();
+      const o=document.createElement('option');o.value='__loading__';o.textContent='Cargando datos...';sel.appendChild(o);
+      setTimeout(onProyCamaraChange,1500);
+    } else if(bicDataError||!bicData){
+      const o=document.createElement('option');o.value='';o.textContent='Datos no disponibles';sel.appendChild(o);
+    } else {
+      bicData.comisiones.forEach(c=>{
+        const op=document.createElement('option');op.value=c.nombre;op.textContent=c.nombre;sel.appendChild(op);
+      });
+    }
   }
 }
 
@@ -1638,10 +2063,13 @@ function renderProyeccion(){
 
   let integrantes=[];
   if(cam==='senado'){
-    integrantes=getMembersOrdered(comNombre).map(m=>({nombre:m.name,bloque:getSenatorBloque(m.name),cargo:getRole(comNombre,m.name)||'vocal'}));
+    integrantes=getMembersOrdered(comNombre).map(m=>({nombre:m.name,bloque:getSenatorBloque(m.name),cargo:getRole(comNombre,m.name)||'vocal',camara:'senado'}));
   } else if(cam==='diputados'&&dipData){
     const com=dipData.comisiones.find(c=>c.nombre===comNombre);
-    if(com) integrantes=sortDipMembers(com.integrantes).map(m=>({nombre:m.nombre,bloque:m.bloque,cargo:m.cargo||'vocal'}));
+    if(com) integrantes=sortDipMembers(com.integrantes).map(m=>({nombre:m.nombre,bloque:m.bloque,cargo:m.cargo||'vocal',camara:'diputados'}));
+  } else if(cam==='bicamerales'&&bicData){
+    const com=bicData.comisiones.find(c=>c.nombre===comNombre);
+    if(com) integrantes=com.integrantes.filter(m=>!m.vacante).map(m=>({nombre:m.nombre,bloque:m.bloque||'Sin bloque',cargo:'vocal',camara:m.camara,provincia:m.provincia||''}));
   }
 
   if(!integrantes.length){
@@ -1656,18 +2084,19 @@ function renderProyeccion(){
     _PROY_BLOQUE_IDX[m.bloque].push(i);
   });
 
-  // Build bloque panel (preserves order of first appearance = already sorted by bloque)
+  // Build bloque panel
   if(panel){
     const bloquesOrdenados=[...new Set(integrantes.map(m=>m.bloque))];
     panel.innerHTML=`<div class="proy-bloque-panel-title">Posicionamiento por bloque</div>`+
       bloquesOrdenados.map((b,bi)=>{
-        const bc=cam==='senado'?blqColor(b):blqColorDip(b);
+        const bc=cam==='diputados'?blqColorDip(b):blqColor(b);
         const cnt=_PROY_BLOQUE_IDX[b].length;
         return `<div class="proy-bloque-row">
           <div class="proy-bloque-name"><span class="blq-dot-table" style="background:${bc.dot}"></span>${b}<span style="font-size:10px;color:#9CA3AF;margin-left:4px">(${cnt})</span></div>
           <div class="proy-vote-btns">
-            <button class="vote-btn favor" onclick="setVotoBloque(${bi},'favor')">A favor</button>
-            <button class="vote-btn contra" onclick="setVotoBloque(${bi},'contra')">En contra</button>
+            <button class="vote-btn mayoria" onclick="setVotoBloque(${bi},'mayoria')">Mayoría</button>
+            <button class="vote-btn mayoria_dis" onclick="setVotoBloque(${bi},'mayoria_dis')">May. c/ disidencia</button>
+            <button class="vote-btn minoria" onclick="setVotoBloque(${bi},'minoria')">Minoría</button>
             <button class="vote-btn sin" onclick="setVotoBloque(${bi},'sin')">Sin definir</button>
           </div></div>`;
       }).join('');
@@ -1678,16 +2107,19 @@ function renderProyeccion(){
   const cargoLabel={presidente:'Presidente/a',vicepresidente_1:'Vicepresidente/a 1°',vicepresidente_2:'Vicepresidente/a 2°',secretario:'Secretario/a',vocal:'',Vocal:''};
   tbody.innerHTML=integrantes.map((m,i)=>{
     PROY_VOTOS[i]='sin';
-    const bc=cam==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
+    const bc=m.camara==='diputados'?blqColorDip(m.bloque):blqColor(m.bloque);
     const cLabel=cargoLabel[m.cargo]||'';
+    const tipProv=m.camara==='senado'?getSenatorProvincia(m.nombre):(m.provincia||'');
+    const camaraTag=cam==='bicamerales'?`<span class="camara-badge ${m.camara}" style="margin-right:4px">${m.camara==='senado'?'SEN':'DIP'}</span>`:'';
     return `<tr id="proy-row-${i}">
-      <td><span class="bloque-dot" style="background:${bc.dot}" title="${m.bloque}"></span></td>
-      <td style="font-weight:500">${m.nombre}</td>
+      <td><span class="bloque-dot" style="background:${bc.dot}"></span></td>
+      <td style="font-weight:500">${camaraTag}<span class="leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}${tipProv?'<br>'+tipProv:''}</span></span></td>
       <td><span style="font-size:11px;padding:2px 7px;border-radius:10px;background:${bc.bg};color:${bc.badge}">${m.bloque}</span></td>
       <td style="font-size:11px;color:#6B7280">${cLabel}</td>
       <td><div class="proy-vote-btns">
-        <button class="vote-btn favor" onclick="setVoto(${i},'favor')">A favor</button>
-        <button class="vote-btn contra" onclick="setVoto(${i},'contra')">En contra</button>
+        <button class="vote-btn mayoria" onclick="setVoto(${i},'mayoria')">Mayoría</button>
+        <button class="vote-btn mayoria_dis" onclick="setVoto(${i},'mayoria_dis')">May. c/ disidencia</button>
+        <button class="vote-btn minoria" onclick="setVoto(${i},'minoria')">Minoría</button>
         <button class="vote-btn sin active" onclick="setVoto(${i},'sin')">Sin definir</button>
       </div></td>
     </tr>`;
@@ -1732,17 +2164,18 @@ function resetProyVotos(){
 function updateDictamenBanner(){
   const vals=Object.values(PROY_VOTOS);
   const total=vals.length;
-  const favor=vals.filter(v=>v==='favor').length;
-  const contra=vals.filter(v=>v==='contra').length;
+  const mayoria=vals.filter(v=>v==='mayoria').length;
+  const mayoriaDisidencia=vals.filter(v=>v==='mayoria_dis').length;
+  const minoria=vals.filter(v=>v==='minoria').length;
   const sin=vals.filter(v=>v==='sin').length;
-  const mayoria=total>0?Math.floor(total/2)+1:1;
-  const hayDictamen=favor>=mayoria&&total>0;
+  const mayoriaAbsoluta=total>0?Math.floor(total/2)+1:1;
+  const hayDictamen=(mayoria+mayoriaDisidencia)>=mayoriaAbsoluta&&total>0;
   const banner=document.getElementById('dictamenBanner');
   banner.className='dictamen-banner '+(hayDictamen?'hay-dictamen':'no-dictamen');
   document.getElementById('dictamenStatus').textContent=hayDictamen?'HAY DICTAMEN':'NO HAY DICTAMEN';
   document.getElementById('dictamenCounter').innerHTML=
-    `<span style="color:#059669">${favor} a favor</span> · <span style="color:#DC2626">${contra} en contra</span> · ${sin} sin definir · ${total} total`;
-  document.getElementById('proyMayoriaLabel').textContent=total>0?`Mayoría absoluta: ${mayoria} votos`:'';
+    `<span style="color:#059669">${mayoria} mayoría</span> · <span style="color:#D97706">${mayoriaDisidencia} may. c/ disidencia</span> · <span style="color:#DC2626">${minoria} minoría</span> · ${sin} sin definir · ${total} total`;
+  document.getElementById('proyMayoriaLabel').textContent=total>0?`Mayoría absoluta: ${mayoriaAbsoluta} votos`:'';
 }
 
 let currentView='comisiones';
@@ -1797,7 +2230,8 @@ function renderComisiones(search,bloqueFilter,changeFilter){
       const badgeHtml=m.changed
         ?`<button class="badge changed" onclick="showMemberHistory(${idx})">DPP-${m.dpp}</button>`
         :`<span class="badge original">original</span>`;
-      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}" title="${getSenatorBloque(m.name)}"></span><span class="member-name">${m.name}</span>${roleHtml}${badgeHtml}</div>`;
+      const _blq=getSenatorBloque(m.name);const _prv=getSenatorProvincia(m.name);
+return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${m.name}<span class="leg-tip">${_blq}${_prv?'<br>'+_prv:''}</span></span>${roleHtml}${badgeHtml}</div>`;
     }).join('');
     const vacantRows=Array.from({length:vacantes},(_,i)=>
       `<div class="member-row vacant"><span class="bloque-dot" style="background:#E5E7EB"></span><span class="member-name">Vacante ${i+1}</span><span class="badge vacant-badge">sin designar</span></div>`).join('');
@@ -1840,7 +2274,8 @@ function renderSenadores(search,bloqueFilter){
     const d=allSenators[name];
     const bc=blqColor(d.bloque);
     const chips=d.comisiones.map(c=>{const k=Object.keys(senHist).length;senHist[k]={com:c.com,senator:name};return `<button class="chip" onclick="showSenHist(${k})">${c.com}</button>`;}).join('');
-    return `<div class="senator-card"><div class="senator-name">${name}</div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+    const _prv=getSenatorProvincia(name);
+    return `<div class="senator-card"><div class="senator-name leg-tooltip">${name}<span class="leg-tip">${d.bloque}${_prv?'<br>'+_prv:''}</span></div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
   window._senHist=senHist;
 }
@@ -2153,11 +2588,12 @@ function exportProyPdf(){
 
   var vals=Object.values(PROY_VOTOS);
   var total=vals.length;
-  var favor=vals.filter(function(v){return v==='favor';}).length;
-  var contra=vals.filter(function(v){return v==='contra';}).length;
-  var sin=vals.filter(function(v){return v==='sin';}).length;
-  var mayoria=Math.floor(total/2)+1;
-  var hayDictamen=favor>=mayoria&&total>0;
+  var nMayoria=vals.filter(function(v){return v==='mayoria';}).length;
+  var nMayoriaDis=vals.filter(function(v){return v==='mayoria_dis';}).length;
+  var nMinoria=vals.filter(function(v){return v==='minoria';}).length;
+  var nSin=vals.filter(function(v){return v==='sin';}).length;
+  var mayoriaAbsoluta=Math.floor(total/2)+1;
+  var hayDictamen=(nMayoria+nMayoriaDis)>=mayoriaAbsoluta&&total>0;
 
   y+=3;
   var dictColor=hayDictamen?[6,95,70]:[153,27,27];
@@ -2167,7 +2603,7 @@ function exportProyPdf(){
   doc.text(hayDictamen?'HAY DICTAMEN':'NO HAY DICTAMEN',W/2,y+1,{align:'center'});
   y+=9;
   doc.setFont('Poppins','normal');doc.setFontSize(9);doc.setTextColor(74,74,74);
-  doc.text(favor+' a favor · '+contra+' en contra · '+sin+' sin definir · '+total+' total',W/2,y,{align:'center'});
+  doc.text(nMayoria+' mayoría · '+nMayoriaDis+' may. c/ disidencia · '+nMinoria+' minoría · '+nSin+' sin definir · '+total+' total',W/2,y,{align:'center'});
   y+=8;
 
   doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,W-ML-MR,6,'F');
@@ -2191,8 +2627,8 @@ function exportProyPdf(){
     }
     if(idx%2===0){doc.setFillColor(248,250,255);doc.rect(ML,y-3,W-ML-MR,6,'F');}
     var voto=PROY_VOTOS[idx]||'sin';
-    var votoLabel=voto==='favor'?'A favor':voto==='contra'?'En contra':'Sin definir';
-    var votoColor=voto==='favor'?[5,150,105]:voto==='contra'?[220,38,38]:[156,163,175];
+    var votoLabel=voto==='mayoria'?'Mayoría':voto==='mayoria_dis'?'May. c/ disidencia':voto==='minoria'?'Minoría':'Sin definir';
+    var votoColor=voto==='mayoria'?[5,150,105]:voto==='mayoria_dis'?[217,119,6]:voto==='minoria'?[220,38,38]:[156,163,175];
     var cells=row.querySelectorAll('td');
     var nombre=cells[1]?cells[1].textContent.trim():'';
     var bloque=cells[2]?cells[2].textContent.trim():'';
