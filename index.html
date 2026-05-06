@@ -941,6 +941,8 @@ const DPP_DATES = {
   '39/26':'29/04/2026',
   '40/26':'29/04/2026',
   '41/26':'30/04/2026',
+  '43/26':'06/05/2026',
+  '44/26':'06/05/2026',
 };
 
 const RAW_CHANGES = [
@@ -1559,7 +1561,16 @@ const RAW_CHANGES = [
 {dpp:'39/26',comision:'De Economías Regionales, Economía Social, Micro, Pequeña y Mediana Empresa',tipo:'replace',senador:'ARCE, Carlos Omar',reemplaza:'ÁVILA, Beatriz Luisa'},
 {dpp:'40/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'replace',senador:'ABAD, Maximiliano',reemplaza:'GALARETTO, Eduardo Horacio'},
 {dpp:'40/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'replace',senador:'ESPÍNOLA, Carlos Mauricio',reemplaza:'VIGO, Alejandra María'},
-{dpp:'41/26',comision:'De Acuerdos',tipo:'replace',senador:'ALVAREZ RIVERO, Carmen',reemplaza:'MÁRQUEZ, Nadia Judith'},  
+{dpp:'41/26',comision:'De Acuerdos',tipo:'replace',senador:'ALVAREZ RIVERO, Carmen',reemplaza:'MÁRQUEZ, Nadia Judith'},
+{dpp:'43/26',comision:'De Presupuesto y Hacienda',tipo:'replace',senador:'FAMA, Flavio Sergio',reemplaza:'VISCHI, Eduardo Alejandro'},
+{dpp:'43/26',comision:'De Acuerdos',tipo:'replace',senador:'ROJAS DECUT, Sonia Elizabeth',reemplaza:'ARCE, Carlos Omar'},
+{dpp:'43/26',comision:'De Acuerdos',tipo:'replace',senador:'MÁRQUEZ, Nadia Judith',reemplaza:'ALVAREZ RIVERO, Carmen'},
+{dpp:'43/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'replace',senador:'GALARETTO, Eduardo Horacio',reemplaza:'ABAD, Maximiliano'},
+{dpp:'43/26',comision:'De Infraestructura, Vivienda y Transporte',tipo:'replace',senador:'PAOLTRONI, Francisco Manuel',reemplaza:'GODOY, Juan Cruz'},
+{dpp:'43/26',comision:'De Legislación General',tipo:'replace',senador:'GUZMÁN CORAITA, Gonzalo',reemplaza:'COTO, Agustín Pedro'},
+{dpp:'43/26',comision:'De Asuntos Administrativos y Municipales',tipo:'replace',senador:'COTO, Agustín Pedro',reemplaza:'GUZMÁN CORAITA, Gonzalo'},
+{dpp:'43/26',comision:'De Educación y Cultura',tipo:'replace',senador:'KRONEBERGER, Daniel Ricardo',reemplaza:'FAMA, Flavio Sergio'},
+{dpp:'44/26',comision:'Comisión Permanente Parlamentaria Mixta Revisora de Cuentas',tipo:'replace',senador:'VALENZUELA, Mercedes Gabriela',reemplaza:'FAMA, Flavio Sergio'},
 // ══ AGREGAR NUEVOS DPP AQUÍ ══
 ];
 
@@ -1593,6 +1604,41 @@ const AUTORIDADES = {
   'De Turismo': {pres:'JURI, Mariana', vice:'', secr:''},
 };
 // ── AUTORIDADES_END ──
+
+// ── AUTORIDADES_BIC — editá pres/vice/secr para cada comisión bicameral ──
+const AUTORIDADES_BIC = {
+  'ADMINISTRADORA DEL ""EDIFICIO DEL MOLINO"" (LEY 27.009)':                                                                                                            {pres:'', vice:'', secr:''},
+  'BICAMERAL CIUDAD DE BUENOS AIRES (LEY 24.588)':                                                                                                                      {pres:'', vice:'', secr:''},
+  'BICAMERAL DE MONITOREO E IMPLEMENTACIÓN DEL CÓDIGO PROCESAL PENAL FEDERAL (LEY 27.063 Y SUS MODIFICATORIAS LEY 27.150, DECRETO 257/2015 Y LEY 27.482)':             {pres:'', vice:'', secr:''},
+  'BICAMERAL PARA LA REFORMA TRIBUTARIA (LEY 27.260)':                                                                                                                  {pres:'', vice:'', secr:''},
+  'BICAMERAL ASESORA DE LA FEDERACIÓN ARGENTINA DE MUNICIPIOS (LEY 24.807)':                                                                                            {pres:'', vice:'', secr:''},
+  'BICAMERAL DE CONTROL DE LOS FONDOS DE LA SEGURIDAD SOCIAL (LEY 26.425)':                                                                                            {pres:'', vice:'', secr:''},
+  'BICAMERAL DE REFORMA DEL ESTADO Y DEL SEGUIMIENTO DE LAS PRIVATIZACIONES (LEY 23.696)':                                                                             {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE FISCALIZACIÓN DE LOS ORGANISMOS Y ACTIVIDADES DE INTELIGENCIA (LEY 25.520)':                                                                {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE FISCALIZACIÓN DE LOS ÓRGANOS Y ACTIVIDADES DE SEGURIDAD INTERIOR  (LEY 24.059 Y SUS MODIFICATORIAS LEYES 24.194 Y 25.520)':                {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE LA DEFENSORÍA DEL PUEBLO':                                                                                                                   {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE PROMOCIÓN Y SEGUIMIENTO DE LA COMUNICACIÓN AUDIOVISUAL, LAS TECNOLOGÍAS DE LAS TELECOMUNICACIONES Y LA DIGITALIZACIÓN (LEY 26.522,Y SUS MODIFICATORIAS  27.078 Y DNU 267/15)': {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE SEGUIMIENTO DE CONTRATOS DE PARTICIPACIÓN PÚBLICO-PRIVADA (LEY 27.328)':                                                                    {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE SEGUIMIENTO Y CONTROL DE LA GESTIÓN DE CONTRATACIÓN Y DE PAGO DE LA DEUDA EXTERIOR DE LA NACIÓN (LEY 27.249)':                             {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE SEGUIMIENTO Y CONTROL DEL MINISTERIO PÚBLICO DE LA NACIÓN (LEY 24.946 Y SUS MODIFICATORIAS LEY 27.148 Y 27.149)':                          {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DE TRÁMITE LEGISLATIVO (LEY 26.122)':                                                                                                          {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DEL DEFENSOR DE LOS DERECHOS DE NIÑAS, NIÑOS Y ADOLESCENTES (LEY 26.061)':                                                                    {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE DEL DIGESTO  JURÍDICO ARGENTINO (LEY 26.939)':                                                                                                 {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE INTERPARLAMENTARIA ARGENTINO-MEXICANA':                                                                                                         {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE PARLAMENTARIA CONJUNTA ARGENTINO-CHILENA':                                                                                                      {pres:'', vice:'', secr:''},
+  'BICAMERAL PERMANENTE PARLAMENTARIA MIXTA REVISORA DE CUENTAS':                                                                                                       {pres:'ATAUCHE, Ezequiel', vice:'', secr:''},
+  'DE INTEGRACIÓN BILATERAL Y COOPERACIÓN ENTRE LA REPÚBLICA ARGENTINA Y LA REPÚBLICA FEDERATIVA DE BRASIL':                                                           {pres:'', vice:'', secr:''},
+};
+// ── AUTORIDADES_BIC_END ──
+
+function getBicRole(com, nombre){
+  const a = AUTORIDADES_BIC[com];
+  if(!a) return null;
+  if(a.pres && a.pres === nombre) return 'Presidente';
+  if(a.vice && a.vice === nombre) return 'Vicepresidente';
+  if(a.secr && a.secr === nombre) return 'Secretario/a';
+  return null;
+}
 
 function getRole(com,senator){
   var a=AUTORIDADES[com];
@@ -1813,7 +1859,7 @@ function renderBicamerales(){
   const coms=bicData.comisiones||[];
   const statsBar=document.getElementById('bicStatsBar');
   const grid=document.getElementById('bicGrid');
-  const bicConst=coms.filter(c=>c.integrantes.some(m=>!m.vacante)).length;
+  const bicConst=coms.filter(c=>{const a=AUTORIDADES_BIC[c.nombre];return a&&a.pres;}).length;
   const bicSinConst=coms.length-bicConst;
   const bicConVac=coms.filter(c=>c.integrantes.some(m=>m.vacante)).length;
   const _bc=k=>k===bicStatsFilter?'stat-card stat-filter stat-active':'stat-card stat-filter';
@@ -1823,8 +1869,8 @@ function renderBicamerales(){
     <div class="${_bc('conVacantes')}" onclick="setBicStatsFilter('conVacantes')"><div class="stat-n">${bicConVac}</div><div class="stat-l">comisiones con vacantes</div></div>`;
   if(!coms.length){grid.innerHTML='<div class="empty-state">No hay comisiones bicamerales registradas.</div>';return;}
   let filtered=coms;
-  if(bicStatsFilter==='constituida') filtered=coms.filter(c=>c.integrantes.some(m=>!m.vacante));
-  else if(bicStatsFilter==='sinConstituir') filtered=coms.filter(c=>!c.integrantes.some(m=>!m.vacante));
+  if(bicStatsFilter==='constituida') filtered=coms.filter(c=>{const a=AUTORIDADES_BIC[c.nombre];return a&&a.pres;});
+  else if(bicStatsFilter==='sinConstituir') filtered=coms.filter(c=>{const a=AUTORIDADES_BIC[c.nombre];return !a||!a.pres;});
   else if(bicStatsFilter==='conVacantes') filtered=coms.filter(c=>c.integrantes.some(m=>m.vacante));
   grid.innerHTML=filtered.map(c=>{
     const miembros=c.integrantes.filter(m=>!m.vacante);
@@ -1834,10 +1880,12 @@ function renderBicamerales(){
       const tipExtra=m.camara==='senado'?(m.provincia?'<br>'+m.provincia:''):(getDipProvincia(m.nombre)?'<br>'+getDipProvincia(m.nombre):'');
       const camaraLabel=m.camara==='senado'?'SEN':'DIP';
       const _dispNombre=m.camara==='diputados'?formatDipNombre(m.nombre):m.nombre;
+      const bicRole=getBicRole(c.nombre,m.nombre);
+      const roleHtml=bicRole?`<button class="member-role role-${bicRole==='Presidente'?'pres':bicRole==='Vicepresidente'?'vice':'secr'}">${bicRole==='Presidente'?'Pres.':bicRole==='Vicepresidente'?'Vpto.':'Secr.'}</button>`:'';
       return `<div class="bic-member-row">
         <span class="bloque-dot" style="background:${bc.dot||'#9CA3AF'}"></span>
         <span class="camara-badge ${m.camara}">${camaraLabel}</span>
-        <span class="member-name leg-tooltip">${_dispNombre}<span class="leg-tip">${m.bloque||'Sin bloque'}${tipExtra}</span></span>
+        <span class="member-name leg-tooltip">${_dispNombre}<span class="leg-tip">${m.bloque||'Sin bloque'}${tipExtra}</span></span>${roleHtml}
       </div>`;
     }).join('');
     const vacRow=vacantes.length?`<div class="bic-member-row" style="color:#9CA3AF;font-style:italic"><span class="bloque-dot" style="background:#E5E7EB"></span><span style="font-size:11px">${vacantes.length} vacante${vacantes.length!==1?'s':''}</span></div>`:'';
