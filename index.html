@@ -37,6 +37,9 @@ select:focus{border-color:var(--blue)}
 .tab-btn:hover:not(.active){color:var(--blue)}
 .stats-bar{display:flex;gap:10px;flex-wrap:wrap;padding:12px 20px;max-width:1700px;margin:0 auto}
 .stat-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:8px 16px}
+.stat-card.stat-filter{cursor:pointer;transition:border-color .15s,background .15s}
+.stat-card.stat-filter:hover{border-color:#93c5fd}
+.stat-card.stat-filter.stat-active{border-color:var(--primary);background:#eff6ff}
 .stat-n{font-size:22px;font-weight:700;color:var(--blue);line-height:1}
 .stat-l{font-size:11px;color:#6B7280;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 main{max-width:1700px;margin:0 auto;padding:16px 20px 60px}
@@ -1758,6 +1761,10 @@ let bicData=null;
 let bicDataLoaded=false;
 let bicDataError=false;
 
+let senStatsFilter=null;
+let dipStatsFilter=null;
+let bicStatsFilter=null;
+
 function setSection(sec,btn){
   currentSection=sec;
   document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
@@ -1806,15 +1813,20 @@ function renderBicamerales(){
   const coms=bicData.comisiones||[];
   const statsBar=document.getElementById('bicStatsBar');
   const grid=document.getElementById('bicGrid');
-  const totalMiembros=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante).length,0);
-  const totalSen=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante&&m.camara==='senado').length,0);
-  const totalDip=coms.reduce((s,c)=>s+c.integrantes.filter(m=>!m.vacante&&m.camara==='diputados').length,0);
+  const bicConst=coms.filter(c=>c.integrantes.some(m=>!m.vacante)).length;
+  const bicSinConst=coms.length-bicConst;
+  const bicConVac=coms.filter(c=>c.integrantes.some(m=>m.vacante)).length;
+  const _bc=k=>k===bicStatsFilter?'stat-card stat-filter stat-active':'stat-card stat-filter';
   statsBar.innerHTML=`
-    <div class="stat-card"><div class="stat-n">${coms.length}</div><div class="stat-l">comisiones bicamerales</div></div>
-    <div class="stat-card"><div class="stat-n">${totalSen}</div><div class="stat-l">senadores/as</div></div>
-    <div class="stat-card"><div class="stat-n">${totalDip}</div><div class="stat-l">diputados/as</div></div>`;
+    <div class="${_bc('constituida')}" onclick="setBicStatsFilter('constituida')"><div class="stat-n">${bicConst}</div><div class="stat-l">comisiones constituidas</div></div>
+    <div class="${_bc('sinConstituir')}" onclick="setBicStatsFilter('sinConstituir')"><div class="stat-n">${bicSinConst}</div><div class="stat-l">comisiones sin constituir</div></div>
+    <div class="${_bc('conVacantes')}" onclick="setBicStatsFilter('conVacantes')"><div class="stat-n">${bicConVac}</div><div class="stat-l">comisiones con vacantes</div></div>`;
   if(!coms.length){grid.innerHTML='<div class="empty-state">No hay comisiones bicamerales registradas.</div>';return;}
-  grid.innerHTML=coms.map(c=>{
+  let filtered=coms;
+  if(bicStatsFilter==='constituida') filtered=coms.filter(c=>c.integrantes.some(m=>!m.vacante));
+  else if(bicStatsFilter==='sinConstituir') filtered=coms.filter(c=>!c.integrantes.some(m=>!m.vacante));
+  else if(bicStatsFilter==='conVacantes') filtered=coms.filter(c=>c.integrantes.some(m=>m.vacante));
+  grid.innerHTML=filtered.map(c=>{
     const miembros=c.integrantes.filter(m=>!m.vacante);
     const vacantes=c.integrantes.filter(m=>m.vacante);
     const rows=miembros.map(m=>{
@@ -1836,7 +1848,7 @@ function renderBicamerales(){
       </div>
       <div class="bic-member-list">${rows}${vacRow}</div>
     </div>`;
-  }).join('');
+  }).join('')||'<div class="empty-state">No se encontraron comisiones con ese criterio.</div>';
 }
 
 /// ── DIPUTADOS DATA LOADING ──
@@ -1886,12 +1898,14 @@ function renderDipAll(){
   if(dipDataError){renderDipNoData();return;}
   const search=document.getElementById('dipSearchBox').value.toLowerCase().trim();
   const bloqueFilter=document.getElementById('dipFilterBloque').value;
-  const total=dipData.comisiones.length;
-  const act=dipData.actualizado?new Date(dipData.actualizado).toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
+  const dipConst=dipData.comisiones.filter(c=>c.integrantes.some(m=>m.cargo==='presidente')).length;
+  const dipSinConst=dipData.comisiones.length-dipConst;
+  const dipConVac=dipData.comisiones.filter(c=>c.integrantes.some(m=>m.cargo==='presidente')&&!c.integrantes.some(m=>m.cargo==='vicepresidente_1')).length;
+  const _dc=k=>k===dipStatsFilter?'stat-card stat-filter stat-active':'stat-card stat-filter';
   document.getElementById('statsBar').innerHTML=`
-    <div class="stat-card"><div class="stat-n">${total}</div><div class="stat-l">comisiones permanentes</div></div>
-    <div class="stat-card"><div class="stat-n">${dipData.comisiones.reduce((s,c)=>s+c.integrantes.length,0)}</div><div class="stat-l">designaciones totales</div></div>
-    ${act?`<div class="stat-card"><div class="stat-n" style="font-size:14px">${act}</div><div class="stat-l">última actualización</div></div>`:''}`;
+    <div class="${_dc('constituida')}" onclick="setDipStatsFilter('constituida')"><div class="stat-n">${dipConst}</div><div class="stat-l">comisiones constituidas</div></div>
+    <div class="${_dc('sinConstituir')}" onclick="setDipStatsFilter('sinConstituir')"><div class="stat-n">${dipSinConst}</div><div class="stat-l">comisiones sin constituir</div></div>
+    <div class="${_dc('conVacantes')}" onclick="setDipStatsFilter('conVacantes')"><div class="stat-n">${dipConVac}</div><div class="stat-l">comisiones con vacantes</div></div>`;
   if(currentDipView==='comisiones') renderDipComisiones(search,bloqueFilter);
   else if(currentDipView==='diputados') renderDipDiputados(search,bloqueFilter);
   else renderDipRepr();
@@ -1910,6 +1924,9 @@ function setDipView(v,btn){
 function renderDipComisiones(search,bloqueFilter){
   if(!dipData) return;
   let list=dipData.comisiones.filter(c=>{
+    if(dipStatsFilter==='constituida'&&!c.integrantes.some(m=>m.cargo==='presidente')) return false;
+    else if(dipStatsFilter==='sinConstituir'&&c.integrantes.some(m=>m.cargo==='presidente')) return false;
+    else if(dipStatsFilter==='conVacantes'&&!(c.integrantes.some(m=>m.cargo==='presidente')&&!c.integrantes.some(m=>m.cargo==='vicepresidente_1'))) return false;
     if(bloqueFilter!=='all'&&!c.integrantes.some(m=>m.bloque===bloqueFilter)) return false;
     if(search&&!c.nombre.toLowerCase().includes(search)&&!c.integrantes.some(m=>m.nombre.toLowerCase().includes(search))) return false;
     return true;
@@ -2193,21 +2210,30 @@ function renderAll(){
   const search=document.getElementById('searchBox').value.toLowerCase().trim();
   const bloqueFilter=document.getElementById('filterBloque').value;
   const changeFilter=document.getElementById('filterChanges').value;
-  let totalVac=0;
-  ALL_COMISIONES.forEach(c=>{totalVac+=getVacantes(c.nombre);});
+  const senConst=ALL_COMISIONES.filter(c=>{const a=AUTORIDADES[c.nombre];return a&&a.pres;}).length;
+  const senSinConst=ALL_COMISIONES.length-senConst;
+  const senConVac=ALL_COMISIONES.filter(c=>getVacantes(c.nombre)>0).length;
+  const _sc=k=>k===senStatsFilter?'stat-card stat-filter stat-active':'stat-card stat-filter';
   document.getElementById('statsBar').innerHTML=`
-    <div class="stat-card"><div class="stat-n">${ALL_COMISIONES.length}</div><div class="stat-l">comisiones unicamerales</div></div>
-    <div class="stat-card"><div class="stat-n">${totalVac}</div><div class="stat-l">vacantes totales</div></div>
-    <div class="stat-card"><div class="stat-n">${ALL_COMISIONES.filter(c=>getVacantes(c.nombre)>0).length}</div><div class="stat-l">comisiones con vacantes</div></div>`;
+    <div class="${_sc('constituida')}" onclick="setSenStatsFilter('constituida')"><div class="stat-n">${senConst}</div><div class="stat-l">comisiones constituidas</div></div>
+    <div class="${_sc('sinConstituir')}" onclick="setSenStatsFilter('sinConstituir')"><div class="stat-n">${senSinConst}</div><div class="stat-l">comisiones sin constituir</div></div>
+    <div class="${_sc('conVacantes')}" onclick="setSenStatsFilter('conVacantes')"><div class="stat-n">${senConVac}</div><div class="stat-l">comisiones con vacantes</div></div>`;
   if(currentView==='comisiones') renderComisiones(search,bloqueFilter,changeFilter);
   else if(currentView==='senadores') renderSenadores(search,bloqueFilter);
   else renderRepr();
 }
 
+function setSenStatsFilter(k){senStatsFilter=senStatsFilter===k?null:k;renderAll();}
+function setDipStatsFilter(k){dipStatsFilter=dipStatsFilter===k?null:k;renderDipAll();}
+function setBicStatsFilter(k){bicStatsFilter=bicStatsFilter===k?null:k;renderBicamerales();}
+
 function renderComisiones(search,bloqueFilter,changeFilter){
   _roleIdx=0;Object.keys(_roleMap).forEach(k=>delete _roleMap[k]);
   let list=ALL_COMISIONES.filter(c=>{
     const members=getMembersOrdered(c.nombre);
+    if(senStatsFilter==='constituida'){const a=AUTORIDADES[c.nombre];if(!a||!a.pres) return false;}
+    else if(senStatsFilter==='sinConstituir'){const a=AUTORIDADES[c.nombre];if(a&&a.pres) return false;}
+    else if(senStatsFilter==='conVacantes'){if(getVacantes(c.nombre)===0) return false;}
     if(changeFilter==='changed'&&!members.some(m=>m.changed)) return false;
     if(changeFilter==='vacant'&&getVacantes(c.nombre)===0) return false;
     if(bloqueFilter!=='all'&&!members.some(m=>getSenatorBloque(m.name)===bloqueFilter)) return false;
