@@ -186,12 +186,13 @@ table.repr tr:hover td{background:#F8FAFF}
 #section-bicamerales{display:none}
 .bic-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
 .bic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-.bic-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.bic-card-header{padding:10px 14px;background:var(--blue-light);border-bottom:1px solid var(--border)}
-.bic-card-name{font-size:12px;font-weight:700;color:var(--blue);line-height:1.35}
-.bic-card-count{font-size:10px;color:#6B7280;margin-top:2px}
-.bic-member-list{padding:6px 0}
-.bic-member-row{display:flex;align-items:center;gap:8px;padding:5px 14px;border-bottom:1px solid #F8FAFF}
+.bic-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .15s}
+.bic-card:hover{box-shadow:0 4px 16px rgba(27,94,162,.1)}
+.bic-card-header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);padding:12px 14px 10px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.bic-card-name{font-size:12px;font-weight:700;color:#fff;line-height:1.35}
+.bic-card-count{font-size:10px;color:rgba(255,255,255,.75);margin-top:2px}
+.bic-member-list{padding:2px 0}
+.bic-member-row{display:flex;align-items:center;gap:5px;padding:5px 12px;border-bottom:1px solid #F1F5F9;font-size:12px}
 .bic-member-row:last-child{border-bottom:none}
 .camara-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;flex-shrink:0;letter-spacing:.3px}
 .camara-badge.senado{background:#EEF2FF;color:#3730A3}
@@ -621,6 +622,267 @@ const SENATOR_PROVINCIAS = {
 };
 
 function getSenatorProvincia(name){ return SENATOR_PROVINCIAS[name] || ''; }
+
+const DIP_PROVINCIAS = {
+  "Aguirre, Hilda": "LA RIOJA",
+  "Agüero, Guillermo César": "CHACO",
+  "Ajmechet, Sabrina": "CIUDAD DE BUENOS AIRES",
+  "Almena, Carlos Alberto": "SAN LUIS",
+  "Almirón, Lisandro": "CORRIENTES",
+  "Alí, Ernesto Pipi": "SAN LUIS",
+  "Andino, Cristian": "SAN JUAN",
+  "Andrade, Javier": "CIUDAD DE BUENOS AIRES",
+  "Andreussi, Barbara": "JUJUY",
+  "Ansaloni, Pablo": "BUENOS AIRES",
+  "Arabia, Damián": "CIUDAD DE BUENOS AIRES",
+  "Araujo Hernández, Jorge Neri": "TIERRA DEL FUEGO",
+  "Ardohain, Martín": "LA PAMPA",
+  "Arrieta, Lourdes Micaela": "MENDOZA",
+  "Arrúa, Alberto": "MISIONES",
+  "Aveiro, Martín": "MENDOZA",
+  "Avico, Belén": "CORDOBA",
+  "Avila, Fernanda": "CATAMARCA",
+  "Avila, Jorge Antonio": "CHUBUT",
+  "Banfi, Karina": "BUENOS AIRES",
+  "Barbur, Marcelo": "SANTIAGO DEL ESTERO",
+  "Basterra, Luis Eugenio": "FORMOSA",
+  "Basualdo, Atilio": "FORMOSA",
+  "Basualdo, Carolina": "CORDOBA",
+  "Becerra, Mónica": "SAN LUIS",
+  "Benedit, Beltrán": "ENTRE RIOS",
+  "Benegas Lynch, Bertie": "BUENOS AIRES",
+  "Bianchetti, Emmanuel": "MISIONES",
+  "Biella, Bernardo": "SALTA",
+  "Bongiovanni, Alejandro": "SANTA FE",
+  "Bordet, Gustavo": "ENTRE RIOS",
+  "Borgatta, Alejandrina": "SANTA FE",
+  "Bornoroni, Gabriel": "CORDOBA",
+  "Bregman, Myriam": "CIUDAD DE BUENOS AIRES",
+  "Brizuela, Adrián": "CATAMARCA",
+  "Bruno, Eliana": "SALTA",
+  "Brügge, Juan Fernando": "CORDOBA",
+  "Cafiero, Santiago": "BUENOS AIRES",
+  "Campero, Mariano": "TUCUMAN",
+  "Campitelli, Celia": "SANTIAGO DEL ESTERO",
+  "Campo, Julieta Marisol": "CHACO",
+  "Capozzi, Sergio Eduardo": "RIO NEGRO",
+  "Carignano, Florencia": "SANTA FE",
+  "Carrancio, Alejandro": "BUENOS AIRES",
+  "Casas, Sergio Guillermo": "LA RIOJA",
+  "Castagneto, Carlos Daniel": "BUENOS AIRES",
+  "Castelnuovo, Giselle": "BUENOS AIRES",
+  "Chica, Jorge": "SAN JUAN",
+  "Chiconi, Abel": "SAN JUAN",
+  "Cipolini, Gerardo": "CHACO",
+  "Cisneros, Carlos": "TUCUMAN",
+  "Coletta, Mariela": "CIUDAD DE BUENOS AIRES",
+  "Correa Llano, Facundo": "MENDOZA",
+  "Cámpora, Lucía": "CIUDAD DE BUENOS AIRES",
+  "Daives, Ricardo": "SANTIAGO DEL ESTERO",
+  "De Sensi, María Florencia": "BUENOS AIRES",
+  "Del Plá, Romina": "BUENOS AIRES",
+  "Dolce, Sergio": "CHACO",
+  "Díaz, Fernanda": "BUENOS AIRES",
+  "Emma, Nicolás": "CIUDAD DE BUENOS AIRES",
+  "Estévez, Gabriela Beatriz": "CORDOBA",
+  "Falcone, Eduardo": "BUENOS AIRES",
+  "Fargosi, Alejandro": "CIUDAD DE BUENOS AIRES",
+  "Farías, Pablo": "SANTA FE",
+  "Fernández Molero, Daiana": "CIUDAD DE BUENOS AIRES",
+  "Fernández, Elia Marina": "TUCUMAN",
+  "Ferraro, Maximiliano": "CIUDAD DE BUENOS AIRES",
+  "Ferreyra, Alida": "CIUDAD DE BUENOS AIRES",
+  "Ferrán, Abelardo": "LA PAMPA",
+  "Figliuolo, Sergio": "BUENOS AIRES",
+  "Finocchiaro, Alejandro": "BUENOS AIRES",
+  "Flores, Maria Gabriela": "SALTA",
+  "Frade, Mónica": "BUENOS AIRES",
+  "Fregonese, Alicia": "ENTRE RIOS",
+  "Freites, Andrea": "TIERRA DEL FUEGO",
+  "Frias, Maira": "CHUBUT",
+  "Félix, Emir": "MENDOZA",
+  "Gallardo, María Virginia": "CORRIENTES",
+  "Galmarini, Sebastián": "BUENOS AIRES",
+  "García Aresca, Ignacio": "CORDOBA",
+  "García, Carlos": "CHACO",
+  "García, María Teresa": "BUENOS AIRES",
+  "García, Álvaro": "BUENOS AIRES",
+  "Garrido, José Luis": "SANTA CRUZ",
+  "Giampieri, Antonela": "CIUDAD DE BUENOS AIRES",
+  "Giudici, Silvana": "CIUDAD DE BUENOS AIRES",
+  "Giuliano, Diego A.": "SANTA FE",
+  "Glinski, José": "CHUBUT",
+  "Goitia, Rosario": "CHACO",
+  "Gomez, José": "SANTIAGO DEL ESTERO",
+  "Gonzales, Alfredo": "JUJUY",
+  "González Estevarena, María Luisa": "BUENOS AIRES",
+  "González, Diógenes Ignacio": "CORRIENTES",
+  "González, Gerardo Gustavo": "FORMOSA",
+  "González, Álvaro": "CIUDAD DE BUENOS AIRES",
+  "Grabois, Juan": "BUENOS AIRES",
+  "Gruber, Maura": "MISIONES",
+  "Gutiérrez, Carlos": "CORDOBA",
+  "Gutiérrez, Ramiro": "BUENOS AIRES",
+  "Guzmán, Jairo": "SANTA CRUZ",
+  "Hadad, Raúl": "CORRIENTES",
+  "Hagman, Itai": "CIUDAD DE BUENOS AIRES",
+  "Hartfield, Diego": "MISIONES",
+  "Herrera Ahuad, Oscar A.": "MISIONES",
+  "Holzman, Patricia": "CIUDAD DE BUENOS AIRES",
+  "Huesen, Gerardo": "TUCUMAN",
+  "Humenuk, Gladys": "BUENOS AIRES",
+  "Ianni, Ana María": "SANTA CRUZ",
+  "Ibañez, María Cecilia": "CORDOBA",
+  "Jaime Quiroga, Carlos Gustavo": "SAN JUAN",
+  "Juliano, Pablo": "BUENOS AIRES",
+  "Kirchner, Máximo Carlos": "BUENOS AIRES",
+  "Lanesan Sancho, Moira": "SANTA CRUZ",
+  "Laumann, Andrés Ariel": "ENTRE RIOS",
+  "Leiva, Aldo": "CHACO",
+  "Lemoine, Lilia": "BUENOS AIRES",
+  "Leone, Andrés": "CIUDAD DE BUENOS AIRES",
+  "Llano, Mercedes": "MENDOZA",
+  "Lluch, Enrique": "CORDOBA",
+  "Longo, Johanna Sabrina": "BUENOS AIRES",
+  "Lousteau, Martín": "CIUDAD DE BUENOS AIRES",
+  "Luque, Juan Pablo": "CHUBUT",
+  "López Pasquali, Cecilia": "SANTIAGO DEL ESTERO",
+  "López, Jimena": "BUENOS AIRES",
+  "Macyszyn, Lorena": "BUENOS AIRES",
+  "Mango, Marcelo": "RIO NEGRO",
+  "Manrique, Mario": "BUENOS AIRES",
+  "Marclay, Marianela": "ENTRE RIOS",
+  "Marino, Juan": "BUENOS AIRES",
+  "Martínez, Germán Pedro": "SANTA FE",
+  "Martínez, Álvaro": "MENDOZA",
+  "Marín, Varinia Lis": "LA PAMPA",
+  "Massot, Nicolás": "BUENOS AIRES",
+  "Maureira, Karina": "NEUQUEN",
+  "Mayoraz, Nicolás": "SANTA FE",
+  "Medina, Gladys": "TUCUMAN",
+  "Metral Asensio, Julieta": "MENDOZA",
+  "Michel, Guillermo": "ENTRE RIOS",
+  "Miño, Fernanda": "BUENOS AIRES",
+  "Molina, Juan Carlos": "SANTA CRUZ",
+  "Molinuevo, Soledad": "TUCUMAN",
+  "Molle, Matías": "BUENOS AIRES",
+  "Mondaca, Soledad": "NEUQUEN",
+  "Monguillot, Fernando": "CATAMARCA",
+  "Montenegro, Guillermo": "BUENOS AIRES",
+  "Montenegro, Juan Pablo": "SANTA FE",
+  "Monzón, Roxana": "BUENOS AIRES",
+  "Morchio, Francisco": "ENTRE RIOS",
+  "Moreau, Cecilia": "BUENOS AIRES",
+  "Moreno Ovalle, Julio": "SALTA",
+  "Moyano, Hugo Antonio": "BUENOS AIRES",
+  "Mukdise, Jorge": "SANTIAGO DEL ESTERO",
+  "Muñoz, Gabriela Luciana": "NEUQUEN",
+  "Neder, Estela Mary": "SANTIAGO DEL ESTERO",
+  "Nieri, Lisandro": "MENDOZA",
+  "Niveyro, Miriam": "BUENOS AIRES",
+  "Noguera, Javier": "TUCUMAN",
+  "Nuñez, José": "SANTA FE",
+  "Nóblega, Sebastián": "CATAMARCA",
+  "Ojeda, Joaquín": "BUENOS AIRES",
+  "Olmos, Kelly": "CIUDAD DE BUENOS AIRES",
+  "Osuna, Blanca Inés": "ENTRE RIOS",
+  "Outes, Pablo": "SALTA",
+  "Palazzo, Sergio Omar": "BUENOS AIRES",
+  "Palladino, Claudia María": "CATAMARCA",
+  "Pareja, Sebastián": "BUENOS AIRES",
+  "Parola, María Graciela": "FORMOSA",
+  "Patiño Brizuela, Marcos": "CORDOBA",
+  "Pauli, Santiago": "TIERRA DEL FUEGO",
+  "Paulón, Esteban": "SANTA FE",
+  "Pedrali, Gabriela": "LA RIOJA",
+  "Pellegrini, Agustín": "SANTA FE",
+  "Pelli, Federico Agustín": "TUCUMAN",
+  "Peluc, José": "SAN JUAN",
+  "Penacca, Paula Andrea": "CIUDAD DE BUENOS AIRES",
+  "Petri, Luis": "MENDOZA",
+  "Petrovich, María Lorena": "BUENOS AIRES",
+  "Picat, Luis Albino": "CORDOBA",
+  "Picón Martínez, Nancy Viviana": "SAN JUAN",
+  "Pietragalla Corti, Horacio": "BUENOS AIRES",
+  "Pitrola, Nestor": "BUENOS AIRES",
+  "Pokoik, Lorena": "CIUDAD DE BUENOS AIRES",
+  "Ponce, María Celeste": "CORDOBA",
+  "Potenza, Luciana": "BUENOS AIRES",
+  "Propato, Agustina Lucrecia": "BUENOS AIRES",
+  "Quintar, Manuel": "JUJUY",
+  "Rauschenberger, Ariel": "LA PAMPA",
+  "Ravera, Valentina": "SANTA FE",
+  "Ravier, Adrián": "LA PAMPA",
+  "Razzini, Verónica": "SANTA FE",
+  "Reichardt, Karen": "BUENOS AIRES",
+  "Riesco, Gastón": "NEUQUEN",
+  "Ritondo, Cristian A.": "BUENOS AIRES",
+  "Rizzotti, Jorge": "JUJUY",
+  "Roberto, Santiago Luis": "CIUDAD DE BUENOS AIRES",
+  "Roca, Gonzalo": "CORDOBA",
+  "Rodríguez Machado, Laura Elena": "CORDOBA",
+  "Rodríguez, Miguel": "TIERRA DEL FUEGO",
+  "Rossi, Agustín Oscar": "SANTA FE",
+  "Ruíz, Yamila": "MISIONES",
+  "Salzmann, Marina Dorotea": "BUENOS AIRES",
+  "Sand, Nancy": "CORRIENTES",
+  "Santillán Juárez Brahim, Juliana": "BUENOS AIRES",
+  "Santurio, Santiago": "BUENOS AIRES",
+  "Scaglia, Gisela": "SANTA FE",
+  "Schiaretti, Juan": "CORDOBA",
+  "Schneider, Darío": "ENTRE RIOS",
+  "Selva, Sabrina": "BUENOS AIRES",
+  "Serquis, Adriana Cristina": "RIO NEGRO",
+  "Siley, Vanesa Raquel": "BUENOS AIRES",
+  "Snopek, Guillermo": "JUJUY",
+  "Soldano, Laura": "CORDOBA",
+  "Strada, Julia": "BUENOS AIRES",
+  "Sánchez Wrba, Javier": "BUENOS AIRES",
+  "Taiana, Jorge": "BUENOS AIRES",
+  "Tailhade, Rodolfo": "BUENOS AIRES",
+  "Tepp, Caren": "SANTA FE",
+  "Tita, Paulo Agustín": "TIERRA DEL FUEGO",
+  "Todero, Pablo": "NEUQUEN",
+  "Tolosa Paz, Victoria": "BUENOS AIRES",
+  "Tomassoni, Yamile": "SANTA FE",
+  "Torres, Alejandra": "CORDOBA",
+  "Torres, Rubén Darío": "BUENOS AIRES",
+  "Tortoriello, Aníbal": "RIO NEGRO",
+  "Tournier, José Federico": "CORRIENTES",
+  "Treffinger, César": "CHUBUT",
+  "Trotta, Nicolás Alfredo": "BUENOS AIRES",
+  "Urien, Hernán": "BUENOS AIRES",
+  "Valdés, Eduardo Félix": "CIUDAD DE BUENOS AIRES",
+  "Vancsik, Daniel": "MISIONES",
+  "Vega, Yolanda": "SALTA",
+  "Velázquez, M. Elena": "BUENOS AIRES",
+  "Vera, Andrea Fernanda": "BUENOS AIRES",
+  "Verasay, Pamela Fernanda": "MENDOZA",
+  "Villaverde, Lorena": "RIO NEGRO",
+  "Visconti, Gino": "LA RIOJA",
+  "Volnovich, Luana": "BUENOS AIRES",
+  "Vásquez, Patricia": "BUENOS AIRES",
+  "Yasky, Hugo": "BUENOS AIRES",
+  "Yedlin, Pablo Raúl": "TUCUMAN",
+  "Yeza, Martín": "BUENOS AIRES",
+  "Zago, Oscar": "CIUDAD DE BUENOS AIRES",
+  "Zapata, Carlos Raúl": "SALTA",
+  "Zaracho, Natalia": "BUENOS AIRES",
+  "Zigarán, María Inés": "JUJUY",
+  "Zulli, Christian Alejandro": "CORRIENTES",
+  "de Andreis, Fernando": "CIUDAD DE BUENOS AIRES",
+  "de la Rosa, María Graciela": "FORMOSA",
+  "del Caño, Nicolás": "BUENOS AIRES",
+  "Álvarez, Claudio": "SAN LUIS"
+};
+function getDipProvincia(name){ return DIP_PROVINCIAS[name] || ''; }
+
+function formatDipNombre(nombre){
+  // "Giudici, Silvana" -> "GIUDICI, Silvana"
+  const comma=nombre.indexOf(',');
+  if(comma===-1) return nombre.toUpperCase();
+  return nombre.slice(0,comma).toUpperCase()+nombre.slice(comma);
+}
 
 function normalizeName(s){
   if(!s) return s;
@@ -1305,7 +1567,7 @@ const RAW_CHANGES = [
 {dpp:'43/26',comision:'De Legislación General',tipo:'replace',senador:'GUZMÁN CORAITA, Gonzalo',reemplaza:'COTO, Agustín Pedro'},
 {dpp:'43/26',comision:'De Asuntos Administrativos y Municipales',tipo:'replace',senador:'COTO, Agustín Pedro',reemplaza:'GUZMÁN CORAITA, Gonzalo'},
 {dpp:'43/26',comision:'De Educación y Cultura',tipo:'replace',senador:'KRONEBERGER, Daniel Ricardo',reemplaza:'FAMA, Flavio Sergio'},
-{dpp:'44/26',comision:'Comisión Permanente Parlamentaria Mixta Revisora de Cuentas',tipo:'replace',senador:'VALENZUELA, Mercedes Gabriela',reemplaza:'FAMA, Flavio Sergio'},  
+{dpp:'44/26',comision:'Comisión Permanente Parlamentaria Mixta Revisora de Cuentas',tipo:'replace',senador:'VALENZUELA, Mercedes Gabriela',reemplaza:'FAMA, Flavio Sergio'},
 // ══ AGREGAR NUEVOS DPP AQUÍ ══
 ];
 
@@ -1568,12 +1830,13 @@ function renderBicamerales(){
     const vacantes=c.integrantes.filter(m=>m.vacante);
     const rows=miembros.map(m=>{
       const bc=m.camara==='senado'?blqColor(m.bloque):blqColorDip(m.bloque);
-      const tipExtra=m.camara==='senado'?(m.provincia?'<br>'+m.provincia:''):'';
+      const tipExtra=m.camara==='senado'?(m.provincia?'<br>'+m.provincia:''):(getDipProvincia(m.nombre)?'<br>'+getDipProvincia(m.nombre):'');
       const camaraLabel=m.camara==='senado'?'SEN':'DIP';
+      const _dispNombre=m.camara==='diputados'?formatDipNombre(m.nombre):m.nombre;
       return `<div class="bic-member-row">
         <span class="bloque-dot" style="background:${bc.dot||'#9CA3AF'}"></span>
         <span class="camara-badge ${m.camara}">${camaraLabel}</span>
-        <span class="member-name leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque||'Sin bloque'}${tipExtra}</span></span>
+        <span class="member-name leg-tooltip">${_dispNombre}<span class="leg-tip">${m.bloque||'Sin bloque'}${tipExtra}</span></span>
       </div>`;
     }).join('');
     const vacRow=vacantes.length?`<div class="bic-member-row" style="color:#9CA3AF;font-style:italic"><span class="bloque-dot" style="background:#E5E7EB"></span><span style="font-size:11px">${vacantes.length} vacante${vacantes.length!==1?'s':''}</span></div>`:'';
@@ -1670,7 +1933,8 @@ function renderDipComisiones(search,bloqueFilter){
       const bc=blqColorDip(m.bloque);
       const roleLabel={presidente:'Pres.',vicepresidente_1:'Vpto. 1°',vicepresidente_2:'Vpto. 2°',secretario:'Secr.'}[m.cargo]||'';
       const roleHtml=roleLabel?`<span class="badge original" style="background:${bc.bg};color:${bc.badge}">${roleLabel}</span>`:'';
-      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${m.nombre}<span class="leg-tip">${m.bloque}</span></span>${roleHtml}</div>`;
+      const _dpv=getDipProvincia(m.nombre);
+      return `<div class="member-row"><span class="bloque-dot" style="background:${bc.dot}"></span><span class="member-name leg-tooltip">${formatDipNombre(m.nombre)}<span class="leg-tip">${m.bloque}${_dpv?'<br>'+_dpv:''}</span></span>${roleHtml}</div>`;
     }).join('');
     return `<div class="com-card">
       <div class="card-header">
@@ -1700,7 +1964,8 @@ function renderDipDiputados(search,bloqueFilter){
     const d=all[name];
     const bc=blqColorDip(d.bloque);
     const chips=d.comisiones.map(c=>`<span class="chip" style="background:${bc.bg};color:${bc.badge}">${c.com}</span>`).join('');
-    return `<div class="senator-card"><div class="senator-name leg-tooltip">${name}<span class="leg-tip">${d.bloque}</span></div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
+    const _dpv=getDipProvincia(name);
+    return `<div class="senator-card"><div class="senator-name leg-tooltip">${formatDipNombre(name)}<span class="leg-tip">${d.bloque}${_dpv?'<br>'+_dpv:''}</span></div><span class="senator-bloque-tag" style="background:${bc.bg};color:${bc.badge}">${d.bloque}</span><div class="senator-chips">${chips}</div><div class="senator-count">${d.comisiones.length} comisión${d.comisiones.length!==1?'es':''}</div></div>`;
   }).join('');
 }
 
