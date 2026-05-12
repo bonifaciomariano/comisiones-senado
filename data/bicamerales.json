@@ -269,53 +269,46 @@
           "vacante": true
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "COTO, Agustín Pedro",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "ATAUCHE, Ezequiel",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "JUJUY",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "ABAD, Maximiliano",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "BUENOS AIRES",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "GOERLING LARA, Enrique Martín",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "FRENTE PRO",
+          "provincia": "MISIONES",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "TERENZI, Edith Elizabeth",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "DESPIERTA CHUBUT",
+          "provincia": "CHUBUT",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "MOISÉS, María Carolina",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
-        },
-        {
-          "nombre": "VACANTE",
-          "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "CONVICCIÓN FEDERAL",
+          "provincia": "JUJUY",
+          "vacante": false
         }
       ]
     },
@@ -996,60 +989,46 @@
           "vacante": true
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "MONTE DE OCA, María Belén",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "BULLRICH, Patricia",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "CIUDAD AUTÓNOMA DE BUENOS AIRES",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "JUEZ, Luis Alfredo",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "LA LIBERTAD AVANZA",
+          "provincia": "CÓRDOBA",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "KRONEBERGER, Daniel Ricardo",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "UCR - UNIÓN CÍVICA RADICAL",
+          "provincia": "LA PAMPA",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "ROYÓN, Flavia Gabriela",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "PRIMERO LOS SALTEÑOS",
+          "provincia": "SALTA",
+          "vacante": false
         },
         {
-          "nombre": "VACANTE",
+          "nombre": "MOISÉS, María Carolina",
           "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
-        },
-        {
-          "nombre": "VACANTE",
-          "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
-        },
-        {
-          "nombre": "VACANTE",
-          "camara": "senado",
-          "bloque": "",
-          "provincia": "",
-          "vacante": true
+          "bloque": "CONVICCIÓN FEDERAL",
+          "provincia": "JUJUY",
+          "vacante": false
         }
       ]
     },
