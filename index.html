@@ -247,6 +247,27 @@ table.repr tr:hover td{background:#F8FAFF}
   .proy-controls{padding:12px}
   .proy-input{min-width:100%}
 }
+
+/* ── AGENDA ── */
+.agenda-boletin-badge{background:var(--blue);color:#fff;font-size:11px;font-weight:600;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:16px}
+.agenda-grid{display:grid;grid-template-columns:1fr;gap:16px;padding:20px 16px;max-width:720px;margin:0 auto}
+.agenda-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.agenda-card-header{background:var(--blue);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.agenda-card-fecha .dia{font-size:10px;font-weight:600;text-transform:uppercase;opacity:.8;letter-spacing:.5px}
+.agenda-card-fecha .num{font-size:28px;font-weight:700;line-height:1}
+.agenda-card-hora{font-size:22px;font-weight:700;margin-left:auto;white-space:nowrap}
+.agenda-card-body{padding:16px 18px}
+.agenda-meta-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.agenda-meta-chip{background:rgba(27,94,162,.12);color:var(--blue);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.agenda-comisiones{font-size:13px;font-weight:600;color:#1a2840;margin-bottom:6px;line-height:1.4}
+.agenda-salon{font-size:12px;color:#6B7280;margin-bottom:12px}
+.agenda-temario-title{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.agenda-temario-item{font-size:12px;color:#374151;margin-bottom:5px;padding-left:14px;position:relative;line-height:1.45}
+.agenda-temario-item::before{content:'•';position:absolute;left:0;color:var(--blue)}
+.agenda-card-footer{padding:12px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+.agenda-btn-ficha{background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s}
+.agenda-btn-ficha:hover{background:var(--blue-mid)}
+.agenda-empty{text-align:center;padding:48px 24px;color:#9CA3AF;font-size:14px}
 </style>
 </head>
 <body>
@@ -302,6 +323,9 @@ table.repr tr:hover td{background:#F8FAFF}
       </button>
       <button class="sec-btn" id="sec-proyeccion" onclick="setSection('proyeccion',this)">
         <span class="sec-label">Proyección</span>
+      </button>
+      <button class="sec-btn" id="sec-agenda" onclick="setSection('agenda',this)">
+        <span class="sec-label">Agenda</span>
       </button>
     </div>
   </div>
@@ -390,6 +414,11 @@ table.repr tr:hover td{background:#F8FAFF}
           <tr><td colspan="5" class="proy-empty">Seleccioná una comisión para comenzar.</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div id="section-agenda" style="display:none">
+    <div id="agendaContent" class="agenda-grid">
+      <div class="agenda-empty">Cargando agenda…</div>
     </div>
   </div>
 </main>
@@ -1863,6 +1892,9 @@ let bicData=null;
 let bicDataLoaded=false;
 let bicDataError=false;
 
+let agendaData=null;
+let agendaLoaded=false;
+
 let senStatsFilter=null;
 let dipStatsFilter=null;
 let bicStatsFilter=null;
@@ -1871,7 +1903,7 @@ function setSection(sec,btn){
   currentSection=sec;
   document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  ['senado','diputados','bicamerales','proyeccion'].forEach(s=>{
+  ['senado','diputados','bicamerales','proyeccion','agenda'].forEach(s=>{
     document.getElementById('section-'+s).style.display=s===sec?'block':'none';
   });
   document.getElementById('senado-controls').style.display=sec==='senado'?'flex':'none';
@@ -1889,9 +1921,253 @@ function setSection(sec,btn){
   } else if(sec==='proyeccion'){
     document.getElementById('statsBar').innerHTML='';
     onProyCamaraChange();
+  } else if(sec==='agenda'){
+    document.getElementById('statsBar').innerHTML='';
+    loadAgenda();
   } else {
     document.getElementById('statsBar').innerHTML='';
   }
+}
+
+// ── AGENDA ──
+function normComision(s){
+  if(!s) return '';
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/^de\s+/,'').trim();
+}
+function matchComision(nombreBoletin){
+  const n=normComision(nombreBoletin);
+  for(const c of ALL_COMISIONES){
+    if(normComision(c.nombre)===n) return c.nombre;
+  }
+  return null;
+}
+function loadAgenda(){
+  if(agendaLoaded){renderAgenda();return;}
+  fetch('data/agenda.json')
+    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(d=>{agendaData=d;agendaLoaded=true;renderAgenda();})
+    .catch(()=>{
+      agendaLoaded=true;
+      document.getElementById('agendaContent').innerHTML='<div class="agenda-empty">No se pudo cargar la agenda.</div>';
+    });
+}
+function renderAgenda(){
+  const el=document.getElementById('agendaContent');
+  if(!agendaData||!agendaData.reuniones||!agendaData.reuniones.length){
+    el.innerHTML='<div class="agenda-empty">No hay reuniones programadas.</div>';
+    return;
+  }
+  const b=agendaData.boletin;
+  let html=`<div><span class="agenda-boletin-badge">Boletín N° ${b.numero}/${b.anio} · ${b.fecha_informacion}</span></div>`;
+  agendaData.reuniones.forEach(function(r,idx){
+    const partes=(r.fecha||'').split('/');
+    const numDia=partes[0]||'';
+    const modal=r.modalidad?`<span class="agenda-meta-chip">${r.modalidad}</span>`:'';
+    const comStr=(r.comisiones||[]).join(' · ');
+    const temItems=(r.temario||[]).map(t=>`<div class="agenda-temario-item">${t.contenido||''}</div>`).join('');
+    const temSection=r.temario&&r.temario.length?`<div class="agenda-temario-title">Temas a tratar</div>${temItems}`:'';
+    html+=`
+<div class="agenda-card">
+  <div class="agenda-card-header">
+    <div class="agenda-card-fecha">
+      <div class="dia">${r.dia||''}</div>
+      <div class="num">${numDia}</div>
+    </div>
+    <div style="flex:1;padding-left:6px;overflow:hidden">
+      <div style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${r.salon_completo||r.salon||''}</div>
+      <div style="font-size:11px;opacity:.8;margin-top:3px">${comStr}</div>
+    </div>
+    <div class="agenda-card-hora">${r.hora||''}</div>
+  </div>
+  <div class="agenda-card-body">
+    <div class="agenda-meta-row">${modal}</div>
+    <div class="agenda-comisiones">${comStr}</div>
+    <div class="agenda-salon">${r.salon_completo||r.salon||''}</div>
+    ${temSection}
+  </div>
+  <div class="agenda-card-footer">
+    <button class="agenda-btn-ficha" onclick="generarFichaPDF(${idx})">
+      <svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      Descargar ficha
+    </button>
+  </div>
+</div>`;
+  });
+  el.innerHTML=html;
+}
+function generarFichaPDF(idx){
+  var jsPDFLib=window.jspdf;
+  if(!jsPDFLib){alert('Error: jsPDF no cargó correctamente.');return;}
+  var r=agendaData.reuniones[idx];
+  if(!r) return;
+  var jsPDF=jsPDFLib.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  loadPoppins(doc);
+  var W=210,H=297,ML=15,MR=15,pageW=W-ML-MR;
+  var BLUE=[27,94,162],BLUE_LT=[214,228,240],GRAY=[74,74,74],WHITE=[255,255,255],GRAY_LT=[248,249,250];
+  var y=22;
+  var BOTTOM=H-14;
+  var pageNum=1;
+
+  function drawHeader(){
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.rect(0,0,W,18,'F');
+    doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.setFont('Poppins','normal');doc.setFontSize(7);
+    doc.text('SENADO DE LA NACIÓN ARGENTINA',ML,6.5);
+    doc.setFont('Poppins','bold');doc.setFontSize(9.5);
+    doc.text('PROSECRETARÍA PARLAMENTARIA',ML,13);
+    doc.setFont('Poppins','normal');doc.setFontSize(7);
+    doc.text('COMISIONES · PERÍODO 2026',W-MR,6.5,{align:'right'});
+    var d=new Date();
+    var months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    doc.text(d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear(),W-MR,13,{align:'right'});
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
+    doc.rect(0,18,W,0.8,'F');
+  }
+  function drawFooter(){
+    doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
+    doc.setLineWidth(0.3);
+    doc.line(ML,H-9,W-MR,H-9);
+    doc.setFont('Poppins','normal');doc.setFontSize(6.5);doc.setTextColor(150,150,150);
+    doc.text('Prosecretaría Parlamentaria · Senado de la Nación Argentina',ML,H-5);
+    doc.text('Página '+pageNum,W/2,H-5,{align:'center'});
+    doc.text('Documento generado automáticamente',W-MR,H-5,{align:'right'});
+  }
+  function checkPage(needed){
+    if(y+needed>BOTTOM){
+      drawFooter();
+      doc.addPage();
+      pageNum++;
+      drawHeader();
+      y=22;
+    }
+  }
+
+  drawHeader();
+
+  // ── Título ──
+  doc.setFont('Poppins','bold');doc.setFontSize(13);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+  doc.text('FICHA DE REUNIÓN DE COMISIÓN',ML,y+7);
+  y+=14;
+
+  // ── Datos de la reunión ──
+  var infoRows=[
+    ['Comisión/es',(r.comisiones||[]).join(', ')],
+    ['Fecha',((r.dia||'')+' '+r.fecha+'/2026').trim()],
+    ['Hora',r.hora+'hs'],
+    ['Salón',r.salon_completo||r.salon||''],
+    ['Modalidad',r.modalidad||'—'],
+  ];
+  var col1=42,rowH=7.5;
+  doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
+  doc.setLineWidth(0.2);
+  infoRows.forEach(function(row,i){
+    checkPage(rowH+2);
+    var bg=i%2===0?GRAY_LT:WHITE;
+    doc.setFillColor(bg[0],bg[1],bg[2]);
+    doc.rect(ML,y,pageW,rowH,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(8);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.text(row[0],ML+3,y+5);
+    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
+    var val=doc.splitTextToSize(row[1],pageW-col1-4);
+    doc.text(val[0]||'',ML+col1,y+5);
+    y+=rowH;
+  });
+  y+=6;
+
+  // ── Temas a tratar ──
+  if(r.temario&&r.temario.length){
+    checkPage(14);
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.rect(ML,y,pageW,8,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.text('TEMAS A TRATAR',ML+3,y+5.5);
+    y+=10;
+    r.temario.forEach(function(t,i){
+      var lines=doc.splitTextToSize((i+1)+'. '+t.contenido,pageW-6);
+      var blockH=lines.length*5.5+4;
+      checkPage(blockH+2);
+      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,blockH,'F');}
+      doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
+      doc.text(lines,ML+3,y+4);
+      y+=blockH+1;
+    });
+    y+=5;
+  }
+
+  // ── Expositores ──
+  if(r.expositores&&r.expositores.length){
+    checkPage(14);
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.rect(ML,y,pageW,8,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.text('EXPOSITORES',ML+3,y+5.5);
+    y+=10;
+    r.expositores.forEach(function(e,i){
+      var lines=doc.splitTextToSize('• '+e,pageW-6);
+      var blockH=lines.length*5+3;
+      checkPage(blockH+1);
+      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,blockH,'F');}
+      doc.setFont('Poppins','normal');doc.setFontSize(7.5);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
+      doc.text(lines,ML+3,y+3.5);
+      y+=blockH;
+    });
+    y+=5;
+  }
+
+  // ── Asistencia ──
+  var comNombresMatch=(r.comisiones||[]).map(matchComision).filter(Boolean);
+  var seenNames={};
+  var members=[];
+  comNombresMatch.forEach(function(cn){
+    (STATE[cn]||[]).forEach(function(m){
+      if(!seenNames[m.name]){seenNames[m.name]=true;members.push({name:m.name,dpp:m.dpp,comision:cn});}
+    });
+  });
+  checkPage(18);
+  doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
+  doc.rect(ML,y,pageW,8,'F');
+  doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+  doc.text('ASISTENCIA',ML+3,y+5.5);
+  y+=10;
+  if(!members.length){
+    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(150,150,150);
+    doc.text('No se encontraron integrantes para las comisiones indicadas.',ML+3,y+5);
+    y+=10;
+  } else {
+    var COL_NAME=100,COL_BLOQUE=52,COL_FIRMA=pageW-COL_NAME-COL_BLOQUE;
+    var HDR_H=6.5;
+    checkPage(HDR_H+5);
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
+    doc.rect(ML,y,pageW,HDR_H,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(7.5);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.text('SENADOR/A',ML+2,y+4.5);
+    doc.text('BLOQUE',ML+COL_NAME+2,y+4.5);
+    doc.text('FIRMA',ML+COL_NAME+COL_BLOQUE+2,y+4.5);
+    y+=HDR_H;
+    members.forEach(function(m,i){
+      var ROW_H=7;
+      checkPage(ROW_H+2);
+      var bg=i%2===0?GRAY_LT:WHITE;
+      doc.setFillColor(bg[0],bg[1],bg[2]);
+      doc.rect(ML,y,pageW,ROW_H,'F');
+      doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
+      var nameLines=doc.splitTextToSize(m.name,COL_NAME-4);
+      doc.text(nameLines[0]||m.name,ML+2,y+4.8);
+      var bl=getSenatorBloque(m.name);
+      var blLines=doc.splitTextToSize(bl,COL_BLOQUE-4);
+      doc.setFontSize(7);doc.setTextColor(100,100,100);
+      doc.text(blLines[0]||bl,ML+COL_NAME+2,y+4.8);
+      doc.setDrawColor(200,200,200);doc.setLineWidth(0.15);
+      doc.line(ML+COL_NAME+COL_BLOQUE+2,y+ROW_H-1.5,ML+pageW-2,y+ROW_H-1.5);
+      y+=ROW_H;
+    });
+  }
+
+  drawFooter();
+  var comSlug=(r.comisiones||['comision'])[0].toLowerCase().replace(/[^a-z0-9]/g,'_').replace(/_+/g,'_');
+  doc.save('ficha_'+comSlug+'_'+r.fecha.replace('/','_')+'.pdf');
 }
 
 // ── BICAMERALES DATA LOADING ──
