@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <style>
 :root {
   --blue:#1B5EA2; --blue-mid:#2E75B6; --blue-light:#D6E4F0;
@@ -1998,30 +1999,34 @@ function renderAgenda(){
 function generarFichaPDF(idx){
   var jsPDFLib=window.jspdf;
   if(!jsPDFLib){alert('Error: jsPDF no cargó correctamente.');return;}
+  if(typeof jsPDFLib.jsPDF.API.autoTable==='undefined'){alert('Error: jsPDF-autotable no cargó correctamente.');return;}
   var r=agendaData.reuniones[idx];
   if(!r) return;
   var jsPDF=jsPDFLib.jsPDF;
   var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
   loadPoppins(doc);
+
   var W=210,H=297,ML=15,MR=15,pageW=W-ML-MR;
-  var BLUE=[27,94,162],BLUE_LT=[214,228,240],GRAY=[74,74,74],WHITE=[255,255,255],GRAY_LT=[248,249,250];
+  var BLUE=[27,94,162],BLUE_LT=[214,228,240],GRAY_LT=[248,249,250],GRAY=[74,74,74],WHITE=[255,255,255];
   var y=22;
-  var BOTTOM=H-14;
+  var BOTTOM=H-16;
   var pageNum=1;
+
+  var months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var d=new Date();
+  var TODAY=d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear();
 
   function drawHeader(){
     doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
     doc.rect(0,0,W,18,'F');
-    doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.setTextColor(255,255,255);
     doc.setFont('Poppins','normal');doc.setFontSize(7);
     doc.text('SENADO DE LA NACIÓN ARGENTINA',ML,6.5);
     doc.setFont('Poppins','bold');doc.setFontSize(9.5);
     doc.text('PROSECRETARÍA PARLAMENTARIA',ML,13);
     doc.setFont('Poppins','normal');doc.setFontSize(7);
     doc.text('COMISIONES · PERÍODO 2026',W-MR,6.5,{align:'right'});
-    var d=new Date();
-    var months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    doc.text(d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear(),W-MR,13,{align:'right'});
+    doc.text(TODAY,W-MR,13,{align:'right'});
     doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
     doc.rect(0,18,W,0.8,'F');
   }
@@ -2035,13 +2040,7 @@ function generarFichaPDF(idx){
     doc.text('Documento generado automáticamente',W-MR,H-5,{align:'right'});
   }
   function checkPage(needed){
-    if(y+needed>BOTTOM){
-      drawFooter();
-      doc.addPage();
-      pageNum++;
-      drawHeader();
-      y=22;
-    }
+    if(y+needed>BOTTOM){drawFooter();doc.addPage();pageNum++;drawHeader();y=22;}
   }
 
   drawHeader();
@@ -2055,43 +2054,37 @@ function generarFichaPDF(idx){
   var infoRows=[
     ['Comisión/es',(r.comisiones||[]).join(', ')],
     ['Fecha',((r.dia||'')+' '+r.fecha+'/2026').trim()],
-    ['Hora',r.hora+'hs'],
+    ['Hora',(r.hora||'')+'hs'],
     ['Salón',r.salon_completo||r.salon||''],
     ['Modalidad',r.modalidad||'—'],
   ];
-  var col1=42,rowH=7.5;
-  doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
-  doc.setLineWidth(0.2);
   infoRows.forEach(function(row,i){
-    checkPage(rowH+2);
+    checkPage(9);
     var bg=i%2===0?GRAY_LT:WHITE;
-    doc.setFillColor(bg[0],bg[1],bg[2]);
-    doc.rect(ML,y,pageW,rowH,'F');
+    doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(ML,y,pageW,7.5,'F');
     doc.setFont('Poppins','bold');doc.setFontSize(8);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
     doc.text(row[0],ML+3,y+5);
     doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
-    var val=doc.splitTextToSize(row[1],pageW-col1-4);
-    doc.text(val[0]||'',ML+col1,y+5);
-    y+=rowH;
+    doc.text(doc.splitTextToSize(row[1],pageW-46)[0]||'',ML+43,y+5);
+    y+=7.5;
   });
   y+=6;
 
   // ── Temas a tratar ──
   if(r.temario&&r.temario.length){
     checkPage(14);
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.rect(ML,y,pageW,8,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,8,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
     doc.text('TEMAS A TRATAR',ML+3,y+5.5);
     y+=10;
     r.temario.forEach(function(t,i){
       var lines=doc.splitTextToSize((i+1)+'. '+t.contenido,pageW-6);
-      var blockH=lines.length*5.5+4;
-      checkPage(blockH+2);
-      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,blockH,'F');}
+      var bh=lines.length*5.5+4;
+      checkPage(bh+2);
+      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,bh,'F');}
       doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
       doc.text(lines,ML+3,y+4);
-      y+=blockH+1;
+      y+=bh+1;
     });
     y+=5;
   }
@@ -2099,73 +2092,138 @@ function generarFichaPDF(idx){
   // ── Expositores ──
   if(r.expositores&&r.expositores.length){
     checkPage(14);
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.rect(ML,y,pageW,8,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,8,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
     doc.text('EXPOSITORES',ML+3,y+5.5);
     y+=10;
     r.expositores.forEach(function(e,i){
       var lines=doc.splitTextToSize('• '+e,pageW-6);
-      var blockH=lines.length*5+3;
-      checkPage(blockH+1);
-      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,blockH,'F');}
+      var bh=lines.length*5+3;
+      checkPage(bh+1);
+      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,bh,'F');}
       doc.setFont('Poppins','normal');doc.setFontSize(7.5);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
       doc.text(lines,ML+3,y+3.5);
-      y+=blockH;
+      y+=bh;
     });
     y+=5;
   }
 
   // ── Asistencia ──
   var comNombresMatch=(r.comisiones||[]).map(matchComision).filter(Boolean);
-  var seenNames={};
-  var members=[];
-  comNombresMatch.forEach(function(cn){
-    (STATE[cn]||[]).forEach(function(m){
-      if(!seenNames[m.name]){seenNames[m.name]=true;members.push({name:m.name,dpp:m.dpp,comision:cn});}
-    });
-  });
-  checkPage(18);
-  doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
-  doc.rect(ML,y,pageW,8,'F');
-  doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(WHITE[0],WHITE[1],WHITE[2]);
-  doc.text('ASISTENCIA',ML+3,y+5.5);
-  y+=10;
-  if(!members.length){
-    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(150,150,150);
-    doc.text('No se encontraron integrantes para las comisiones indicadas.',ML+3,y+5);
-    y+=10;
-  } else {
-    var COL_NAME=100,COL_BLOQUE=52,COL_FIRMA=pageW-COL_NAME-COL_BLOQUE;
-    var HDR_H=6.5;
-    checkPage(HDR_H+5);
-    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
-    doc.rect(ML,y,pageW,HDR_H,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(7.5);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.text('SENADOR/A',ML+2,y+4.5);
-    doc.text('BLOQUE',ML+COL_NAME+2,y+4.5);
-    doc.text('FIRMA',ML+COL_NAME+COL_BLOQUE+2,y+4.5);
-    y+=HDR_H;
-    members.forEach(function(m,i){
-      var ROW_H=7;
-      checkPage(ROW_H+2);
-      var bg=i%2===0?GRAY_LT:WHITE;
-      doc.setFillColor(bg[0],bg[1],bg[2]);
-      doc.rect(ML,y,pageW,ROW_H,'F');
-      doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
-      var nameLines=doc.splitTextToSize(m.name,COL_NAME-4);
-      doc.text(nameLines[0]||m.name,ML+2,y+4.8);
-      var bl=getSenatorBloque(m.name);
-      var blLines=doc.splitTextToSize(bl,COL_BLOQUE-4);
-      doc.setFontSize(7);doc.setTextColor(100,100,100);
-      doc.text(blLines[0]||bl,ML+COL_NAME+2,y+4.8);
-      doc.setDrawColor(200,200,200);doc.setLineWidth(0.15);
-      doc.line(ML+COL_NAME+COL_BLOQUE+2,y+ROW_H-1.5,ML+pageW-2,y+ROW_H-1.5);
-      y+=ROW_H;
+  var esPlenaria=comNombresMatch.length>=2;
+
+  function quorumN(total){return Math.floor(total/2)+1;}
+
+  // Construye filas para autoTable; sharedSet={name:true} para plenaria
+  function buildRows(comNombre,sharedSet){
+    return getMembersOrdered(comNombre).map(function(m){
+      var isPresi=(getRole(comNombre,m.name)==='Presidente');
+      var nameCell=m.name+(sharedSet&&sharedSet[m.name]?' *':'');
+      return {isPresi:isPresi, cells:[nameCell, getSenatorBloque(m.name),'□','□','']};
     });
   }
 
-  drawFooter();
+  // Genera opciones para doc.autoTable()
+  function makeTableOpts(rows,startX,tblW,startY,fsz){
+    return {
+      startY:startY,
+      margin:{left:startX, right:W-startX-tblW, top:20, bottom:14},
+      tableWidth:tblW,
+      head:[['SENADOR/A','BLOQUE','QUÓRUM','FIRMA','OBSERVACIONES']],
+      body:rows.map(function(rw){return rw.cells;}),
+      styles:{font:'Poppins',fontStyle:'normal',fontSize:fsz,cellPadding:2.2,lineColor:[210,210,210],lineWidth:0.15,textColor:GRAY},
+      headStyles:{fillColor:BLUE,textColor:WHITE,fontStyle:'bold',fontSize:fsz-0.5,halign:'center',cellPadding:2.5},
+      alternateRowStyles:{fillColor:GRAY_LT},
+      columnStyles:esPlenaria
+        ?{0:{cellWidth:27,halign:'left'},1:{cellWidth:24,halign:'left'},2:{cellWidth:9,halign:'center'},3:{cellWidth:9,halign:'center'},4:{cellWidth:'auto',halign:'left'}}
+        :{0:{cellWidth:62,halign:'left'},1:{cellWidth:55,halign:'left'},2:{cellWidth:16,halign:'center'},3:{cellWidth:16,halign:'center'},4:{cellWidth:'auto',halign:'left'}},
+      didParseCell:function(data){
+        if(data.section==='body'&&rows[data.row.index]&&rows[data.row.index].isPresi){
+          data.cell.styles.fontStyle='bold';
+          data.cell.styles.textColor=BLUE;
+        }
+      },
+      didDrawPage:function(){pageNum++;drawHeader();}
+    };
+  }
+
+  if(!comNombresMatch.length){
+    checkPage(10);
+    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(150,150,150);
+    doc.text('No se encontraron integrantes para las comisiones indicadas.',ML,y+5);
+    drawFooter();
+  } else if(!esPlenaria){
+    // ── Tabla simple (una comisión) ──
+    var cn=comNombresMatch[0];
+    var total=getMembersOrdered(cn).length;
+    var qn=quorumN(total);
+    checkPage(22);
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,9,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
+    doc.text('ASISTENCIA',ML+3,y+6.2);
+    doc.setFont('Poppins','normal');doc.setFontSize(7.5);
+    doc.text(total+' integrantes · Quórum = '+qn,W-MR,y+6.2,{align:'right'});
+    y+=10;
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(ML,y,pageW,7,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(8);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.text(cn,ML+3,y+4.8);
+    y+=8;
+    var rows=buildRows(cn,null);
+    doc.autoTable(makeTableOpts(rows,ML,pageW,y,8));
+    y=doc.lastAutoTable.finalY+4;
+    drawFooter();
+  } else {
+    // ── Plenaria: dos tablas lado a lado ──
+    var cn1=comNombresMatch[0], cn2=comNombresMatch[1];
+    var mem1=getMembersOrdered(cn1), mem2=getMembersOrdered(cn2);
+    var inCn2={};
+    mem2.forEach(function(m){inCn2[m.name]=true;});
+    var sharedSet={};
+    mem1.forEach(function(m){if(inCn2[m.name]) sharedSet[m.name]=true;});
+    var hasShared=Object.keys(sharedSet).length>0;
+
+    var T_W=pageW*0.48, T1_X=ML, T2_X=ML+pageW*0.52;
+
+    checkPage(24);
+    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,9,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
+    doc.text('ASISTENCIA',ML+3,y+6.2);
+    y+=10;
+
+    // Sub-encabezados celestes para cada tabla
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(T1_X,y,T_W,9,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(6.5);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.text(doc.splitTextToSize(cn1,T_W-4)[0],T1_X+2,y+3.8);
+    doc.setFont('Poppins','normal');doc.setFontSize(6);
+    doc.text(getMembersOrdered(cn1).length+' integ. · Quórum = '+quorumN(getMembersOrdered(cn1).length),T1_X+2,y+7.5);
+
+    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(T2_X,y,T_W,9,'F');
+    doc.setFont('Poppins','bold');doc.setFontSize(6.5);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
+    doc.text(doc.splitTextToSize(cn2,T_W-4)[0],T2_X+2,y+3.8);
+    doc.setFont('Poppins','normal');doc.setFontSize(6);
+    doc.text(getMembersOrdered(cn2).length+' integ. · Quórum = '+quorumN(getMembersOrdered(cn2).length),T2_X+2,y+7.5);
+    y+=11;
+
+    var rows1=buildRows(cn1,sharedSet);
+    var rows2=buildRows(cn2,sharedSet);
+    var tableStartY=y;
+
+    doc.autoTable(makeTableOpts(rows1,T1_X,T_W,tableStartY,6.5));
+    var y1=doc.lastAutoTable.finalY;
+
+    doc.autoTable(makeTableOpts(rows2,T2_X,T_W,tableStartY,6.5));
+    var y2=doc.lastAutoTable.finalY;
+
+    y=Math.max(y1,y2)+5;
+    if(hasShared){
+      checkPage(8);
+      doc.setFont('Poppins','normal');doc.setFontSize(7);doc.setTextColor(80,80,80);
+      doc.text('* Integra ambas comisiones',ML,y);
+      y+=6;
+    }
+    drawFooter();
+  }
+
   var comSlug=(r.comisiones||['comision'])[0].toLowerCase().replace(/[^a-z0-9]/g,'_').replace(/_+/g,'_');
   doc.save('ficha_'+comSlug+'_'+r.fecha.replace('/','_')+'.pdf');
 }
