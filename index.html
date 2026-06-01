@@ -1943,7 +1943,7 @@ function matchComision(nombreBoletin){
 }
 function loadAgenda(){
   if(agendaLoaded){renderAgenda();return;}
-  fetch('data/agenda.json')
+  fetch('data/agenda.json?t='+Date.now())
     .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
     .then(d=>{agendaData=d;agendaLoaded=true;renderAgenda();})
     .catch(()=>{
