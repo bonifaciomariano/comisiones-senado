@@ -266,6 +266,8 @@ table.repr tr:hover td{background:#F8FAFF}
 .agenda-temario-title{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .agenda-temario-item{font-size:12px;color:#374151;margin-bottom:5px;padding-left:14px;position:relative;line-height:1.45}
 .agenda-temario-item::before{content:'•';position:absolute;left:0;color:var(--blue)}
+.agenda-temario-item.agenda-temario-exp::before{content:''}
+.agenda-temario-grupo{font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:.3px;margin-top:8px;margin-bottom:3px}
 .agenda-card-footer{padding:12px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
 .agenda-btn-ficha{background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s}
 .agenda-btn-ficha:hover{background:var(--blue-mid)}
@@ -1964,7 +1966,22 @@ function renderAgenda(){
     const numDia=partes[0]||'';
     const modal=r.modalidad?`<span class="agenda-meta-chip">${r.modalidad}</span>`:'';
     const comStr=(r.comisiones||[]).join(' · ');
-    const temItems=(r.temario||[]).map(t=>`<div class="agenda-temario-item">${t.contenido||''}</div>`).join('');
+    function renderTemItem(t){
+      if(t.tipo==='numerado'){
+        return (t.items||[]).map((it,i)=>`<div class="agenda-temario-item"><b>${i+1}.</b> ${it}</div>`).join('');
+      }
+      if(t.tipo==='expedientes'){
+        if(t.grupos){
+          return t.grupos.map(g=>
+            `<div class="agenda-temario-grupo">${g.tipo}</div>`+
+            (g.items||[]).map(it=>`<div class="agenda-temario-item agenda-temario-exp">${it}</div>`).join('')
+          ).join('');
+        }
+        return (t.items||[]).map(it=>`<div class="agenda-temario-item agenda-temario-exp">${it}</div>`).join('');
+      }
+      return `<div class="agenda-temario-item">${t.contenido||''}</div>`;
+    }
+    const temItems=(r.temario||[]).map(t=>renderTemItem(t)).join('');
     const temSection=r.temario&&r.temario.length?`<div class="agenda-temario-title">Temas a tratar</div>${temItems}`:'';
     html+=`
 <div class="agenda-card">
@@ -2118,8 +2135,27 @@ function generarFichaDocx(idx){
       spacing:{before:280,after:100},
       border:{bottom:{style:docxLib.BorderStyle.SINGLE,size:6,color:BLUE,space:4}},
     }));
-    r.temario.forEach(function(t,i){
-      body.push(p([tr((i+1)+'. '+(t.contenido||''),{size:18,color:'374151'})],{spacing:{before:60,after:60}}));
+    r.temario.forEach(function(t){
+      if(t.tipo==='numerado'){
+        (t.items||[]).forEach(function(item,i){
+          body.push(p([tr((i+1)+'. '+item,{size:18,color:'374151'})],{spacing:{before:60,after:60}}));
+        });
+      }else if(t.tipo==='expedientes'){
+        if(t.grupos){
+          t.grupos.forEach(function(g){
+            body.push(p([tr(g.tipo,{size:18,bold:true,color:'374151'})],{spacing:{before:100,after:40}}));
+            (g.items||[]).forEach(function(item){
+              body.push(p([tr('• '+item,{size:17,color:'374151'})],{spacing:{before:40,after:40},indent:{left:360}}));
+            });
+          });
+        }else{
+          (t.items||[]).forEach(function(item){
+            body.push(p([tr('• '+item,{size:18,color:'374151'})],{spacing:{before:60,after:60}}));
+          });
+        }
+      }else{
+        body.push(p([tr(t.contenido||'',{size:18,color:'374151'})],{spacing:{before:60,after:60}}));
+      }
     });
   }
 

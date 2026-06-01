@@ -168,43 +168,74 @@ def parsear_celda_contenido(celda: str) -> tuple[list[dict], list[str]]:
         expositores_parciales = _parsear_expositores_texto(texto_exp)
         texto = texto[: m_exp.start()].strip()
 
-    # Parsear ítems del temario
-    items = _parsear_items_temario(texto)
+    # Parsear ítems del temario (devuelve un dict estructurado)
+    item = _parsear_items_temario(texto)
+    # Descartar ítems texto vacíos
+    items = []
+    if not (item["tipo"] == "texto" and not item.get("contenido")):
+        items = [item]
 
     return items, expositores_parciales
 
 
-def _parsear_items_temario(texto: str) -> list[dict]:
-    """Extrae ítems del tipo 'PROYECTO DE LEY:\nEXPTE. ...'"""
-    items: list[dict] = []
-    if not texto.strip():
-        return items
-
-    # Dividir por líneas que son encabezados de tipo
-    bloques = re.split(r"\n(?=PROYECTO DE |CANDIDATOS|AUDIENCIA|DICTAMEN|INFORME|MENSAJE)", texto, flags=re.IGNORECASE)
-    for bloque in bloques:
-        bloque = bloque.strip()
-        if not bloque:
-            continue
-        # Separar tipo del contenido
-        m = re.match(
-            r"^(PROYECTO DE LEY|PROYECTO DE RESOLUCI[OÓ]N|PROYECTO DE DECLARACI[OÓ]N"
-            r"|PROYECTO DE COMUNICACI[OÓ]N|CANDIDATOS|AUDIENCIA P[UÚ]BLICA|DICTAMEN"
-            r"|MENSAJE DEL P\.?E\.?|INFORMES?)[:\s]*(.*)$",
-            bloque,
-            re.DOTALL | re.IGNORECASE,
-        )
-        if m:
-            tipo = m.group(1).upper().strip()
-            contenido = _limpiar(m.group(2))
-            items.append({"tipo": tipo, "contenido": contenido})
-        else:
-            # Contenido sin tipo reconocido → agregar al último ítem o como genérico
-            if items:
-                items[-1]["contenido"] = _limpiar(items[-1]["contenido"] + " " + bloque)
-            else:
-                items.append({"tipo": "OTROS", "contenido": _limpiar(bloque)})
+def _split_expedientes(texto: str) -> list[str]:
+    """Divide texto en expedientes individuales en cada ocurrencia de EXPTE."""
+    partes = re.split(r'(?=EXPTE\.)', texto)
+    items = []
+    for parte in partes:
+        parte = _limpiar(parte)
+        if parte.startswith('EXPTE.'):
+            items.append(parte)
     return items
+
+
+def _parsear_items_temario(texto: str) -> dict:
+    """
+    Analiza texto de temario y retorna un dict estructurado:
+    - {"tipo":"numerado","items":[...]} para ítems 1. 2. 3.
+    - {"tipo":"expedientes","grupos":[...]} para expedientes con encabezados de tipo
+    - {"tipo":"expedientes","items":[...]} para expedientes sin agrupar
+    - {"tipo":"texto","contenido":"..."} fallback
+    """
+    texto = texto.strip()
+    if not texto:
+        return {"tipo": "texto", "contenido": ""}
+
+    # Patrón 1: ítems numerados (1. texto 2. texto 3. texto)
+    if re.match(r'^1\.\s+\S', texto):
+        partes = re.split(r'\s+(?=\b\d+\.\s+[A-Z\xc0-\xff])', texto)
+        items = [re.sub(r'^\d+\.\s+', '', p).strip() for p in partes]
+        items = [it for it in items if it]
+        if len(items) >= 2:
+            return {"tipo": "numerado", "items": items}
+
+    # Patrón 2: expedientes
+    if 'EXPTE.' in texto:
+        # Detectar encabezados plurales de sección (PROYECTOS DE …)
+        # Se usan sólo plurales para no confundir con "REPRODUCE PROYECTO DE LEY QUE..."
+        PLURAL_HEADER_RE = re.compile(
+            r'(PROYECTOS\s+DE\s+(?:LEY|DECLARACI[O\xd3]N|COMUNICACI[O\xd3]N|RESOLUCI[O\xd3]N))',
+            re.IGNORECASE,
+        )
+        partes = PLURAL_HEADER_RE.split(texto)
+        if len(partes) > 1:
+            grupos = []
+            for i in range(1, len(partes), 2):
+                header = _limpiar(partes[i]).upper()
+                content = partes[i + 1].strip() if i + 1 < len(partes) else ""
+                content = re.sub(r'^\s*:', '', content).strip()
+                items_exp = _split_expedientes(content)
+                if items_exp:
+                    grupos.append({"tipo": header, "items": items_exp})
+            if grupos:
+                return {"tipo": "expedientes", "grupos": grupos}
+
+        # Lista plana de expedientes sin encabezados de grupo
+        items = _split_expedientes(texto)
+        if items:
+            return {"tipo": "expedientes", "items": items}
+
+    return {"tipo": "texto", "contenido": texto}
 
 
 _PALABRAS_NO_NOMBRE = {
@@ -493,7 +524,19 @@ def main() -> None:
         if r["modalidad"]:
             print(f"  Modalidad  : {r['modalidad']}")
         for t in r["temario"]:
-            print(f"  {t['tipo']}: {t['contenido'][:80]}{'...' if len(t['contenido']) > 80 else ''}")
+            tipo = t.get("tipo", "texto")
+            if tipo == "numerado":
+                print(f"  [numerado] {len(t.get('items', []))} ítems")
+            elif tipo == "expedientes":
+                if "grupos" in t:
+                    ng = len(t["grupos"])
+                    ni = sum(len(g["items"]) for g in t["grupos"])
+                    print(f"  [expedientes] {ng} grupo(s), {ni} expediente(s)")
+                else:
+                    print(f"  [expedientes] {len(t.get('items', []))} expediente(s)")
+            else:
+                c = t.get("contenido", "")
+                print(f"  [texto] {c[:80]}{'...' if len(c) > 80 else ''}")
         if r["expositores"]:
             print(f"  Expositores: {len(r['expositores'])}")
 
