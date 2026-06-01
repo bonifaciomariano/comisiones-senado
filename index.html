@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
-<script src="https://unpkg.com/docx@8.5.0/build/index.min.js" onerror="window.__docxLoadError=true"></script>
+<script src="scripts/docx.min.js"></script>
 <style>
 :root {
   --blue:#1B5EA2; --blue-mid:#2E75B6; --blue-light:#D6E4F0;
@@ -1998,31 +1998,8 @@ function renderAgenda(){
 function generarFichaDocx(idx){
   var docxLib=window.docx;
   if(!docxLib||!docxLib.Document){
-    var cdnUrl='https://unpkg.com/docx@8.5.0/build/index.min.js';
-    if(window.__docxLoadError){
-      console.error('[docx] El script falló al cargar desde:',cdnUrl);
-    } else {
-      console.error('[docx] window.docx no está disponible tras cargar:',cdnUrl,
-        '— posible problema de CORS, bloqueo de red o tiempo de carga.');
-    }
-    // Reintentar la carga si no está disponible después de la espera
-    if(!window.__docxLoadAttempted){
-      window.__docxLoadAttempted=true;
-      console.warn('[docx] Intentando cargar docx dinámicamente...');
-      var s=document.createElement('script');
-      s.src=cdnUrl+'?retry=1';
-      s.onload=function(){
-        console.info('[docx] Carga dinámica exitosa. Por favor volvé a hacer clic en Descargar ficha.');
-        alert('La librería se cargó ahora. Por favor volvé a hacer clic en Descargar ficha.');
-      };
-      s.onerror=function(){
-        console.error('[docx] Carga dinámica también falló desde:',s.src);
-        alert('No se pudo cargar la librería para generar el Word.\n\nPosibles causas: sin conexión a internet, bloqueador de scripts activo, o firewall corporativo.\n\nIntentá recargar la página e intentarlo nuevamente.');
-      };
-      document.head.appendChild(s);
-      return;
-    }
-    alert('La librería Word (docx) no está disponible.\n\nIntentá recargar la página. Si el problema persiste, revisá la conexión a internet o los bloqueadores de scripts.');
+    console.error('[docx] window.docx no está disponible. Verificá que scripts/docx.min.js se haya cargado correctamente.');
+    alert('La librería Word no está disponible.\n\nIntentá recargar la página.');
     return;
   }
   var r=agendaData.reuniones[idx];
