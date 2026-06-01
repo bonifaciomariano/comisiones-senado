@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docx@8/build/index.min.js"></script>
 <style>
 :root {
   --blue:#1B5EA2; --blue-mid:#2E75B6; --blue-light:#D6E4F0;
@@ -1985,7 +1986,7 @@ function renderAgenda(){
     ${temSection}
   </div>
   <div class="agenda-card-footer">
-    <button class="agenda-btn-ficha" onclick="generarFichaPDF(${idx})">
+    <button class="agenda-btn-ficha" onclick="generarFichaDocx(${idx})">
       <svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
       Descargar ficha
     </button>
@@ -1994,301 +1995,285 @@ function renderAgenda(){
   });
   el.innerHTML=html;
 }
-function generarFichaPDF(idx){
-  var jsPDFLib=window.jspdf;
-  if(!jsPDFLib){alert('Error: jsPDF no cargó correctamente.');return;}
-  if(typeof jsPDFLib.jsPDF.API.autoTable==='undefined'){alert('Error: jsPDF-autotable no cargó.');return;}
+function generarFichaDocx(idx){
+  var docxLib=window.docx;
+  if(!docxLib||!docxLib.Document){alert('Error: librería docx no cargó.');return;}
   var r=agendaData.reuniones[idx];
   if(!r) return;
-  var jsPDF=jsPDFLib.jsPDF;
-  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  loadPoppins(doc);
 
-  var W=210,H=297,ML=15,MR=15,pageW=W-ML-MR;
-  var BLUE=[27,94,162],BLUE_LT=[214,228,240],GRAY_LT=[248,249,250],GRAY=[74,74,74],WHITE=[255,255,255];
-  var pageNum=1;
+  var FONT='Poppins';
+  var BLUE='1B5EA2';
+  var BLUE_LT='D6E4F0';
+  var PAGE_W=9306; // twips utiles (11906 - 1300*2)
+
   var months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   var d=new Date();
-  var TODAY=d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear();
-  var BOTTOM=H-14;
+  var todayStr=d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear();
 
-  function drawHeader(){
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.rect(0,0,W,18,'F');
-    doc.setTextColor(255,255,255);
-    doc.setFont('Poppins','normal');doc.setFontSize(7);
-    doc.text('SENADO DE LA NACIÓN ARGENTINA',ML,6.5);
-    doc.setFont('Poppins','bold');doc.setFontSize(9.5);
-    doc.text('PROSECRETARÍA PARLAMENTARIA',ML,13);
-    doc.setFont('Poppins','normal');doc.setFontSize(7);
-    doc.text('COMISIONES · PERÍODO 2026',W-MR,6.5,{align:'right'});
-    doc.text(TODAY,W-MR,13,{align:'right'});
-    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
-    doc.rect(0,18,W,0.8,'F');
+  var BNone={style:docxLib.BorderStyle.NONE,size:0,color:'auto'};
+  var allNone={top:BNone,bottom:BNone,left:BNone,right:BNone,insideHorizontal:BNone,insideVertical:BNone};
+  var BLight={style:docxLib.BorderStyle.SINGLE,size:1,color:'D1D5DB'};
+  var allLight={top:BLight,bottom:BLight,left:BLight,right:BLight,insideHorizontal:BLight,insideVertical:BLight};
+
+  function tr(text,opts){
+    return new docxLib.TextRun(Object.assign({text:String(text||''),font:FONT},opts||{}));
   }
-  function drawFooter(){
-    doc.setDrawColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
-    doc.setLineWidth(0.3);
-    doc.line(ML,H-9,W-MR,H-9);
-    doc.setFont('Poppins','normal');doc.setFontSize(6.5);doc.setTextColor(150,150,150);
-    doc.text('Prosecretaría Parlamentaria · Senado de la Nación Argentina',ML,H-5);
-    doc.text('Página '+pageNum,W/2,H-5,{align:'center'});
-    doc.text('Documento generado automáticamente',W-MR,H-5,{align:'right'});
-  }
-  function checkPage(y,needed){
-    if(y+needed>BOTTOM){
-      drawFooter();doc.addPage();pageNum++;drawHeader();
-      return 22;
-    }
-    return y;
+  function p(children,opts){
+    if(typeof children==='string') children=[tr(children,opts&&opts.run)];
+    return new docxLib.Paragraph(Object.assign({children:children},opts||{}));
   }
 
-  drawHeader();
-  var y=22;
+  // ── ENCABEZADO ──
+  function makeHeader(){
+    return new docxLib.Header({children:[
+      new docxLib.Table({
+        width:{size:100,type:docxLib.WidthType.PERCENTAGE},
+        borders:allNone,
+        rows:[new docxLib.TableRow({children:[
+          new docxLib.TableCell({
+            borders:allNone,
+            shading:{fill:BLUE,type:'clear',color:'auto'},
+            width:{size:6000,type:docxLib.WidthType.DXA},
+            children:[
+              p([tr('SENADO DE LA NACIÓN ARGENTINA',{size:16,color:'FFFFFF'})],{spacing:{before:60,after:20}}),
+              p([tr('PROSECRETARÍA PARLAMENTARIA',{size:20,bold:true,color:'FFFFFF'})],{spacing:{before:0,after:60}}),
+            ],
+          }),
+          new docxLib.TableCell({
+            borders:allNone,
+            shading:{fill:BLUE,type:'clear',color:'auto'},
+            width:{size:3306,type:docxLib.WidthType.DXA},
+            children:[
+              p([tr('COMISIONES · PERÍODO 2026',{size:14,color:'FFFFFF'})],{alignment:docxLib.AlignmentType.RIGHT,spacing:{before:60,after:20}}),
+              p([tr(todayStr,{size:14,color:'FFFFFF'})],{alignment:docxLib.AlignmentType.RIGHT,spacing:{before:0,after:60}}),
+            ],
+          }),
+        ]})]
+      }),
+    ]});
+  }
 
-  // ── Título ──
-  doc.setFont('Poppins','bold');doc.setFontSize(13);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
-  doc.text('FICHA DE REUNIÓN DE COMISIÓN',ML,y+7);
-  y+=14;
+  // ── PIE ──
+  function makeFooter(){
+    var pageNumChild=docxLib.SimpleField
+      ? new docxLib.TextRun({children:[new docxLib.SimpleField('PAGE')],font:FONT,size:14,color:'888888'})
+      : tr('',{});
+    return new docxLib.Footer({children:[
+      p([
+        tr('Prosecretaría Parlamentaria · Senado de la Nación Argentina',{size:14,italics:true,color:'888888'}),
+        new docxLib.TextRun({text:'\t',font:FONT}),
+        pageNumChild,
+      ],{
+        tabStops:[{type:docxLib.TabStopType.RIGHT,position:PAGE_W}],
+        border:{top:{style:docxLib.BorderStyle.SINGLE,size:4,color:'D6E4F0',space:4}},
+      }),
+    ]});
+  }
 
-  // ── Datos de la reunión ──
-  var infoRows=[
-    ['Comisión/es',(r.comisiones||[]).join(', ')],
-    ['Fecha',((r.dia||'')+' '+r.fecha+'/2026').trim()],
+  // ── CUERPO ──
+  var body=[];
+
+  // Título
+  body.push(p([tr('FICHA DE REUNIÓN DE COMISIÓN',{size:28,bold:true,color:BLUE})],{spacing:{before:0,after:240}}));
+
+  // Tabla de datos
+  var comStr=(r.comisiones||[]).join(', ');
+  var fechaStr=((r.dia||'')+' '+r.fecha+'/2026').trim();
+  var infoData=[
+    ['Comisión/es',comStr],
+    ['Fecha',fechaStr],
     ['Hora',(r.hora||'')+'hs'],
     ['Salón',r.salon_completo||r.salon||''],
     ['Modalidad',r.modalidad||'—'],
   ];
-  infoRows.forEach(function(row,i){
-    y=checkPage(y,9);
-    var bg=i%2===0?GRAY_LT:WHITE;
-    doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(ML,y,pageW,7.5,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(8);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.text(row[0],ML+3,y+5);
-    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
-    doc.text(doc.splitTextToSize(row[1],pageW-46)[0]||'',ML+43,y+5);
-    y+=7.5;
-  });
-  y+=6;
+  body.push(new docxLib.Table({
+    width:{size:100,type:docxLib.WidthType.PERCENTAGE},
+    borders:allNone,
+    rows:infoData.map(function(rowData,i){
+      var bg=i%2===0?'F0F5FB':'FFFFFF';
+      return new docxLib.TableRow({children:[
+        new docxLib.TableCell({
+          borders:allNone,
+          shading:{fill:BLUE_LT,type:'clear',color:'auto'},
+          width:{size:1900,type:docxLib.WidthType.DXA},
+          children:[p([tr(rowData[0],{bold:true,color:BLUE,size:18})],{spacing:{before:60,after:60}})],
+        }),
+        new docxLib.TableCell({
+          borders:allNone,
+          shading:{fill:bg,type:'clear',color:'auto'},
+          width:{size:PAGE_W-1900,type:docxLib.WidthType.DXA},
+          children:[p([tr(rowData[1],{size:18,color:'4A4A4A'})],{spacing:{before:60,after:60}})],
+        }),
+      ]});
+    }),
+  }));
 
-  // ── Temas a tratar ──
+  // Temas a tratar
   if(r.temario&&r.temario.length){
-    y=checkPage(y,14);
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,8,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
-    doc.text('TEMAS A TRATAR',ML+3,y+5.5);
-    y+=10;
+    body.push(p([tr('TEMAS A TRATAR',{size:20,bold:true,color:BLUE})],{
+      spacing:{before:280,after:100},
+      border:{bottom:{style:docxLib.BorderStyle.SINGLE,size:6,color:BLUE,space:4}},
+    }));
     r.temario.forEach(function(t,i){
-      var lines=doc.splitTextToSize((i+1)+'. '+t.contenido,pageW-6);
-      var bh=lines.length*5.5+4;
-      y=checkPage(y,bh+2);
-      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,bh,'F');}
-      doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
-      doc.text(lines,ML+3,y+4);
-      y+=bh+1;
+      body.push(p([tr((i+1)+'. '+(t.contenido||''),{size:18,color:'374151'})],{spacing:{before:60,after:60}}));
     });
-    y+=4;
   }
 
-  // ── Expositores ──
+  // Expositores
   if(r.expositores&&r.expositores.length){
-    y=checkPage(y,14);
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,8,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
-    doc.text('EXPOSITORES',ML+3,y+5.5);
-    y+=10;
-    r.expositores.forEach(function(e,i){
-      var lines=doc.splitTextToSize('• '+e,pageW-6);
-      var bh=lines.length*5+3;
-      y=checkPage(y,bh+1);
-      if(i%2===0){doc.setFillColor(GRAY_LT[0],GRAY_LT[1],GRAY_LT[2]);doc.rect(ML,y,pageW,bh,'F');}
-      doc.setFont('Poppins','normal');doc.setFontSize(7.5);doc.setTextColor(GRAY[0],GRAY[1],GRAY[2]);
-      doc.text(lines,ML+3,y+3.5);
-      y+=bh;
+    body.push(p([tr('EXPOSITORES',{size:20,bold:true,color:BLUE})],{
+      spacing:{before:280,after:100},
+      border:{bottom:{style:docxLib.BorderStyle.SINGLE,size:6,color:BLUE,space:4}},
+    }));
+    r.expositores.forEach(function(e){
+      body.push(p([tr('• '+e,{size:16,color:'374151'})],{spacing:{before:40,after:40}}));
     });
   }
 
-  // ── Fix 2: asistencia siempre en página nueva ──
-  drawFooter();
-  doc.addPage();
-  pageNum++;
-  drawHeader();
-  y=22;
+  // Salto de página antes de asistencia
+  body.push(new docxLib.Paragraph({children:[new docxLib.PageBreak()]}));
 
-  // ── Asistencia ──
+  // ── ASISTENCIA ──
   var comNombresMatch=(r.comisiones||[]).map(matchComision).filter(Boolean);
   var esPlenaria=comNombresMatch.length>=2;
 
   function quorumN(n){return Math.floor(n/2)+1;}
 
-  // Fix 3: nombre como cadena única, sin división
-  function buildRows(comNombre,sharedSet){
-    return getMembersOrdered(comNombre).map(function(m){
-      var isPresi=(getRole(comNombre,m.name)==='Presidente');
+  // Anchos columnas tabla de asistencia (total = PAGE_W = 9306 twips)
+  var COL_W=[3500,2806,700,700,1600];
+  var COL_LABELS=['SENADOR/A','BLOQUE','QUÓRUM','FIRMA','OBSERVACIONES'];
+
+  function makeAttTable(comNombre,sharedSet,members){
+    var total=members.length;
+    var qn=quorumN(total);
+    var tRows=[];
+
+    // Fila encabezado de comisión (span 5)
+    tRows.push(new docxLib.TableRow({children:[
+      new docxLib.TableCell({
+        columnSpan:5,
+        borders:allNone,
+        shading:{fill:BLUE_LT,type:'clear',color:'auto'},
+        children:[p([
+          tr(comNombre,{bold:true,color:BLUE,size:20}),
+          tr('  ·  '+total+' integrantes · Quórum = '+qn,{color:BLUE,size:16}),
+        ],{spacing:{before:80,after:80}})],
+      }),
+    ]}));
+
+    // Fila encabezados de columna (azul)
+    tRows.push(new docxLib.TableRow({
+      tableHeader:true,
+      children:COL_LABELS.map(function(label,ci){
+        return new docxLib.TableCell({
+          shading:{fill:BLUE,type:'clear',color:'auto'},
+          width:{size:COL_W[ci],type:docxLib.WidthType.DXA},
+          borders:{
+            top:BNone,bottom:BNone,
+            left:{style:docxLib.BorderStyle.SINGLE,size:1,color:'FFFFFF'},
+            right:{style:docxLib.BorderStyle.SINGLE,size:1,color:'FFFFFF'},
+            insideHorizontal:BNone,insideVertical:BNone,
+          },
+          children:[p([tr(label,{bold:true,color:'FFFFFF',size:14})],{
+            alignment:docxLib.AlignmentType.CENTER,
+            spacing:{before:60,after:60},
+          })],
+        });
+      }),
+    }));
+
+    // Filas de senadores
+    members.forEach(function(m,mi){
       var nombre=String(m.name||'').trim();
       var nameCell=sharedSet&&sharedSet[nombre]?nombre+' *':nombre;
-      return {isPresi:isPresi, cells:[nameCell,getSenatorBloque(nombre),'□','□','']};
+      var isPresi=getRole(comNombre,nombre)==='Presidente';
+      var bloque=getSenatorBloque(nombre);
+      var bg=mi%2===0?'F9FAFB':'FFFFFF';
+      var vals=[nameCell,bloque,'☐','☐',''];
+      tRows.push(new docxLib.TableRow({children:vals.map(function(val,ci){
+        var isChk=ci===2||ci===3;
+        return new docxLib.TableCell({
+          shading:{fill:bg,type:'clear',color:'auto'},
+          width:{size:COL_W[ci],type:docxLib.WidthType.DXA},
+          borders:{
+            top:{style:docxLib.BorderStyle.SINGLE,size:1,color:'E5E7EB'},
+            bottom:{style:docxLib.BorderStyle.SINGLE,size:1,color:'E5E7EB'},
+            left:{style:docxLib.BorderStyle.SINGLE,size:1,color:'E5E7EB'},
+            right:{style:docxLib.BorderStyle.SINGLE,size:1,color:'E5E7EB'},
+            insideHorizontal:BLight,insideVertical:BLight,
+          },
+          children:[p([tr(val,{
+            bold:(isPresi&&ci===0),
+            color:(isPresi&&ci===0)?BLUE:'374151',
+            size:16,
+          })],{
+            alignment:isChk?docxLib.AlignmentType.CENTER:docxLib.AlignmentType.LEFT,
+            spacing:{before:40,after:40},
+          })],
+        });
+      })}));
+    });
+
+    return new docxLib.Table({
+      width:{size:100,type:docxLib.WidthType.PERCENTAGE},
+      rows:tRows,
     });
   }
 
+  body.push(p([tr('ASISTENCIA',{size:24,bold:true,color:BLUE})],{spacing:{before:0,after:200}}));
+
   if(!comNombresMatch.length){
-    doc.setFont('Poppins','normal');doc.setFontSize(8);doc.setTextColor(150,150,150);
-    doc.text('No se encontraron integrantes para las comisiones indicadas.',ML,y+5);
-    drawFooter();
+    body.push(p([tr('No se encontraron integrantes para las comisiones indicadas.',{size:18,color:'9CA3AF'})]));
   } else if(!esPlenaria){
-    // ── Tabla única ──
-    var cn=comNombresMatch[0];
-    var mem=getMembersOrdered(cn);
-    var qn=quorumN(mem.length);
-
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,9,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
-    doc.text('ASISTENCIA',ML+3,y+6.2);
-    doc.setFont('Poppins','normal');doc.setFontSize(7.5);
-    doc.text(mem.length+' integrantes · Quórum = '+qn,W-MR,y+6.2,{align:'right'});
-    y+=10;
-    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);doc.rect(ML,y,pageW,7,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(8);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.text(cn,ML+3,y+4.8);
-    y+=8;
-
-    var rows=buildRows(cn,null);
-    doc.autoTable({
-      startY:y,
-      margin:{left:ML,right:MR,top:20,bottom:14},
-      tableWidth:pageW,
-      head:[['SENADOR/A','BLOQUE','QUÓRUM','FIRMA','OBSERVACIONES']],
-      body:rows.map(function(rw){return rw.cells;}),
-      styles:{font:'Poppins',fontStyle:'normal',fontSize:8,cellPadding:2.2,lineColor:[210,210,210],lineWidth:0.15,textColor:GRAY,overflow:'linebreak'},
-      headStyles:{fillColor:BLUE,textColor:WHITE,fontStyle:'bold',fontSize:7.5,halign:'center',cellPadding:2.5},
-      alternateRowStyles:{fillColor:GRAY_LT},
-      columnStyles:{
-        0:{cellWidth:62,halign:'left'},
-        1:{cellWidth:55,halign:'left'},
-        2:{cellWidth:16,halign:'center'},
-        3:{cellWidth:16,halign:'center'},
-        4:{halign:'left'}
-      },
-      didParseCell:function(data){
-        if(data.section==='body'&&rows[data.row.index]&&rows[data.row.index].isPresi){
-          data.cell.styles.fontStyle='bold';data.cell.styles.textColor=BLUE;
-        }
-      },
-      didDrawPage:function(data){if(data.pageNumber>1){pageNum++;drawHeader();}}
-    });
-    drawFooter();
-
+    body.push(makeAttTable(comNombresMatch[0],null,getMembersOrdered(comNombresMatch[0])));
   } else {
-    // ── Fix 1: plenaria — dos tablas lado a lado, misma página ──
-    var cn1=comNombresMatch[0], cn2=comNombresMatch[1];
-    var mem1=getMembersOrdered(cn1), mem2=getMembersOrdered(cn2);
-
-    // Detectar senadores en ambas comisiones
+    var cn1=comNombresMatch[0],cn2=comNombresMatch[1];
+    var mem1=getMembersOrdered(cn1),mem2=getMembersOrdered(cn2);
     var inCn2={};
     mem2.forEach(function(m){inCn2[String(m.name||'').trim()]=true;});
     var sharedSet={};
     mem1.forEach(function(m){var n=String(m.name||'').trim();if(inCn2[n])sharedSet[n]=true;});
     var hasShared=Object.keys(sharedSet).length>0;
 
-    // Anchos: tabla 1 arranca en ML, tabla 2 en ML+52%
-    var T_W=pageW*0.48;
-    var T1_X=ML, T2_X=ML+pageW*0.52;
-
-    // Estimar altura de tabla para decidir si hay que achicar fuente
-    // rowH ≈ (fsz/2.8347)*1.15 + cellPadding*2 ;  hdrH usa cellPadding=2.5
-    function estimarAltura(nRows,fsz){
-      var rh=(fsz/2.8347)*1.15+4.4;
-      var hh=((fsz-0.5)/2.8347)*1.15+5;
-      return hh+nRows*rh;
-    }
-
-    // Espacio disponible en la nueva página (después de banner 9mm + sub-headers 10mm)
-    var disponible=BOTTOM-y-9-10;
-    var fsz=6.5;
-    while(fsz>4){
-      var alto1=estimarAltura(mem1.length,fsz);
-      var alto2=estimarAltura(mem2.length,fsz);
-      if(Math.max(alto1,alto2)<=disponible) break;
-      fsz=Math.round((fsz-0.3)*10)/10;
-    }
-
-    // Banner de sección
-    doc.setFillColor(BLUE[0],BLUE[1],BLUE[2]);doc.rect(ML,y,pageW,9,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
-    doc.text('ASISTENCIA',ML+3,y+6.2);
-    y+=10;
-
-    // Sub-encabezados de cada comisión
-    var t1Label=doc.splitTextToSize(cn1,T_W-4)[0];
-    var t2Label=doc.splitTextToSize(cn2,T_W-4)[0];
-    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
-    doc.rect(T1_X,y,T_W,9,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(6.5);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.text(t1Label,T1_X+2,y+3.8);
-    doc.setFont('Poppins','normal');doc.setFontSize(6);
-    doc.text(mem1.length+' integ. · Quórum = '+quorumN(mem1.length),T1_X+2,y+7.5);
-    doc.setFillColor(BLUE_LT[0],BLUE_LT[1],BLUE_LT[2]);
-    doc.rect(T2_X,y,T_W,9,'F');
-    doc.setFont('Poppins','bold');doc.setFontSize(6.5);doc.setTextColor(BLUE[0],BLUE[1],BLUE[2]);
-    doc.text(t2Label,T2_X+2,y+3.8);
-    doc.setFont('Poppins','normal');doc.setFontSize(6);
-    doc.text(mem2.length+' integ. · Quórum = '+quorumN(mem2.length),T2_X+2,y+7.5);
-    y+=10;
-
-    var rows1=buildRows(cn1,sharedSet);
-    var rows2=buildRows(cn2,sharedSet);
-    var tableStartY=y;
-    var CELL_PAD=2.2;
-
-    // Opciones comunes para las dos tablas
-    function makeOpts(rows,startX,fsz2){
-      return {
-        startY:tableStartY,
-        margin:{left:startX, right:W-startX-T_W, top:20, bottom:14},
-        tableWidth:T_W,
-        head:[['SENADOR/A','BLOQUE','QUÓ.','FIRMA','OBS.']],
-        body:rows.map(function(rw){return rw.cells;}),
-        styles:{font:'Poppins',fontStyle:'normal',fontSize:fsz2,cellPadding:CELL_PAD,lineColor:[210,210,210],lineWidth:0.15,textColor:GRAY,overflow:'linebreak'},
-        headStyles:{fillColor:BLUE,textColor:WHITE,fontStyle:'bold',fontSize:fsz2,halign:'center',cellPadding:2},
-        alternateRowStyles:{fillColor:GRAY_LT},
-        // Fix 3: columna nombre sin ancho fijo para que absorba espacio restante
-        columnStyles:{
-          1:{cellWidth:18,halign:'left'},
-          2:{cellWidth:7, halign:'center'},
-          3:{cellWidth:7, halign:'center'},
-          4:{cellWidth:7, halign:'left'}
-        },
-        didParseCell:function(data){
-          if(data.section==='body'&&rows[data.row.index]&&rows[data.row.index].isPresi){
-            data.cell.styles.fontStyle='bold';data.cell.styles.textColor=BLUE;
-          }
-        },
-        didDrawPage:function(data){if(data.pageNumber>1){pageNum++;drawHeader();}}
-      };
-    }
-
-    // Fix 1: renderizar tabla 1, volver a la misma página, renderizar tabla 2
-    var startPage=doc.internal.getCurrentPageInfo().pageNumber;
-    doc.autoTable(makeOpts(rows1,T1_X,fsz));
-    var y1=doc.lastAutoTable.finalY;
-
-    // Volver a la página donde empezó la tabla para superponer tabla 2
-    doc.setPage(startPage);
-    doc.autoTable(makeOpts(rows2,T2_X,fsz));
-    var y2=doc.lastAutoTable.finalY;
-
-    // Posicionar cursor después de la tabla más larga
-    y=Math.max(y1,y2)+5;
+    body.push(makeAttTable(cn1,sharedSet,mem1));
+    body.push(p([],{spacing:{before:360,after:0}})); // separador entre tablas
+    body.push(makeAttTable(cn2,sharedSet,mem2));
     if(hasShared){
-      doc.setFont('Poppins','normal');doc.setFontSize(7);doc.setTextColor(80,80,80);
-      doc.text('* Integra ambas comisiones',ML,y);
-      y+=5;
+      body.push(p([tr('* Integra ambas comisiones',{size:14,italics:true,color:'4B5563'})],{spacing:{before:140}}));
     }
-    drawFooter();
   }
 
-  var comSlug=(r.comisiones||['comision'])[0].toLowerCase().replace(/[^a-z0-9]/g,'_').replace(/_+/g,'_');
-  doc.save('ficha_'+comSlug+'_'+r.fecha.replace('/','_')+'.pdf');
+  // Crear documento
+  var doc=new docxLib.Document({
+    sections:[{
+      properties:{
+        page:{
+          size:{width:11906,height:16838},
+          margin:{top:1701,bottom:1701,left:1300,right:1300},
+        },
+      },
+      headers:{default:makeHeader()},
+      footers:{default:makeFooter()},
+      children:body,
+    }],
+  });
+
+  var comSlug=(r.comisiones||['comision'])[0]
+    .toLowerCase().replace(/[^a-z0-9áéíóúüñ]/gi,'_').replace(/_+/g,'_');
+  var fechaSlug=(r.fecha||'').replace('/','_');
+
+  docxLib.Packer.toBlob(doc).then(function(blob){
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download='Ficha_'+comSlug+'_'+fechaSlug+'.docx';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},1000);
+  }).catch(function(err){
+    console.error('Error generando docx:',err);
+    alert('Error al generar el Word: '+(err&&err.message||err));
+  });
 }
 
 // ── BICAMERALES DATA LOADING ──

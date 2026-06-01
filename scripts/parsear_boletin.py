@@ -52,12 +52,13 @@ def _normalizar_nombre(nombre: str) -> str:
 
 
 def encontrar_ultimo_boletin() -> tuple[Path | None, int]:
-    patron = re.compile(r"BOLETIN_DE_REUNIONES_DE_COMISIONES_(\d+)-(\d+)\.PDF$")
+    # Busca (\d+)-AAAA en cualquier parte del nombre, sin importar espacios ni guiones bajos
+    patron = re.compile(r"(\d+)-(\d{4})", re.IGNORECASE)
     mejor: Path | None = None
     mejor_n = -1
     for archivo in BOLETINES_DIR.glob("*.pdf"):
         nombre_norm = _normalizar_nombre(archivo.name)
-        m = patron.match(nombre_norm)
+        m = patron.search(nombre_norm)
         if m and int(m.group(1)) > mejor_n:
             mejor_n = int(m.group(1))
             mejor = archivo
