@@ -1,0 +1,1906 @@
+[
+  {
+    "nombre": "De Acuerdos",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "PAGOTTO, Juan Carlos",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "BULLRICH, Patricia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "COTO, Agustín Pedro",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MÁRQUEZ, Nadia Judith",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "JURI, Mariana",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ESPÍNOLA, Carlos Mauricio",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "ARCE, Carlos Omar",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "ÁVILA, Beatriz Luisa",
+        "bloque": "INDEPENDENCIA"
+      },
+      {
+        "nombre": "ROYÓN, Flavia Gabriela",
+        "bloque": "PRIMERO LOS SALTEÑOS"
+      }
+    ]
+  },
+  {
+    "nombre": "De Agricultura, Ganadería y Pesca",
+    "cupo": 19,
+    "miembros": [
+      {
+        "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FULLONE, Enzo Paolo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OROZCO, María Emilia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ESPÍNOLA, Carlos Mauricio",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "GADANO, Natalia Elena",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "TERENZI, Edith Elizabeth",
+        "bloque": "DESPIERTA CHUBUT"
+      },
+      {
+        "nombre": "BAHL, Adán Humberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LINARES, Carlos Alberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MANZUR, Juan Luis",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MAYANS, José Miguel Ángel",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Ambiente y Desarrollo Sustentable",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "TERENZI, Edith Elizabeth",
+        "bloque": "DESPIERTA CHUBUT"
+      },
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ATAUCHE, Ezequiel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MÁRQUEZ, Nadia Judith",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ROJAS DECUT, Sonia Elizabeth",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "GADANO, Natalia Elena",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "ROYÓN, Flavia Gabriela",
+        "bloque": "PRIMERO LOS SALTEÑOS"
+      }
+    ]
+  },
+  {
+    "nombre": "De Asuntos Administrativos y Municipales",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "MARKS, Ana Inés",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "ATAUCHE, Ezequiel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "COTO, Agustín Pedro",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ROJAS DECUT, Sonia Elizabeth",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "ZAMORA, Gerardo",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "REJAL, Fernando",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, Cándida Cristina",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "NEDER, José Emilio",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Asuntos Constitucionales",
+    "cupo": 19,
+    "miembros": [
+      {
+        "nombre": "COTO, Agustín Pedro",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "LÓPEZ, María Florencia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BULLRICH, Patricia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MÁRQUEZ, Nadia Judith",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTE DE OCA, María Belén",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAGOTTO, Juan Carlos",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SUÁREZ, Rodolfo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ESPÍNOLA, Carlos Mauricio",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "VIGO, Alejandra María",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "TERENZI, Edith Elizabeth",
+        "bloque": "DESPIERTA CHUBUT"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, Cándida Cristina",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "NEDER, José Emilio",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Ciencia y Tecnología",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ATAUCHE, Ezequiel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GUZMÁN CORAITA, Gonzalo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OROZCO, María Emilia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "JURI, Mariana",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ROJAS DECUT, Sonia Elizabeth",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "SALINO, Fernando Aldo",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GONZÁLEZ, María Teresa Margarita",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LINARES, Carlos Alberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "SORIA, Martín",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Coparticipación Federal de Impuestos",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ROYÓN, Flavia Gabriela",
+        "bloque": "PRIMERO LOS SALTEÑOS"
+      },
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTEVERDE, Agustín Aníbal",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "CRISTINA, Andrea Marcela",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "VIGO, Alejandra María",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "ZAMORA, Gerardo",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "VALENZUELA, Gabriela",
+        "bloque": "DESCONOCIDO"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CORPACCI, Lucía Benigna",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "KIRCHNER, Alicia Margarita Antonia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MAYANS, José Miguel Ángel",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Defensa Nacional",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "JUEZ, Luis Alfredo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "LINARES, Carlos Alberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTE DE OCA, María Belén",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTEVERDE, Agustín Aníbal",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAGOTTO, Juan Carlos",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ZAMORA, Gerardo",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "GADANO, Natalia Elena",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CORPACCI, Lucía Benigna",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MAYANS, José Miguel Ángel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "NEDER, José Emilio",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Deporte",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "JURI, Mariana",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ARCE, Carlos Omar",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "MORENO, Elia Esther del Carmen",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "ÁVILA, Beatriz Luisa",
+        "bloque": "INDEPENDENCIA"
+      },
+      {
+        "nombre": "SALINO, Fernando Aldo",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "FERNÁNDEZ SAGASTI, Anabel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, Cándida Cristina",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "UÑAC, Sergio Mauricio",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Derechos y Garantías",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ATAUCHE, Ezequiel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MÁRQUEZ, Nadia Judith",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTEVERDE, Agustín Aníbal",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAGOTTO, Juan Carlos",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SUÁREZ, Rodolfo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "TERENZI, Edith Elizabeth",
+        "bloque": "DESPIERTA CHUBUT"
+      },
+      {
+        "nombre": "CORPACCI, Lucía Benigna",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "FERNÁNDEZ SAGASTI, Anabel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "KIRCHNER, Alicia Margarita Antonia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LINARES, Carlos Alberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Economía Nacional e Inversión",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "CORROZA, Julieta",
+        "bloque": "LA NEUQUINIDAD"
+      },
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GUZMÁN CORAITA, Gonzalo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTEVERDE, Agustín Aníbal",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "REJAL, Fernando",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "BAHL, Adán Humberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MAYANS, José Miguel Ángel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "SORIA, Martín",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Economías Regionales, Economía Social, Micro, Pequeña y Mediana Empresa",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OROZCO, María Emilia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SUÁREZ, Rodolfo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "CRISTINA, Andrea Marcela",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ARCE, Carlos Omar",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "ZAMORA, Gerardo",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "BAHL, Adán Humberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CORPACCI, Lucía Benigna",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, María Florencia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MARKS, Ana Inés",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "UÑAC, Sergio Mauricio",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Educación y Cultura",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ROJAS DECUT, Sonia Elizabeth",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MÁRQUEZ, Nadia Judith",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ÁVILA, Beatriz Luisa",
+        "bloque": "INDEPENDENCIA"
+      },
+      {
+        "nombre": "SALINO, Fernando Aldo",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "FERNÁNDEZ SAGASTI, Anabel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GONZÁLEZ, María Teresa Margarita",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, Cándida Cristina",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Industria y Comercio",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "COTO, Agustín Pedro",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "VIGO, Alejandra María",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "GADANO, Natalia Elena",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "SALINO, Fernando Aldo",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CORPACCI, Lucía Benigna",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "DE PEDRO, Eduardo Enrique",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, María Florencia",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Infraestructura, Vivienda y Transporte",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ÁVILA, Beatriz Luisa",
+        "bloque": "INDEPENDENCIA"
+      },
+      {
+        "nombre": "FULLONE, Enzo Paolo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "JURI, Mariana",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ESPÍNOLA, Carlos Mauricio",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "ZAMORA, Gerardo",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "CARAMBIA, José María",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "CORROZA, Julieta",
+        "bloque": "LA NEUQUINIDAD"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GONZÁLEZ, María Teresa Margarita",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "NEDER, José Emilio",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Justicia y Asuntos Penales",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "GUZMÁN CORAITA, Gonzalo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BULLRICH, Patricia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAGOTTO, Juan Carlos",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ARCE, Carlos Omar",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "ÁVILA, Beatriz Luisa",
+        "bloque": "INDEPENDENCIA"
+      },
+      {
+        "nombre": "MONTE DE OCA, Maria Belén",
+        "bloque": "DESCONOCIDO"
+      },
+      {
+        "nombre": "BAHL, Adán Humberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, María Florencia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "SORIA, Martín",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Legislación General",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "MÁRQUEZ, Nadia Judith",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BULLRICH, Patricia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GUZMÁN CORAITA, Gonzalo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "SUÁREZ, Rodolfo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ESPÍNOLA, Carlos Mauricio",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "CARAMBIA, José María",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "REJAL, Fernando",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "SALINO, Fernando Aldo",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "KIRCHNER, Alicia Margarita Antonia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MARKS, Ana Inés",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "SORIA, Martín",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Minería, Energía y Combustibles",
+    "cupo": 19,
+    "miembros": [
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ATAUCHE, Ezequiel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "COTO, Agustín Pedro",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FULLONE, Enzo Paolo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "JURI, Mariana",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "CRISTINA, Andrea Marcela",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "CARAMBIA, José María",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "CORROZA, Julieta",
+        "bloque": "LA NEUQUINIDAD"
+      },
+      {
+        "nombre": "ROYÓN, Flavia Gabriela",
+        "bloque": "PRIMERO LOS SALTEÑOS"
+      }
+    ]
+  },
+  {
+    "nombre": "De Población y Desarrollo Humano",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "KIRCHNER, Alicia Margarita Antonia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FULLONE, Enzo Paolo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OROZCO, María Emilia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MENDOZA, Sandra Mariela",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "GADANO, Natalia Elena",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "MARQUEZ, Nadia Judith",
+        "bloque": "DESCONOCIDO"
+      },
+      {
+        "nombre": "VISCHI, Eduardo",
+        "bloque": "DESCONOCIDO"
+      },
+      {
+        "nombre": "BENSUSÁN, Daniel Pablo",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GONZÁLEZ, María Teresa Margarita",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MARKS, Ana Inés",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Presupuesto y Hacienda",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "MONTEVERDE, Agustín Aníbal",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ABDALA, Bartolomé Esteban",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BULLRICH, Patricia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "VIGO, Alejandra María",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "TERENZI, Edith Elizabeth",
+        "bloque": "DESPIERTA CHUBUT"
+      },
+      {
+        "nombre": "ÁVILA, Beatriz Luisa",
+        "bloque": "INDEPENDENCIA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Relaciones Exteriores y Culto",
+    "cupo": 19,
+    "miembros": [
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GUZMÁN CORAITA, Gonzalo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "JUEZ, Luis Alfredo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTE DE OCA, María Belén",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTEVERDE, Agustín Aníbal",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ABAD, Maximiliano",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SUÁREZ, Rodolfo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ROJAS DECUT, Sonia Elizabeth",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "BAHL, Adán Humberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "DI TULLIO, Juliana",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "FERNÁNDEZ SAGASTI, Anabel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MANZUR, Juan Luis",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Salud",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ARRASCAETA, Ivanna Marcela",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "ARCE, Carlos Omar",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTE DE OCA, María Belén",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "MORENO, Elia Esther del Carmen",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "TERENZI, Edith Elizabeth",
+        "bloque": "DESPIERTA CHUBUT"
+      },
+      {
+        "nombre": "CORPACCI, Lucía Benigna",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "FERNÁNDEZ SAGASTI, Anabel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GONZÁLEZ, María Teresa Margarita",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MANZUR, Juan Luis",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Seguridad Interior y Narcotráfico",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GUZMÁN CORAITA, Gonzalo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OROZCO, María Emilia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAGOTTO, Juan Carlos",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "PAOLTRONI, Francisco Manuel",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GALARETTO, Eduardo Horacio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "GOERLING LARA, Enrique Martín",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "ESPÍNOLA, Carlos Mauricio",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "CORROZA, Julieta",
+        "bloque": "LA NEUQUINIDAD"
+      },
+      {
+        "nombre": "BAHL, Adán Humberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "FERNÁNDEZ SAGASTI, Anabel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LINARES, Carlos Alberto",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "SORIA, Martín",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Sistemas, Medios de Comunicación y Libertad de Expresión",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BULLRICH, Patricia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "CERVI, Mario Pablo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "COTO, Agustín Pedro",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FULLONE, Enzo Paolo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "KRONEBERGER, Daniel Ricardo",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "LOSADA, Carolina",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ANDRADA, Guillermo Eduardo",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "MORENO, Elia Esther del Carmen",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "SALINO, Fernando Aldo",
+        "bloque": "JUSTICIA SOCIAL FEDERAL"
+      },
+      {
+        "nombre": "GIMÉNEZ NAVARRO, María Celeste",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MAYANS, José Miguel Ángel",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "NEDER, José Emilio",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "SORIA, Martín",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Trabajo y Previsión Social",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "ALVAREZ RIVERO, Carmen",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BENEGAS LYNCH, Joaquín Alberto",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "GODOY, Juan Cruz",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OLIVERA LUCERO, Bruno Antonio",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "SCHNEIDER, Silvana Lorena",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "SUÁREZ, Rodolfo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VISCHI, Eduardo Alejandro",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "HUALA, María Victoria",
+        "bloque": "FRENTE PRO"
+      },
+      {
+        "nombre": "MOISÉS, María Carolina",
+        "bloque": "CONVICCIÓN FEDERAL"
+      },
+      {
+        "nombre": "ROJAS DECUT, Sonia Elizabeth",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "CARAMBIA, José María",
+        "bloque": "MOVERE POR SANTA CRUZ"
+      },
+      {
+        "nombre": "ROYÓN, Flavia Gabriela",
+        "bloque": "PRIMERO LOS SALTEÑOS"
+      },
+      {
+        "nombre": "CAPITANICH, Jorge Milton",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "DI TULLIO, Juliana",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "GONZÁLEZ, María Teresa Margarita",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LEWANDOWSKI, Marcelo Néstor",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  },
+  {
+    "nombre": "De Turismo",
+    "cupo": 17,
+    "miembros": [
+      {
+        "nombre": "JURI, Mariana",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "ALMEIDA, Romina María",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "BEDIA, Vilma Facunda",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FULLONE, Enzo Paolo",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "MONTE DE OCA, María Belén",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "OROZCO, María Emilia",
+        "bloque": "LA LIBERTAD AVANZA"
+      },
+      {
+        "nombre": "FAMA, Flavio Sergio",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VALENZUELA, Mercedes Gabriela",
+        "bloque": "UCR - UNIÓN CÍVICA RADICAL"
+      },
+      {
+        "nombre": "VIGO, Alejandra María",
+        "bloque": "PROVINCIAS UNIDAS"
+      },
+      {
+        "nombre": "ARCE, Carlos Omar",
+        "bloque": "FRENTE RENOVADOR DE LA CONCORDIA SOCIAL"
+      },
+      {
+        "nombre": "ZAMORA, Gerardo",
+        "bloque": "FRENTE CÍVICO POR SANTIAGO"
+      },
+      {
+        "nombre": "CORROZA, Julieta",
+        "bloque": "LA NEUQUINIDAD"
+      },
+      {
+        "nombre": "DI TULLIO, Juliana",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "KIRCHNER, Alicia Margarita Antonia",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "LÓPEZ, Cándida Cristina",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "MARKS, Ana Inés",
+        "bloque": "JUSTICIALISTA"
+      },
+      {
+        "nombre": "RECALDE, Mariano",
+        "bloque": "JUSTICIALISTA"
+      }
+    ]
+  }
+]
